@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import useAuth from "../../../hooks/useAuth";
 import { Link, NavLink } from "react-router";
@@ -7,15 +7,31 @@ import logo from "../../../assets/images/logo.png";
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  useEffect(() => {
+    const html = document.querySelector("html");
+    html.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const handleTheme = (checked) => {
+    setTheme(checked ? "dark" : "light");
+  };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+    <nav className="fixed top-0 left-0 right-0  shadow-md z-50">
       <div className="max-w-[1440px] mx-auto px-4 h-16 flex items-center justify-between">
         <Link to="/">
           <img src={logo} className="h-30 w-auto" alt="Logo" />
         </Link>
 
         <div className="hidden md:flex items-center space-x-6 text-md font-medium">
+          <input
+            onChange={(e) => handleTheme(e.target.checked)}
+            type="checkbox"
+            defaultChecked={localStorage.getItem("theme") === "dark"}
+            className="toggle"
+          />
           <NavLink to="/" className="hover:text-[#3BADCD]">
             Home
           </NavLink>
@@ -70,16 +86,22 @@ const Navbar = () => {
           )}
         </div>
 
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-gray-700"
-        >
-          {isOpen ? (
-            <X className="hover:text-[#3BADCD]" size={25} />
-          ) : (
-            <Menu size={25} />
-          )}
-        </button>
+        <div className="md:hidden flex items-center gap-3">
+          <input
+            onChange={(e) => handleTheme(e.target.checked)}
+            type="checkbox"
+            defaultChecked={localStorage.getItem("theme") === "dark"}
+            className="toggle"
+          />
+
+          <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700">
+            {isOpen ? (
+              <X className="hover:text-[#3BADCD]" size={25} />
+            ) : (
+              <Menu size={25} />
+            )}
+          </button>
+        </div>
       </div>
 
       {isOpen && (
