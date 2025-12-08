@@ -1,95 +1,133 @@
-import Container from '../Container'
-import { AiOutlineMenu } from 'react-icons/ai'
-import { useState } from 'react'
-import { Link } from 'react-router'
-import useAuth from '../../../hooks/useAuth'
-import avatarImg from '../../../assets/images/placeholder.jpg'
-import logo from '../../../assets/images/logo-flat.png'
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import useAuth from "../../../hooks/useAuth";
+import { Link, NavLink } from "react-router";
+import logo from "../../../assets/images/logo.png";
+
 const Navbar = () => {
-  const { user, logOut } = useAuth()
-  const [isOpen, setIsOpen] = useState(false)
+  const { user, logOut } = useAuth();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed w-full bg-white z-10 shadow-sm">
-      <div className="py-4 ">
-        <Container>
-          <div className="flex flex-row  items-center justify-between gap-3 md:gap-0">
-            {/* Logo */}
-            <Link to="/">
-              <h1 className="text-2xl text-[#3BADCD]">GarmentsFlow</h1>
-            </Link>
-            {/* Dropdown Menu */}
-            <div className="relative">
-              <div className="flex flex-row items-center gap-3">
-                {/* Dropdown btn */}
-                <div
-                  onClick={() => setIsOpen(!isOpen)}
-                  className="p-4 md:py-1 md:px-2 border border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition"
-                >
-                  <AiOutlineMenu />
-                  <div className="hidden md:block">
-                    {/* Avatar */}
-                    <img
-                      className="rounded-full"
-                      referrerPolicy="no-referrer"
-                      src={user && user.photoURL ? user.photoURL : avatarImg}
-                      alt="profile"
-                      height="30"
-                      width="30"
-                    />
-                  </div>
-                </div>
+    <nav className="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+      <div className="max-w-[1440px] mx-auto px-4 h-16 flex items-center justify-between">
+        <Link to="/">
+          <img src={logo} className="h-30 w-auto" alt="Logo" />
+        </Link>
+
+        <div className="hidden md:flex items-center space-x-6 text-md font-medium">
+          <NavLink to="/" className="hover:text-[#3BADCD]">
+            Home
+          </NavLink>
+          <NavLink to="/products" className="hover:text-[#3BADCD]">
+            AllProducts
+          </NavLink>
+          <NavLink to="/about" className="hover:text-[#3BADCD]">
+            AboutUs
+          </NavLink>
+          <NavLink to="/contact" className="hover:text-[#3BADCD]">
+            Contact
+          </NavLink>
+
+          {!user ? (
+            <>
+              <Link
+                className="px-4 py-2 text-white bg-[#3BADCD] rounded-full hover:bg-[#299bbc]"
+                to="/login"
+              >
+                Login
+              </Link>
+
+              <Link
+                className="px-4 py-2 text-white bg-[#3BADCD] rounded-full hover:bg-[#299bbc]"
+                to="/register"
+              >
+                Register
+              </Link>
+            </>
+          ) : (
+            <div className="flex items-center space-x-4">
+              <NavLink to="/dashboard" className="hover:text-[#3BADCD]">
+                Dashboard
+              </NavLink>
+
+              {/* User Avatar */}
+              <div className="w-10 h-10 flex items-center justify-center bg-[#3BADCD] text-white rounded-full overflow-hidden">
+                <img
+                  src={user.photoURL}
+                  className="w-full h-full object-cover"
+                  alt="User"
+                />
               </div>
-              {isOpen && (
-                <div className="absolute rounded-xl shadow-md w-[40vw] md:w-[10vw] bg-white overflow-hidden right-0 top-12 text-sm">
-                  <div className="flex flex-col cursor-pointer">
-                    <Link
-                      to="/"
-                      className="block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold"
-                    >
-                      Home
-                    </Link>
 
-                    {user ? (
-                      <>
-                        <Link
-                          to="/dashboard"
-                          className="px-4 py-3 hover:bg-neutral-100 transition font-semibold"
-                        >
-                          Dashboard
-                        </Link>
-                        <div
-                          onClick={logOut}
-                          className="px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer"
-                        >
-                          Logout
-                        </div>
-                      </>
-                    ) : (
-                      <>
-                        <Link
-                          to="/login"
-                          className="px-4 py-3 hover:bg-neutral-100 transition font-semibold"
-                        >
-                          Login
-                        </Link>
-                        <Link
-                          to="/signup"
-                          className="px-4 py-3 hover:bg-neutral-100 transition font-semibold"
-                        >
-                          Sign Up
-                        </Link>
-                      </>
-                    )}
-                  </div>
-                </div>
-              )}
+              <button
+                onClick={logOut}
+                className="px-4 py-2 bg-[#3BADCD] text-white  rounded-md "
+              >
+                LogOut
+              </button>
             </div>
-          </div>
-        </Container>
-      </div>
-    </div>
-  );
-}
+          )}
+        </div>
 
-export default Navbar
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden text-gray-700"
+        >
+          {isOpen ? (
+            <X className="hover:text-[#3BADCD]" size={25} />
+          ) : (
+            <Menu size={25} />
+          )}
+        </button>
+      </div>
+
+      {isOpen && (
+        <div
+          className="md:hidden bg-white border-t p-4 text-md 
+                  flex flex-col items-center space-y-4 text-center"
+        >
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/products">All Products</NavLink>
+          <NavLink to="/about">About Us</NavLink>
+          <NavLink to="/contact">Contact</NavLink>
+
+          {user ? (
+            <>
+              <NavLink to="/dashboard">Dashboard</NavLink>
+
+              <button
+                onClick={logOut}
+                className="px-4 py-2 bg-[#3BADCD] text-white rounded-md"
+              >
+                Log Out
+              </button>
+            </>
+          ) : (
+            <>
+              <div className="flex items-center gap-3">
+                <Link
+                  className="px-4 py-2 text-white bg-[#3BADCD] rounded-full 
+                       hover:bg-[#299bbc]"
+                  to="/login"
+                >
+                  Login
+                </Link>
+
+                <Link
+                  className="px-4 py-2 text-white bg-[#3BADCD] rounded-full 
+                       hover:bg-[#299bbc]"
+                  to="/register"
+                >
+                  Register
+                </Link>
+              </div>
+            </>
+          )}
+        </div>
+      )}
+    </nav>
+  );
+};
+
+export default Navbar;

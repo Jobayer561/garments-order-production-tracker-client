@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -118,4 +118,19 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.my-btn {
+  @apply btn  
+  bg-[#3BADCD] hover:bg-[#3BADCD]/80
+  text-white font-semibold border-none
+  hover:scale-105 transition-transform duration-200;
+}
+a.active {
+  color: #3badcd;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+  font-weight: 700;
+  transition: 0.2s ease-in-out;
 }
