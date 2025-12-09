@@ -2,7 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
-import { TbFidgetSpinner } from "react-icons/tb";
+import { LuLoader } from "react-icons/lu";
 import { useForm } from "react-hook-form";
 import { saveOrUpdateUser } from "../../utils";
 import { Input } from "@/components/ui/Input";
@@ -31,12 +31,8 @@ const SignUp = () => {
     console.log(name, email, image, password, role);
 
     try {
-      // Upload image
-
-      // Create firebase user
       const result = await createUser(email, password);
 
-      // Save new user to backend with ROLE
       await saveOrUpdateUser({
         name,
         email,
@@ -44,7 +40,6 @@ const SignUp = () => {
         role,
       });
 
-      //   // Update firebase profile
       await updateUserProfile(name, image);
 
       navigate(from, { replace: true });
@@ -60,7 +55,6 @@ const SignUp = () => {
     try {
       const { user } = await signInWithGoogle();
 
-      // Google Signup → role = buyer by default
       await saveOrUpdateUser({
         name: user?.displayName,
         email: user?.email,
@@ -77,25 +71,29 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-white">
-      <div className="flex flex-col w-full max-w-md p-6 rounded-md border border-gray-200 sm:p-10  text-gray-900 m-4">
+    <div className="flex justify-center min-h-screen mt-24 mb-8 md:px-0 px-8">
+      <div className="flex flex-col w-full max-w-md p-6 rounded-md border border-gray-200 sm:p-10  text-gray-900 ">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl text-[#3BADCD] font-bold">Sign Up</h1>
-          <p className="text-sm text-gray-400">Welcome to GarmentsFlow</p>
+          <p className="text-sm text-gray-400">
+            Welcome to <span className="text-[#3BADCD]">GarmentsFlow</span>{" "}
+          </p>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-4">
-            {/* NAME */}
             <div>
-              <label htmlFor="name" className="block mb-2 text-sm">
+              <label
+                htmlFor="name"
+                className="block mb-2 text-sm text-gray-400"
+              >
                 Name
               </label>
               <Input
                 type="text"
                 id="name"
                 placeholder="Enter Your Name Here"
-                className="w-full px-4 py-5 border rounded-full bg-gray-200 border-gray-300 focus:outline-lime-500"
+                className="block w-full bg-gray-200 text-sm  border-gray-300 rounded-full cursor-pointer py-5"
                 {...register("name", {
                   required: "Name is required",
                   maxLength: {
@@ -111,16 +109,18 @@ const SignUp = () => {
               )}
             </div>
 
-            {/* IMAGE */}
             <div>
-              <label htmlFor="image" className="block mb-2 text-sm">
+              <label
+                htmlFor="image"
+                className="block mb-2 text-sm text-gray-400"
+              >
                 Profile Image
               </label>
               <Input
                 type="text"
                 id="image"
                 placeholder="Enter your photoURL"
-                className="block w-ful bg-gray-200 text-sm text-gray-500  
+                className="block w-full bg-gray-200 text-sm  
                     border-gray-300
                 rounded-full cursor-pointer py-5"
                 {...register("image", {
@@ -129,16 +129,18 @@ const SignUp = () => {
               />
             </div>
 
-            {/* EMAIL */}
             <div>
-              <label htmlFor="email" className="block mb-2 text-sm">
+              <label
+                htmlFor="email"
+                className="block mb-2 text-sm text-gray-400"
+              >
                 Email address
               </label>
               <Input
                 type="email"
                 id="email"
                 placeholder="Enter Your Email Here"
-                className="w-full px-4 py-5 border rounded-full bg-gray-200 border-gray-300"
+                className="block w-full bg-gray-200 text-sm  border-gray-300 rounded-full cursor-pointer py-5"
                 {...register("email", {
                   required: "Email is required",
                   pattern: {
@@ -154,15 +156,17 @@ const SignUp = () => {
               )}
             </div>
 
-            {/* ROLE */}
             <div>
-              <label htmlFor="role" className="block mb-2 text-sm">
+              <label
+                htmlFor="role"
+                className="block mb-2 text-sm text-gray-400"
+              >
                 Role
               </label>
               <select
                 name="role"
                 id="role"
-                className="w-full px-4 py-2 border rounded-full bg-gray-200 border-gray-300 focus:outline-gray-500"
+                className="w-full px-4 py-2.5  rounded-full bg-gray-200  border-gray-300 "
                 {...register("role", { required: true })}
               >
                 <option value="" disabled className="text-gray-400">
@@ -176,16 +180,18 @@ const SignUp = () => {
               )}
             </div>
 
-            {/* PASSWORD */}
             <div className="relative">
-              <label htmlFor="password" className="block mb-2 text-sm">
+              <label
+                htmlFor="password"
+                className="block mb-2 text-sm text-gray-400"
+              >
                 Password
               </label>
               <Input
                 type={show ? "text" : "password"}
                 id="password"
                 placeholder="••••••••"
-                className="w-full px-4 py-5 border rounded-full bg-gray-200 border-gray-300"
+                className="block w-full bg-gray-200 text-sm  border-gray-300 rounded-full cursor-pointer py-5"
                 {...register("password", {
                   required: "Password is required",
 
@@ -203,7 +209,7 @@ const SignUp = () => {
                 {show ? <FaEye /> : <IoEyeOff />}
               </span>
               {errors.password && (
-                <p className="text-red-500 text-xs mt-1">
+                <p className="text-red-500 text-xs mt-2">
                   {errors.password.message}
                 </p>
               )}
@@ -212,17 +218,12 @@ const SignUp = () => {
 
           <Button
             type="submit"
-            className="bg-[#3BADCD] w-full rounded-full py-5 text-white hover:bg-[#3BADCD]/80"
+            className="bg-[#3BADCD] w-full rounded-full py-5 text-white hover:bg-[#3BADCD]/80 hover:scale-105 transition-transform cursor-pointer"
           >
-            {loading ? (
-              <TbFidgetSpinner className="animate-spin " />
-            ) : (
-              "Register"
-            )}
+            {loading ? <LuLoader className="animate-spin " /> : "Register"}
           </Button>
         </form>
 
-        {/* SOCIAL LOGIN */}
         <div className="flex items-center pt-4 space-x-1">
           <div className="flex-1 h-px bg-gray-300"></div>
           <p className="px-3 text-sm text-gray-400">
@@ -233,7 +234,7 @@ const SignUp = () => {
 
         <Button
           onClick={handleGoogleSignIn}
-          className="flex justify-center items-center  border my-3 p-5 bg-[#3BADCD] hover:bg-[#3BADCD]/80 rounded-full cursor-pointer"
+          className="flex justify-center items-center  text-white my-3 p-5 bg-[#3BADCD] hover:bg-[#3BADCD]/80 rounded-full cursor-pointer hover:scale-105 transition-transform"
         >
           <FcGoogle size={32} />
           <p>Continue with Google</p>
@@ -243,7 +244,7 @@ const SignUp = () => {
           Already have an account?{" "}
           <Link
             to="/login"
-            className="hover:underline hover:text-blue text-gray-600"
+            className="hover:underline hover:text-blue text-[#3BADCD]"
           >
             Login
           </Link>
