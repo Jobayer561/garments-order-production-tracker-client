@@ -1,10 +1,9 @@
-import Plants from "../../components/Home/Plants";
+import OurProducts from "@/components/Home/OurProducts";
 
 const Home = () => {
   return (
     <div>
-      
-      <Plants />
+      <OurProducts />
     </div>
   );
 };

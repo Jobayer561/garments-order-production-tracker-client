@@ -21,6 +21,7 @@ const Navbar = () => {
   const handleTheme = (checked) => {
     setIsDark(checked);
   };
+  console.log(user?.photoURL);
 
   return (
     <nav className=" fixed top-0 left-0 right-0 border-b border-gray-50/35  shadow-md z-70 bg-base-100/95 ">
@@ -61,11 +62,11 @@ const Navbar = () => {
                 Dashboard
               </NavLink>
 
-              <div className="w-10 h-10 flex items-center justify-center bg-[#3BADCD] text-white rounded-full overflow-hidden">
+              <div className="w-10 h-10 rounded-full overflow-hidden border border-gray-300">
                 <img
-                  src={user.photoURL}
-                  className="w-full h-full object-cover"
+                  src={user?.photoURL}
                   alt="User"
+                  className="w-full h-full object-cover"
                 />
               </div>
 
