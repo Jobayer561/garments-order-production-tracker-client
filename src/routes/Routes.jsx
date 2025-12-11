@@ -2,7 +2,6 @@ import Home from "../pages/Home/Home";
 import ErrorPage from "../pages/ErrorPage";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
-import PlantDetails from "../pages/PlantDetails/PlantDetails";
 import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../layouts/DashboardLayout";
 import AddPlant from "../pages/Dashboard/Seller/AddPlant";
@@ -15,6 +14,9 @@ import ManageOrders from "../pages/Dashboard/Seller/ManageOrders";
 import MyOrders from "../pages/Dashboard/Customer/MyOrders";
 import { createBrowserRouter } from "react-router";
 import AllProducts from "@/pages/AllProducts";
+import ProductDetails from "@/pages/ProductDetails";
+import AboutUs from "@/pages/AboutUs";
+import Contact from "@/pages/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -23,13 +25,18 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <Home /> },
-      { path: "plant/:id", element: <PlantDetails /> },
       { path: "login", element: <Login /> },
       { path: "signup", element: <SignUp /> },
       {
         path: "/allProducts",
         element: <AllProducts />,
       },
+      {
+        path: "/allProducts/:id",
+        element: <ProductDetails />,
+      },
+      { path: "/about-us", element: <AboutUs /> },
+      { path: "/contact", element: <Contact /> },
     ],
   },
 

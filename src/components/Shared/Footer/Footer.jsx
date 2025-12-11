@@ -13,16 +13,19 @@ const Footer = () => {
           <p className="text-gray-500 text-md max-w-xs">
             GarmentsFlow is a modern web-based system that streamlines the
             garment manufacturing process. From receiving buyer orders to
-            tracking every production stage. 
-           
+            tracking every production stage.
           </p>
         </div>
 
         <div className="flex flex-col items-center md:items-start">
           <h1 className="font-semibold text-lg mb-2">Quick Links</h1>
           <nav className="flex flex-col gap-4 text-gray-500 text-lg">
-            <a className="link link-hover">About us</a>
-            <a className="link link-hover">Contact</a>
+            <Link to={"/about-us"} className="link link-hover">
+              About us
+            </Link>
+            <Link to={"/contact"} className="link link-hover">
+              Contact
+            </Link>
             <a className="link link-hover">Jobs</a>
             <a className="link link-hover">Press kit</a>
           </nav>

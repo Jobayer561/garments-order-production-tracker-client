@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 
 const Card = ({ product }) => {
-  const { title, description, price, images = [] } = product;
+  const { _id, title, description, price, images = [] } = product;
 
   const imgUrl =
     images.length > 0
@@ -39,13 +39,14 @@ const Card = ({ product }) => {
             ${price}
           </span>
 
-          <button
-            className="mt-3 w-full px-4 py-2 rounded-full bg-[#3BADCD] 
+          <Link
+            to={`/allProducts/${_id}`}
+            className="btn mt-3 w-full px-4 py-2 rounded-full bg-[#3BADCD] 
                        text-white text-sm hover:bg-[#3BADCD]/80 
                        transition-transform hover:scale-105 whitespace-nowrap"
           >
             View Details
-          </button>
+          </Link>
         </div>
       </div>
     </div>

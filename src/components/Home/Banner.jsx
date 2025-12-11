@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import BannerImg from "../../assets/images/banner.jpg";
+import { Link } from "react-router";
 
 const Banner = () => {
   return (
@@ -49,16 +50,9 @@ const Banner = () => {
               tracking every production stage.
             </motion.p>
 
-            <motion.button
-              className="px-4 py-2 my-btn"
-              variants={{
-                hidden: { opacity: 0, scale: 0.8 },
-                visible: { opacity: 1, scale: 1 },
-              }}
-              transition={{ duration: 0.7 }}
-            >
+            <Link to={"/allProducts"} className="px-4 py-2 my-btn">
               View Product
-            </motion.button>
+            </Link>
           </motion.div>
         </div>
       </div>
