@@ -134,3 +134,25 @@ a.active {
   font-weight: 700;
   transition: 0.2s ease-in-out;
 }
+.swiper-button-next,
+.swiper-button-prev {
+  transform: scale(0.5);
+}
+.slick-slide > div {
+  margin: 0 10px;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #3badcd !important;
+}
+.slick-prev:before,
+.slick-next:before {
+  color: #3badcd !important;
+}
+
+@media (max-width: 770px) {
+  .slick-prev,
+  .slick-next {
+    display: none !important;
+  }
+}
