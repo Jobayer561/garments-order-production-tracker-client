@@ -21,7 +21,6 @@ const Navbar = () => {
   const handleTheme = (checked) => {
     setIsDark(checked);
   };
-  console.log(user?.photoURL);
 
   return (
     <nav className=" fixed top-0 left-0 right-0 border-b border-gray-50/35  shadow-md z-70 bg-base-100/95 ">
@@ -36,7 +35,7 @@ const Navbar = () => {
           <NavLink to="/" className="hover:text-[#3BADCD]">
             Home
           </NavLink>
-          <NavLink to="/products" className="hover:text-[#3BADCD]">
+          <NavLink to="/allProducts" className="hover:text-[#3BADCD]">
             AllProducts
           </NavLink>
           <NavLink to="/about" className="hover:text-[#3BADCD]">
