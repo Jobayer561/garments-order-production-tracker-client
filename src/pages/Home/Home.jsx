@@ -4,8 +4,7 @@ import CustomerFeedback from "@/components/Home/CustomerFeedback";
 import HowItWorks from "@/components/Home/HowItWorks";
 import OurProducts from "@/components/Home/OurProducts";
 import Container from "@/components/Shared/Container";
-import FactoryStatistics from "./FactoryStatistics";
-
+import OrderPolicies from "./OrderPolicies";
 const Home = () => {
   return (
     <div>
@@ -16,7 +15,7 @@ const Home = () => {
         <HowItWorks />
         <CustomerFeedback />
         <Brands />
-        <FactoryStatistics />
+        <OrderPolicies />
       </Container>
     </div>
   );
