@@ -2,7 +2,7 @@ import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 
-const PurchaseModal = ({ closeModal, isOpen, product }) => {
+const CodModal = ({ closeModal, isOpen, product, totalPrice }) => {
   const { user } = useAuth();
   const {
     _id,
@@ -69,7 +69,7 @@ const PurchaseModal = ({ closeModal, isOpen, product }) => {
             </div>
 
             <div className="mt-2">
-              <p className="text-sm text-gray-500">Price: $ {price}</p>
+              <p className="text-sm text-gray-500">Price: $ {totalPrice}</p>
             </div>
 
             <div className="flex mt-2 justify-around">
@@ -95,4 +95,4 @@ const PurchaseModal = ({ closeModal, isOpen, product }) => {
   );
 };
 
-export default PurchaseModal;
+export default CodModal;

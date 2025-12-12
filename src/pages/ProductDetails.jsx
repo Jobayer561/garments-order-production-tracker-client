@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Container from "@/components/Shared/Container";
@@ -9,12 +9,13 @@ import LoadingSpinner from "@/components/Shared/LoadingSpinner";
 import Heading from "@/components/Shared/Heading";
 import ProductImages from "./ProductImage";
 import CodModal from "@/components/Modal/CodModal";
-
+import UseRole from "@/hooks/UseRole";
 const ProductDetails = () => {
   const { id } = useParams();
-
+  const [role, isRoleLoading] = UseRole();
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-  const [modalType, setModalType] = useState(null); // "payfirst" | "cod"
+  const [modalType, setModalType] = useState(null);
 
   const { data: product = {}, isLoading } = useQuery({
     queryKey: ["product", id],
@@ -34,14 +35,18 @@ const ProductDetails = () => {
   if (isLoading) return <LoadingSpinner />;
 
   const {
+    _id,
     images = [],
     title,
     description,
     category,
     availableQuantity,
     price,
+    minimumOrderQuantity,
     paymentOptions,
   } = product;
+
+  console.log(role);
 
   return (
     <Container>
@@ -51,51 +56,51 @@ const ProductDetails = () => {
         </div>
 
         <div className="md:gap-10 flex-1 space-y-5 justify-center mt-6 lg:mt-22 px-6">
-          <Heading title={title} subtitle={`Category: ${category}`} />
-
-          <p className="text-xl font-semibold ">Description : {description}</p>
+          <Heading
+            title={title}
+            subtitle={
+              <>
+                Category: <span className="text-pink-400">{category}</span>
+              </>
+            }
+          />
+          <p className="text-[16px] font-semibold ">
+            Description : <span className="text-pink-400"> {description}</span>
+          </p>
 
           <p className="font-semibold">
-            Quantity: {availableQuantity} Units Left Only!
+            Quantity: <span className="text-pink-400">{availableQuantity}</span>{" "}
+            Units Left Only!
+          </p>
+          <p className="font-semibold">
+            Minimum Order Quantity :{" "}
+            <span className="text-pink-400">{minimumOrderQuantity}</span>
           </p>
 
           <div className="">
-            <p className="font-bold text-2xl text-gray-500">Price: {price}$</p>
+            <p className="font-bold text-xl mb-4">
+              Price: <span className="text-pink-400">{price}</span> $
+            </p>
+
+            <p className="font-semibold">
+              Payment Options :{" "}
+              <span className="text-pink-400 mt-4">{paymentOptions}</span>
+            </p>
+
+            <button
+              className={`w-full bg-[#3badcd] rounded-full py-3 text-white font-semibold hover:scale-105 transition-transform hover:opacity-80 mt-4 ${
+                role !== "buyer" ? "opacity-70 cursor-not-allowed" : ""
+              }`}
+              disabled={role !== "buyer"}
+              onClick={() => {
+                if (role === "buyer") {
+                  navigate(`/order/${_id}`, { state: { product } });
+                }
+              }}
+            >
+              Order Now
+            </button>
           </div>
-          <div className="flex gap-3">
-            {paymentOptions === "PayFirst" && (
-              <Button
-                label="Pay First"
-                onClick={() => {
-                  setModalType("PayFirst");
-                  setIsOpen(true);
-                }}
-              />
-            )}
-
-            {paymentOptions === "Cash On Delivery" && (
-              <Button
-                className=""
-                label="Cash On Delivery"
-                onClick={() => {
-                  setModalType("Cash On Delivery");
-                  setIsOpen(true);
-                }}
-              />
-            )}
-          </div>
-
-          <PurchaseModal
-            product={product}
-            closeModal={closeModal}
-            isOpen={isOpen && modalType === "PayFirst"}
-          />
-
-          <CodModal
-            product={product}
-            closeModal={closeModal}
-            isOpen={isOpen && modalType === "Cash On Delivery"}
-          />
         </div>
       </div>
     </Container>

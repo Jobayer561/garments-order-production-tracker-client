@@ -21,7 +21,7 @@ const ProductImages = ({ images = [] }) => {
       <div className="w-full">
         <img
           src={activeImage}
-          className="w-full max-h-[350px] object-contain"
+          className="w-full max-h-[380px] object-contain"
           alt=""
         />
       </div>
