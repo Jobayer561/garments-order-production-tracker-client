@@ -20,6 +20,7 @@ const OrderPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [modalType, setModalType] = useState(null);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [orderQuantity, setOrderQuantity] = useState(0);
 
   useEffect(() => {
     axiosSecure
@@ -197,6 +198,7 @@ const OrderPage = () => {
                       const price = qty * product.price;
                       orderPriceRef.current.value = `$${price.toFixed(2)}`;
                       setTotalPrice(price);
+                      setOrderQuantity(qty);
                     }}
                   />
                 </div>
@@ -249,6 +251,7 @@ const OrderPage = () => {
           <PurchaseModal
             product={product}
             totalPrice={totalPrice}
+            quantity={orderQuantity}
             closeModal={closeModal}
             isOpen={isOpen && modalType === "PayFirst"}
           />
@@ -256,6 +259,7 @@ const OrderPage = () => {
           <CodModal
             product={product}
             totalPrice={totalPrice}
+            quantity={orderQuantity}
             closeModal={closeModal}
             isOpen={isOpen && modalType === "Cash On Delivery"}
           />

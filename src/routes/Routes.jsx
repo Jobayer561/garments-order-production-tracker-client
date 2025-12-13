@@ -4,7 +4,7 @@ import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../layouts/DashboardLayout";
-import AddPlant from "../pages/Dashboard/Seller/AddPlant";
+import AddPlant from "../pages/Dashboard/Seller/AddProduct";
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import Profile from "../pages/Dashboard/Common/Profile";
 import Statistics from "../pages/Dashboard/Common/Statistics";
@@ -18,6 +18,7 @@ import ProductDetails from "@/pages/ProductDetails";
 import AboutUs from "@/pages/AboutUs";
 import Contact from "@/pages/Contact";
 import OrderPage from "@/pages/OrderPage";
+import AddProduct from "../pages/Dashboard/Seller/AddProduct";
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
         path: "/order/:id",
         element: <OrderPage />,
       },
+      {
+        path: "/add-product",
+        element: <AddProduct />,
+      },
     ],
   },
 
@@ -65,7 +70,7 @@ export const router = createBrowserRouter([
         path: "add-plant",
         element: (
           <PrivateRoute>
-            <AddPlant />
+            <AddProduct />
           </PrivateRoute>
         ),
       },
