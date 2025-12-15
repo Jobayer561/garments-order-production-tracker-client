@@ -22,5 +22,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-OrdersDataRow.jsx
+
 serviceAccountKey.json
