@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import useAuth from "@/hooks/useAuth";
 
 const AddProductForm = () => {
+  const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [imagePreviews, setImagePreviews] = useState([]);
 
@@ -48,8 +50,9 @@ const AddProductForm = () => {
         .split(",")
         .map((url) => url.trim())
         .filter(Boolean),
-      showOnHomePage: data.showOnHomePage === "true",
+      showOnHomePage: false, 
       paymentOption: data.payment,
+      email: user?.email,
     };
 
     if (data.video) productData.demoVideo = data.video;
@@ -210,14 +213,13 @@ const AddProductForm = () => {
               </div>
               <div>
                 <label>Show On HomePage</label>
-                <select
-                  className="select select-info w-full mt-2"
+                <input
+                  type="text"
+                  className="input input-info w-full mt-2"
+                  value="false"
+                  readOnly
                   {...register("showOnHomePage")}
-                  defaultValue="false"
-                >
-                  <option value="true">True</option>
-                  <option value="false">False</option>
-                </select>
+                />
               </div>
             </div>
 

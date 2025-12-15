@@ -34,13 +34,13 @@ const UserDataRow = ({ refetch, user }) => {
       <td className="px-5 py-5 border-b border-gray-300 bg-white text-sm">
         <span
           onClick={() => setIsOpen(true)}
-          className="relative cursor-pointer inline-block px-3 py-2 font-semibold text-white leading-tight"
+          className="relative cursor-pointer inline-block px-3 py-2 font-normal md:font-semibold text-white leading-tight"
         >
           <span
             aria-hidden="true"
             className="absolute inset-0 bg-[#3badcd] opacity-80 rounded-full"
           ></span>
-          <span className="relative">Update Status</span>
+          <span className="relative">UpdateStatus</span>
         </span>
         {/* Modal */}
         <UpdateUserStatusModal
