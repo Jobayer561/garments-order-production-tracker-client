@@ -42,7 +42,6 @@ const UserDataRow = ({ refetch, user }) => {
           ></span>
           <span className="relative">UpdateStatus</span>
         </span>
-        {/* Modal */}
         <UpdateUserStatusModal
           isOpen={isOpen}
           user={user}

@@ -55,6 +55,9 @@ const UpdateUserStatusModal = ({ isOpen, closeModal, user, refetch }) => {
                     onChange={(e) => setUpdatedStatus(e.target.value)}
                     className="w-full my-3 select select-info"
                   >
+                    <option value="pending" disabled>
+                      Pending
+                    </option>
                     <option value="approve">Approve</option>
                     <option value="suspend">Suspend</option>
                   </select>

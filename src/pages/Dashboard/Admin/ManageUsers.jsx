@@ -22,7 +22,7 @@ const ManageUsers = () => {
       );
       return res.data;
     },
-    keepPreviousData: true, 
+    keepPreviousData: true,
   });
 
   return (
@@ -30,12 +30,11 @@ const ManageUsers = () => {
       <div className="py-8">
         <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
           <div className="relative inline-block min-w-full shadow rounded-lg overflow-hidden bg-white">
-            <h2 className="text-3xl font-semibold text-center py-6">
+            <h2 className="text-3xl font-bold text-center py-6 text-[#3badcd]">
               Total Users : {users.length}
             </h2>
 
             <div className="flex flex-col md:flex-row items-center justify-between gap-6 px-6 py-4">
-              {/* Search */}
               <div className="w-full md:w-1/4">
                 <p className="mb-2 font-semibold">Search User</p>
                 <label className="input input-info flex items-center gap-2 w-full">
@@ -69,7 +68,7 @@ const ManageUsers = () => {
                 <select
                   className="select select-info w-full"
                   value={role}
-                  onChange={(e) => setRole(e.target.value)}
+                  onChange={(e) => setRole(e.target.value.trim())}
                 >
                   <option value="">All Roles</option>
                   <option value="Manager">Manager</option>

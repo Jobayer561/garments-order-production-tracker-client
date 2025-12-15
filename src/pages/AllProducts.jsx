@@ -1,5 +1,6 @@
 import Card from "@/components/Home/Card";
 import Container from "@/components/Shared/Container";
+import LoadingSpinner from "@/components/Shared/LoadingSpinner";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
@@ -12,6 +13,9 @@ const AllProducts = () => {
       return result.data;
     },
   });
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
   return (
     <Container>
       <div className="py-20">

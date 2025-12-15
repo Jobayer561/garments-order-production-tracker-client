@@ -1,6 +1,21 @@
+import AllProductsDataRow from "@/components/Dashboard/TableRows/AllProductsDataRow";
+import PlantDataRow from "@/components/Dashboard/TableRows/PlantDataRow";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import React from "react";
 
 const AllProduct = () => {
+  const {
+    data: products = [],
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["products"],
+    queryFn: async () => {
+      const result = await axios(`${import.meta.env.VITE_API_URL}/allProducts`);
+      return result.data;
+    },
+  });
   return (
     <div>
       <div className="container mx-auto px-4 sm:px-8">
@@ -56,13 +71,13 @@ const AllProduct = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {/* {users.map((user) => (
-                    <UserDataRow
+                  {products.map((product) => (
+                    <AllProductsDataRow
+                      key={product._id}
+                      product={product}
                       refetch={refetch}
-                      key={user?._id}
-                      user={user}
                     />
-                  ))} */}
+                  ))}
                 </tbody>
               </table>
             </div>
