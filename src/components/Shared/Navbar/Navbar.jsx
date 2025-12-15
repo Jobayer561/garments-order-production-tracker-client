@@ -21,7 +21,7 @@ const Navbar = () => {
   const handleTheme = (checked) => {
     setIsDark(checked);
   };
-
+  console.log(user);
   return (
     <nav className=" fixed top-0 left-0 right-0 border-b border-gray-50/35  shadow-md z-70 bg-base-100/95 ">
       <div className="max-w-[1440px] mx-auto h-16 flex items-center justify-between">

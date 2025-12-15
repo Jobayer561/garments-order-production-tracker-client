@@ -65,7 +65,7 @@ const AddProductForm = () => {
   };
 
   return (
-    <div className="py-28">
+    <div className="py-16">
       <div className="max-w-[1440px] mx-auto px-4">
         <div className="space-y-6 max-w-5xl mx-auto p-6 rounded-2xl shadow-2xl border border-gray-50/35">
           <h1 className="text-4xl text-[#3badcd] font-bold text-center">

@@ -4,21 +4,26 @@ import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../layouts/DashboardLayout";
-import AddPlant from "../pages/Dashboard/Seller/AddProduct";
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import Profile from "../pages/Dashboard/Common/Profile";
 import Statistics from "../pages/Dashboard/Common/Statistics";
 import MainLayout from "../layouts/MainLayout";
-import MyInventory from "../pages/Dashboard/Seller/MyInventory";
-import ManageOrders from "../pages/Dashboard/Seller/ManageOrders";
-import MyOrders from "../pages/Dashboard/Customer/MyOrders";
+import ManageOrders from "../pages/Dashboard/Manager/ManageOrders";
+import MyOrders from "../pages/Dashboard/Buyer/MyOrders";
 import { createBrowserRouter } from "react-router";
 import AllProducts from "@/pages/AllProducts";
 import ProductDetails from "@/pages/ProductDetails";
 import AboutUs from "@/pages/AboutUs";
 import Contact from "@/pages/Contact";
 import OrderPage from "@/pages/OrderPage";
-import AddProduct from "../pages/Dashboard/Seller/AddProduct";
+import AddProduct from "../pages/Dashboard/Manager/AddProduct";
+import PaymentSuccess from "@/components/Home/PaymentSuccess";
+import TrackOrder from "@/pages/Dashboard/Buyer/TrackOrder";
+import PendingOrders from "@/pages/Dashboard/Manager/PendingOrders";
+import ApproveOrders from "@/pages/Dashboard/Manager/ApproveOrders";
+import ManageProducts from "@/pages/Dashboard/Manager/ManageProducts";
+import AllProduct from "@/pages/Dashboard/Admin/AllProduct";
+import ManageAllOrders from "@/pages/Dashboard/Admin/ManageAllOrders";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +44,10 @@ export const router = createBrowserRouter([
       },
       { path: "/about-us", element: <AboutUs /> },
       { path: "/contact", element: <Contact /> },
+      {
+        path: "/payment-success",
+        element: <PaymentSuccess />,
+      },
       {
         path: "/order/:id",
         element: <OrderPage />,
@@ -67,7 +76,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "add-plant",
+        path: "add-product",
         element: (
           <PrivateRoute>
             <AddProduct />
@@ -75,10 +84,10 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "my-inventory",
+        path: "track-order",
         element: (
           <PrivateRoute>
-            <MyInventory />
+            <TrackOrder />
           </PrivateRoute>
         ),
       },
@@ -109,6 +118,23 @@ export const router = createBrowserRouter([
       {
         path: "manage-orders",
         element: <ManageOrders />,
+      },
+      {
+        path: "pending-orders",
+        element: <PendingOrders />,
+      },
+      { path: "approve-orders", element: <ApproveOrders /> },
+      {
+        path: "manage-products",
+        element: <ManageProducts />,
+      },
+      {
+        path: "all-products",
+        element: <AllProduct />,
+      },
+      {
+        path: "all-orders",
+        element: <ManageAllOrders />,
       },
     ],
   },

@@ -1,25 +1,6 @@
-import useAuth from "@/hooks/useAuth";
-import UserDataRow from "../../../components/Dashboard/TableRows/UserDataRow";
-import useAxiosSecure from "@/hooks/useAxiosSecure";
-import { useQuery } from "@tanstack/react-query";
-import LoadingSpinner from "@/components/Shared/LoadingSpinner";
+import SellerOrderDataRow from "../../../components/Dashboard/TableRows/SellerOrderDataRow";
 
-const ManageUsers = () => {
-  const { user } = useAuth();
-  const axiosSecure = useAxiosSecure();
-  const {
-    data: users = [],
-    isLoading,
-    refetch,
-  } = useQuery({
-    queryKey: ["users", user?.email],
-    queryFn: async () => {
-      const result = await axiosSecure("/user");
-      return result.data;
-    },
-  });
-
-  if (isLoading) return <LoadingSpinner />;
+const ManageOrders = () => {
   return (
     <>
       <div className="container mx-auto px-4 sm:px-8">
@@ -39,13 +20,25 @@ const ManageUsers = () => {
                       scope="col"
                       className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
                     >
-                      Email
+                      Customer
                     </th>
                     <th
                       scope="col"
                       className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
                     >
-                      Role
+                      Price
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                    >
+                      Quantity
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                    >
+                      Address
                     </th>
                     <th
                       scope="col"
@@ -58,18 +51,12 @@ const ManageUsers = () => {
                       scope="col"
                       className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
                     >
-                      Actions
+                      Action
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  {users.map((user) => (
-                    <UserDataRow
-                      refetch={refetch}
-                      key={user?._id}
-                      user={user}
-                    />
-                  ))}
+                  <SellerOrderDataRow />
                 </tbody>
               </table>
             </div>
@@ -80,4 +67,4 @@ const ManageUsers = () => {
   );
 };
 
-export default ManageUsers;
+export default ManageOrders;

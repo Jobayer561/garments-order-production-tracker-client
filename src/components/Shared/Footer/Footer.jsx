@@ -12,7 +12,7 @@ const Footer = () => {
 
           <p className="text-gray-500 text-md max-w-xs">
             GarmentsFlow is a modern web-based system that streamlines the
-            garment manufacturing process. From receiving buyer orders to
+            garment manufacturing process. From receiving Buyer orders to
             tracking every production stage.
           </p>
         </div>

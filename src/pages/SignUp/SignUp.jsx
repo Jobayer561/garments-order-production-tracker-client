@@ -59,7 +59,7 @@ const SignUp = () => {
         name: user?.displayName,
         email: user?.email,
         image: user?.photoURL,
-        role: "buyer",
+        role: "Buyer",
       });
 
       navigate(from, { replace: true });
@@ -172,8 +172,8 @@ const SignUp = () => {
                 <option value="" disabled className="text-gray-400">
                   Select Role
                 </option>
-                <option value="buyer">buyer</option>
-                <option value="manager">manager</option>
+                <option value="Buyer">Buyer</option>
+                <option value="Manager">Manager</option>
               </select>
               {errors.role && (
                 <p className="text-red-500 text-xs mt-1">Role is required</p>

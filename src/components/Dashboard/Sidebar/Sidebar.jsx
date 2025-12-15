@@ -1,24 +1,20 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import useAuth from "../../../hooks/useAuth";
-// import logo from "../../../assets/images/logo.avif";
-// Icons
+import logo from "../../../assets/images/logo.png";
 import { GrLogout } from "react-icons/gr";
 import { FcSettings } from "react-icons/fc";
 import { AiOutlineBars } from "react-icons/ai";
-import { BsGraphUp } from "react-icons/bs";
 
-// User Menu
 import MenuItem from "./Menu/MenuItem";
 import AdminMenu from "./Menu/AdminMenu";
-import SellerMenu from "./Menu/SellerMenu";
 import CustomerMenu from "./Menu/CustomerMenu";
+import ManagerMenu from "./Menu/ManagerMenu";
 
 const Sidebar = () => {
   const { logOut } = useAuth();
   const [isActive, setActive] = useState(false);
 
-  // Sidebar Responsive Handler
   const handleToggle = () => {
     setActive(!isActive);
   };
@@ -53,7 +49,7 @@ const Sidebar = () => {
           {/* Top Content */}
           <div>
             {/* Logo */}
-            <div className="w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-lime-100 mx-auto">
+            <div className="w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-cyan-100 mx-auto">
               <Link to="/">
                 <img src={logo} alt="logo" width="100" height="100" />
               </Link>
@@ -65,21 +61,17 @@ const Sidebar = () => {
             {/*  Menu Items */}
             <nav>
               {/* Common Menu */}
-              <MenuItem
-                icon={BsGraphUp}
-                label="Statistics"
-                address="/dashboard"
-              />
+
               {/* Role-Based Menu */}
               <CustomerMenu />
-              <SellerMenu />
+              <ManagerMenu />
               <AdminMenu />
             </nav>
           </div>
 
           {/* Bottom Content */}
           <div>
-            <hr />
+            <hr className="" />
 
             <MenuItem
               icon={FcSettings}
@@ -88,7 +80,7 @@ const Sidebar = () => {
             />
             <button
               onClick={logOut}
-              className="flex cursor-pointer w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform"
+              className="flex cursor-pointer w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-[#3badcd]   hover:text-white transition-colors duration-300 transform"
             >
               <GrLogout className="w-5 h-5" />
 

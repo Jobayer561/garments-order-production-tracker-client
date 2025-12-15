@@ -7,7 +7,7 @@ const PurchaseModal = ({
   isOpen,
   product,
   totalPrice,
-  orderQuantity,
+  quantity,
 }) => {
   const { user } = useAuth();
   const { _id, title, category, description, images = [] } = product || {};
@@ -17,17 +17,17 @@ const PurchaseModal = ({
       productId: _id,
       title,
       category,
-      totalPrice,
       description,
       images,
-      quantity: orderQuantity,
+      quantity: quantity,
       price: totalPrice,
-      customer: {
+      Buyer: {
         name: user?.displayName,
         email: user?.email,
         image: user?.photoURL,
       },
     };
+    console.log(paymentInfo);
     const { data } = await axios.post(
       `${import.meta.env.VITE_API_URL}/create-checkout-session`,
       paymentInfo
@@ -62,7 +62,7 @@ const PurchaseModal = ({
             </div>
             <div className="mt-2">
               <p className="text-sm text-gray-500">
-                Customer: {user?.displayName}
+                Buyer: {user?.displayName}
               </p>
             </div>
 

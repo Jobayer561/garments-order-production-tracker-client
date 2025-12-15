@@ -6,14 +6,12 @@ import Container from "@/components/Shared/Container";
 const AboutUs = () => {
   return (
     <div className="py-28">
-  
-
       <Container>
         <section className="text-center max-w-3xl mx-auto space-y-4">
           <h2 className="text-3xl font-bold text-[#3BADCD]">Our Story</h2>
           <p className="text-gray-400 text-lg">
             GarmentsFlow was created to simplify the garment manufacturing
-            process. From receiving buyer orders to tracking every stage of
+            process. From receiving Buyer orders to tracking every stage of
             production, our platform ensures efficiency, transparency, and
             timely delivery for garment businesses.
           </p>
@@ -24,7 +22,7 @@ const AboutUs = () => {
             <FaClipboardList className="text-4xl mx-auto text-[#3BADCD]" />
             <h3 className="text-xl font-semibold mt-4">Order Management</h3>
             <p className="text-gray-400 mt-2">
-              Easily manage buyer orders, monitor production progress, and
+              Easily manage Buyer orders, monitor production progress, and
               maintain records efficiently.
             </p>
           </div>
@@ -53,10 +51,10 @@ const AboutUs = () => {
             Our Process
           </h2>
           <ul className=" space-y-2 text-gray-400 text-lg text-center">
-            <li>Receive and confirm buyer orders through the platform.</li>
+            <li>Receive and confirm Buyer orders through the platform.</li>
             <li>Assign production tasks and monitor workflow in real-time.</li>
             <li>Track quality checks and ensure timely completion.</li>
-            <li>Update order status and notify buyers automatically.</li>
+            <li>Update order status and notify Buyers automatically.</li>
           </ul>
         </section>
 

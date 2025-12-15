@@ -39,23 +39,24 @@ const ProductDetails = () => {
     images = [],
     title,
     description,
+    demoVideoLink,
     category,
     availableQuantity,
     price,
     minimumOrderQuantity,
-    paymentOptions,
+    paymentOption,
   } = product;
 
   console.log(role);
 
   return (
     <Container>
-      <div className="max-w-[1100px] mx-auto flex flex-col lg:flex-row w-full gap-6 py-28 ">
+      <div className="max-w-[1100px] mx-auto flex flex-col lg:flex-row w-full gap-6 py-36 ">
         <div className="flex flex-col gap-6 flex-1">
           <ProductImages images={images} />
         </div>
 
-        <div className="md:gap-10 flex-1 space-y-5 justify-center mt-6 lg:mt-22 px-6">
+        <div className="md:gap-10 flex-1 space-y-5 justify-center mt-6 lg:mt-0 px-6">
           <Heading
             title={title}
             subtitle={
@@ -67,6 +68,19 @@ const ProductDetails = () => {
           <p className="text-[16px] font-semibold ">
             Description : <span className="text-pink-400"> {description}</span>
           </p>
+          {demoVideoLink && (
+            <div className="mt-2 flex gap-2">
+              <p className="font-semibold">Demo Video :</p>
+              <a
+                href={product.demoVideoLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-pink-400 hover:underline font-semibold"
+              >
+                Watch Video
+              </a>
+            </div>
+          )}
 
           <p className="font-semibold">
             Quantity: <span className="text-pink-400">{availableQuantity}</span>{" "}
@@ -84,16 +98,16 @@ const ProductDetails = () => {
 
             <p className="font-semibold">
               Payment Options :{" "}
-              <span className="text-pink-400 mt-4">{paymentOptions}</span>
+              <span className="text-pink-400 mt-4">{paymentOption}</span>
             </p>
 
             <button
               className={`w-full bg-[#3badcd] rounded-full py-3 text-white font-semibold hover:scale-105 transition-transform hover:opacity-80 mt-4 ${
-                role !== "buyer" ? "opacity-70 cursor-not-allowed" : ""
+                role !== "Buyer" ? "opacity-70 cursor-not-allowed" : ""
               }`}
-              disabled={role !== "buyer"}
+              disabled={role !== "Buyer"}
               onClick={() => {
-                if (role === "buyer") {
+                if (role === "Buyer") {
                   navigate(`/order/${_id}`, { state: { product } });
                 }
               }}

@@ -6,7 +6,7 @@ const Banner = () => {
   return (
     <div>
       <div
-        className="hero min-h-screen"
+        className="hero min-h-screen "
         style={{
           backgroundImage: `url(${BannerImg})`,
         }}
@@ -46,7 +46,7 @@ const Banner = () => {
               transition={{ duration: 0.7 }}
             >
               GarmentsFlow is a modern web-based system that streamlines the
-              garment manufacturing process. From receiving buyer orders to
+              garment manufacturing process. From receiving Buyer orders to
               tracking every production stage.
             </motion.p>
 

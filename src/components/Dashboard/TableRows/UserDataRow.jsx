@@ -1,41 +1,57 @@
-import { useState } from 'react'
-import UpdateUserRoleModal from '../../Modal/UpdateUserRoleModal'
+import UpdateUserStatusModal from "@/components/Modal/UpdateUserStatusModal";
+import { useState } from "react";
 
-const UserDataRow = () => {
-  let [isOpen, setIsOpen] = useState(false)
-  const closeModal = () => setIsOpen(false)
+const UserDataRow = ({ refetch, user }) => {
+  let [isOpen, setIsOpen] = useState(false);
+  const closeModal = () => setIsOpen(false);
   return (
     <tr>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900 '>abc@gmail.com</p>
+      <td className="px-5 py-5 border-b border-gray-300 bg-white text-sm">
+        <p className="font-semibold">{user?.name}</p>
       </td>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900 '>Customer</p>
+      <td className="px-5 py-5 border-b border-gray-300 bg-white text-sm">
+        <p className="text-gray-500 font-semibold">{user?.email}</p>
       </td>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className=''>Unavailable</p>
+      <td className="px-5 py-5 border-b border-gray-300 bg-white text-sm">
+        <p className="text-gray-500 font-semibold">{user?.role}</p>
+      </td>
+      <td className="px-5 py-5 border-b border-gray-300 bg-white text-sm">
+        <span
+          className={`px-3 py-1 rounded-full text-sm font-semibold ${
+            user?.status === "approve"
+              ? "bg-green-100 text-green-600"
+              : user?.status === "suspend"
+              ? "bg-red-100 text-red-600"
+              : user?.status === "pending"
+              ? "bg-yellow-100 text-yellow-600"
+              : "bg-gray-100 text-gray-600"
+          }`}
+        >
+          {user?.status}
+        </span>
       </td>
 
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+      <td className="px-5 py-5 border-b border-gray-300 bg-white text-sm">
         <span
           onClick={() => setIsOpen(true)}
-          className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight'
+          className="relative cursor-pointer inline-block px-3 py-2 font-semibold text-white leading-tight"
         >
           <span
-            aria-hidden='true'
-            className='absolute inset-0 bg-green-200 opacity-50 rounded-full'
+            aria-hidden="true"
+            className="absolute inset-0 bg-[#3badcd] opacity-80 rounded-full"
           ></span>
-          <span className='relative'>Update Role</span>
+          <span className="relative">Update Status</span>
         </span>
         {/* Modal */}
-        <UpdateUserRoleModal
+        <UpdateUserStatusModal
           isOpen={isOpen}
+          user={user}
+          refetch={refetch}
           closeModal={closeModal}
-          role='customer'
         />
       </td>
     </tr>
-  )
-}
+  );
+};
 
-export default UserDataRow
+export default UserDataRow;

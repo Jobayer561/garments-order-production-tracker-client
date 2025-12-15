@@ -52,10 +52,10 @@ const OrderPage = () => {
       deliveryAddress: e.target.deliveryAddress.value,
       notes: e.target.notes.value,
     };
-    if (product.paymentOptions === "PayFirst") {
+    if (product.paymentOption === "PayFirst") {
       setModalType("PayFirst");
       setIsOpen(true);
-    } else if (product.paymentOptions === "Cash On Delivery") {
+    } else if (product.paymentOption === "Cash On Delivery") {
       setModalType("Cash On Delivery");
       setIsOpen(true);
     }
@@ -233,7 +233,7 @@ const OrderPage = () => {
               className="textarea textarea-info w-full"
             ></textarea>
 
-            {product?.paymentOptions && (
+            {product?.paymentOption && (
               <button
                 type="submit"
                 disabled={disableSubmit}

@@ -49,7 +49,7 @@ const Login = () => {
         name: user?.displayName,
         email: user?.email,
         image: user?.photoURL,
-        role: "buyer",
+        role: "Buyer",
       });
 
       navigate(from, { replace: true });
