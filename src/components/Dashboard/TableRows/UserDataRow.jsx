@@ -6,16 +6,16 @@ const UserDataRow = ({ refetch, user }) => {
   const closeModal = () => setIsOpen(false);
   return (
     <tr>
-      <td className="px-5 py-5 border-b border-gray-300 bg-white text-sm">
+      <td className="px-5 py-5 border-b border-gray-300  text-sm">
         <p className="font-semibold">{user?.name}</p>
       </td>
-      <td className="px-5 py-5 border-b border-gray-300 bg-white text-sm">
-        <p className="text-gray-500 font-semibold">{user?.email}</p>
+      <td className="px-5 py-5 border-b border-gray-300  text-sm">
+        <p className=" font-semibold">{user?.email}</p>
       </td>
-      <td className="px-5 py-5 border-b border-gray-300 bg-white text-sm">
-        <p className="text-gray-500 font-semibold">{user?.role}</p>
+      <td className="px-5 py-5 border-b border-gray-300  text-sm">
+        <p className=" font-semibold">{user?.role}</p>
       </td>
-      <td className="px-5 py-5 border-b border-gray-300 bg-white text-sm">
+      <td className="px-5 py-5 border-b border-gray-300  text-sm">
         <span
           className={`px-3 py-1 rounded-full text-sm font-semibold ${
             user?.status === "approve"
@@ -31,7 +31,7 @@ const UserDataRow = ({ refetch, user }) => {
         </span>
       </td>
 
-      <td className="px-5 py-5 border-b border-gray-300 bg-white text-sm">
+      <td className="px-5 py-5 border-b border-gray-300  text-sm">
         <span
           onClick={() => setIsOpen(true)}
           className="relative cursor-pointer inline-block px-3 py-2 font-normal md:font-semibold text-white leading-tight"
@@ -40,7 +40,7 @@ const UserDataRow = ({ refetch, user }) => {
             aria-hidden="true"
             className="absolute inset-0 bg-[#3badcd] opacity-80 rounded-full"
           ></span>
-          <span className="relative">UpdateStatus</span>
+          <span className="relative text-white">UpdateStatus</span>
         </span>
         <UpdateUserStatusModal
           isOpen={isOpen}

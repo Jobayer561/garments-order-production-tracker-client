@@ -24,6 +24,7 @@ import ApproveOrders from "@/pages/Dashboard/Manager/ApproveOrders";
 import ManageProducts from "@/pages/Dashboard/Manager/ManageProducts";
 import AllProduct from "@/pages/Dashboard/Admin/AllProduct";
 import ManageAllOrders from "@/pages/Dashboard/Admin/ManageAllOrders";
+import OrderDetails from "@/pages/Dashboard/Admin/OrderDetails";
 
 export const router = createBrowserRouter([
   {
@@ -52,9 +53,14 @@ export const router = createBrowserRouter([
         path: "/order/:id",
         element: <OrderPage />,
       },
+    
       {
-        path: "/add-product",
-        element: <AddProduct />,
+        path: "/dashboard",
+        element: (
+          <PrivateRoute>
+            <DashboardLayout />
+          </PrivateRoute>
+        ),
       },
     ],
   },
@@ -135,6 +141,10 @@ export const router = createBrowserRouter([
       {
         path: "all-orders",
         element: <ManageAllOrders />,
+      },
+      {
+        path: "orders/:id",
+        element: <OrderDetails />,
       },
     ],
   },

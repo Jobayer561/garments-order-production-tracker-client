@@ -27,9 +27,9 @@ const ManageUsers = () => {
 
   return (
     <div className="container mx-auto px-4 sm:px-8">
-      <div className="py-8">
+      <div className="">
         <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-          <div className="relative inline-block min-w-full shadow rounded-lg overflow-hidden bg-white">
+          <div className="relative inline-block min-w-full shadow rounded-lg overflow-hidden ">
             <h2 className="text-3xl font-bold text-center py-6 text-[#3badcd]">
               Total Users : {users.length}
             </h2>

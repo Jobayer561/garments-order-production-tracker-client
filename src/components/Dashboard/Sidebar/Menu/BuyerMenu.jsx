@@ -2,7 +2,7 @@ import { BsFingerprint } from "react-icons/bs";
 import { MdSpatialTracking } from "react-icons/md";
 
 import MenuItem from "./MenuItem";
-const CustomerMenu = () => {
+const BuyerMenu = () => {
   return (
     <>
       <MenuItem icon={BsFingerprint} label="My Orders" address="my-orders" />
@@ -15,4 +15,4 @@ const CustomerMenu = () => {
   );
 };
 
-export default CustomerMenu;
+export default BuyerMenu;

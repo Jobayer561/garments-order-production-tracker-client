@@ -53,7 +53,7 @@ const AllProductsDataRow = ({ product, refetch }) => {
 
   return (
     <tr>
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+      <td className="px-5 py-5 border-b border-gray-200  text-sm">
         <img
           src={imgUrl}
           alt={title}
@@ -61,23 +61,23 @@ const AllProductsDataRow = ({ product, refetch }) => {
         />
       </td>
 
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+      <td className="px-5 py-5 border-b border-gray-200  text-sm">
         {title}
       </td>
 
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+      <td className="px-5 py-5 border-b border-gray-200  text-sm">
         ${price}
       </td>
 
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+      <td className="px-5 py-5 border-b border-gray-200  text-sm">
         {category}
       </td>
 
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+      <td className="px-5 py-5 border-b border-gray-200  text-sm">
         {created_By}
       </td>
 
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+      <td className="px-5 py-5 border-b border-gray-200  text-sm">
         <input
           type="checkbox"
           checked={showHome}
@@ -86,7 +86,7 @@ const AllProductsDataRow = ({ product, refetch }) => {
         />
       </td>
 
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+      <td className="px-5 py-5 border-b border-gray-200  text-sm">
         <span
           onClick={openModal}
           className="relative cursor-pointer inline-block px-3 py-1 font-semibold leading-tight mr-2"

@@ -26,9 +26,10 @@ const ManageAllOrders = () => {
   return (
     <div>
       <div className="container mx-auto px-4 sm:px-8">
-        <div className="py-8">
+        <div className="">
           <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
             <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
+              <h1 className="text-3xl font-bold text-center text-[#3badcd]">All Orders</h1>
               <div className="flex flex-col md:flex-row items-center justify-between gap-6 px-6 py-4">
                 <div className="w-full md:w-1/4">
                   <p className="mb-2 font-semibold">Search User</p>
@@ -77,38 +78,44 @@ const ManageAllOrders = () => {
                   <tr>
                     <th
                       scope="col"
-                      className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                      className="px-5 py-3   border-b border-gray-200   text-left text-sm uppercase font-normal"
                     >
                       Order Id
                     </th>
                     <th
                       scope="col"
-                      className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                      className="px-5 py-3   border-b border-gray-200   text-left text-sm uppercase font-normal"
                     >
                       User
                     </th>
                     <th
                       scope="col"
-                      className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                      className="px-5 py-3   border-b border-gray-200   text-left text-sm uppercase font-normal"
+                    >
+                      Email
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-5 py-3   border-b border-gray-200   text-left text-sm uppercase font-normal"
                     >
                       Product
                     </th>
                     <th
                       scope="col"
-                      className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                      className="px-5 py-3   border-b border-gray-200   text-left text-sm uppercase font-normal"
                     >
                       Quantity
                     </th>
                     <th
                       scope="col"
-                      className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                      className="px-5 py-3   border-b border-gray-200   text-left text-sm uppercase font-normal"
                     >
                       Status
                     </th>
 
                     <th
                       scope="col"
-                      className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                      className="px-5 py-3   border-b border-gray-200   text-left text-sm uppercase font-normal"
                     >
                       Actions
                     </th>

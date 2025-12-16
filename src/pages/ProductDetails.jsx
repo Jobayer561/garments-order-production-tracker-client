@@ -1,21 +1,17 @@
-import { useState } from "react";
-import { Link, useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Container from "@/components/Shared/Container";
-import Button from "@/components/Shared/Button/Button";
-import PurchaseModal from "@/components/Modal/PurchaseModal";
 import LoadingSpinner from "@/components/Shared/LoadingSpinner";
 import Heading from "@/components/Shared/Heading";
 import ProductImages from "./ProductImage";
-import CodModal from "@/components/Modal/CodModal";
 import UseRole from "@/hooks/UseRole";
+import { useNavigate } from "react-router";
+
 const ProductDetails = () => {
   const { id } = useParams();
-  const [role, isRoleLoading] = UseRole();
+  const [role] = UseRole();
   const navigate = useNavigate();
-  const [isOpen, setIsOpen] = useState(false);
-  const [modalType, setModalType] = useState(null);
 
   const { data: product = {}, isLoading } = useQuery({
     queryKey: ["product", id],
@@ -26,11 +22,6 @@ const ProductDetails = () => {
       return res.data;
     },
   });
-
-  const closeModal = () => {
-    setIsOpen(false);
-    setModalType(null);
-  };
 
   if (isLoading) return <LoadingSpinner />;
 
@@ -47,11 +38,9 @@ const ProductDetails = () => {
     paymentOption,
   } = product;
 
-  console.log(role);
-
   return (
     <Container>
-      <div className="max-w-[1100px] mx-auto flex flex-col lg:flex-row w-full gap-6 py-36 ">
+      <div className="max-w-[1100px] mx-auto flex flex-col lg:flex-row w-full gap-6 py-36">
         <div className="flex flex-col gap-6 flex-1">
           <ProductImages images={images} />
         </div>
@@ -61,21 +50,22 @@ const ProductDetails = () => {
             title={title}
             subtitle={
               <>
-                Category: <span className="text-pink-400">{category}</span>
+                Category: <span className="text-[#3badcd]">{category}</span>
               </>
             }
           />
-          <p className="text-[16px] font-semibold ">
-            Description : <span className="text-pink-400"> {description}</span>
+          <p className="text-[16px] font-semibold">
+            Description: <span className="text-[#3badcd]">{description}</span>
           </p>
+
           {demoVideoLink && (
             <div className="mt-2 flex gap-2">
-              <p className="font-semibold">Demo Video :</p>
+              <p className="font-semibold">Demo Video:</p>
               <a
-                href={product.demoVideoLink}
+                href={demoVideoLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-pink-400 hover:underline font-semibold"
+                className="text-[#3badcd] hover:underline font-semibold"
               >
                 Watch Video
               </a>
@@ -83,22 +73,23 @@ const ProductDetails = () => {
           )}
 
           <p className="font-semibold">
-            Quantity: <span className="text-pink-400">{availableQuantity}</span>{" "}
-            Units Left Only!
+            Quantity:{" "}
+            <span className="text-[#3badcd]">{availableQuantity}</span> Units
+            Left Only!
           </p>
           <p className="font-semibold">
-            Minimum Order Quantity :{" "}
-            <span className="text-pink-400">{minimumOrderQuantity}</span>
+            Minimum Order Quantity:{" "}
+            <span className="text-[#3badcd]">{minimumOrderQuantity}</span>
           </p>
 
-          <div className="">
+          <div>
             <p className="font-bold text-xl mb-4">
-              Price: <span className="text-pink-400">{price}</span> $
+              Price: <span className="text-[#3badcd]">{price}</span> $
             </p>
 
             <p className="font-semibold">
-              Payment Options :{" "}
-              <span className="text-pink-400 mt-4">{paymentOption}</span>
+              Payment Options:{" "}
+              <span className="text-[#3badcd] mt-4">{paymentOption}</span>
             </p>
 
             <button
