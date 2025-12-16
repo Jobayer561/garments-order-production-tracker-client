@@ -50,7 +50,7 @@ const AddProductForm = () => {
         .split(",")
         .map((url) => url.trim())
         .filter(Boolean),
-      showOnHomePage: false, 
+      showOnHomePage: false,
       paymentOption: data.payment,
       email: user?.email,
     };
@@ -109,6 +109,7 @@ const AddProductForm = () => {
                   <option>Saree</option>
                   <option>Gown</option>
                   <option>Palazoo</option>
+                  <option>Belt</option>
                   <option>Other</option>
                 </select>
                 {errors.category && (

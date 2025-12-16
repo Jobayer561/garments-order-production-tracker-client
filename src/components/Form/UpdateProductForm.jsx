@@ -103,6 +103,7 @@ const UpdateProductForm = ({ product, closeModal, refetch }) => {
                 <option>Saree</option>
                 <option>Gown</option>
                 <option>Palazoo</option>
+                <option>Belt</option>
                 <option>Other</option>
               </select>
             </div>

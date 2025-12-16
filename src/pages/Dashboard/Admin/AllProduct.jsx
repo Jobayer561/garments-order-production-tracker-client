@@ -1,5 +1,5 @@
 import AllProductsDataRow from "@/components/Dashboard/TableRows/AllProductsDataRow";
-import PlantDataRow from "@/components/Dashboard/TableRows/PlantDataRow";
+import PlantDataRow from "@/components/Dashboard/TableRows/ProductDataRow";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
@@ -22,7 +22,9 @@ const AllProduct = () => {
         <div className="py-8">
           <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
             <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
-              <h1 className="text-[#3badcd] text-3xl text-center font-bold mb-8">All Product</h1>
+              <h1 className="text-[#3badcd] text-3xl text-center font-bold mb-8">
+                All Product
+              </h1>
               <table className="min-w-full leading-normal">
                 <thead>
                   <tr>
