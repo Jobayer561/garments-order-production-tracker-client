@@ -135,7 +135,7 @@ const UpdateProductForm = ({ product, closeModal, refetch }) => {
                 {...register("payment", { required: true })}
               >
                 <option value="">Select payment</option>
-                <option>PayFirst</option>
+                <option>Stripe</option>
                 <option>Cash On Delivery</option>
               </select>
             </div>

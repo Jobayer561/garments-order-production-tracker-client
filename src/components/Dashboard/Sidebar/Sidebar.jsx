@@ -44,9 +44,9 @@ const Sidebar = () => {
       {/* Sidebar */}
       <div
         className={`z-10 md:sticky min-h-md md:min-h-screen absolute inset-y-0 left-0
-  w-64 bg-gray-200 flex flex-col
+  w-64  flex flex-col
   md:pt-0 pt-12 pb-4
-  transition duration-200 ease-in-out
+  transition duration-200 ease-in-out border-r border-gray-300 shadow-lg rounded-md
   ${isActive && "-translate-x-full"}
   md:translate-x-0`}
       >
@@ -54,7 +54,7 @@ const Sidebar = () => {
           {/* Top Content */}
           <div>
             {/* Logo */}
-            <div className="w-full hidden md:flex shadow-lg rounded-lg justify-center items-center  mx-auto">
+            <div className="w-full hidden md:flex  justify-center items-center  mx-auto">
               <Link to="/">
                 <img src={logo} alt="logo" width="100" height="100" />
               </Link>
@@ -68,16 +68,15 @@ const Sidebar = () => {
               {/* Common Menu */}
 
               {/* Role-Based Menu */}
-              { <BuyerMenu />}
+              {<BuyerMenu />}
               {<ManagerMenu />}
 
-              { <AdminMenu />}
+              {<AdminMenu />}
             </nav>
           </div>
 
           {/* Bottom Content */}
           <div>
-            <hr className="" />
 
             <MenuItem
               icon={FcSettings}
@@ -86,7 +85,7 @@ const Sidebar = () => {
             />
             <button
               onClick={logOut}
-              className="flex cursor-pointer w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-[#3badcd]   hover:text-white transition-colors duration-300 transform"
+              className="flex cursor-pointer w-full items-center px-4 py-2 mt-5  hover:bg-[#3badcd]   hover:text-white transition-colors duration-300 transform"
             >
               <GrLogout className="w-5 h-5" />
 

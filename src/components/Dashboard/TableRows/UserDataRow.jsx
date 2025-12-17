@@ -5,17 +5,17 @@ const UserDataRow = ({ refetch, user }) => {
   let [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false);
   return (
-    <tr>
-      <td className="px-5 py-5 border-b border-gray-300  text-sm">
+    <tr className="hover:bg-white/5 transition-colors">
+      <td className="px-5 py-5 border-b border-gray-300 text-sm">
         <p className="font-semibold">{user?.name}</p>
       </td>
-      <td className="px-5 py-5 border-b border-gray-300  text-sm">
-        <p className=" font-semibold">{user?.email}</p>
+      <td className="px-5 py-5 border-b border-gray-300 text-sm">
+        <p className="font-semibold ">{user?.email}</p>
       </td>
-      <td className="px-5 py-5 border-b border-gray-300  text-sm">
-        <p className=" font-semibold">{user?.role}</p>
+      <td className="px-5 py-5 border-b border-gray-300 text-sm">
+        <p className="font-semibold ">{user?.role}</p>
       </td>
-      <td className="px-5 py-5 border-b border-gray-300  text-sm">
+      <td className="px-5 py-5 border-b border-gray-300 text-sm">
         <span
           className={`px-3 py-1 rounded-full text-sm font-semibold ${
             user?.status === "approve"
@@ -31,17 +31,13 @@ const UserDataRow = ({ refetch, user }) => {
         </span>
       </td>
 
-      <td className="px-5 py-5 border-b border-gray-300  text-sm">
-        <span
+      <td className="px-5 py-5 border-b border-gray-300 text-sm">
+        <button
           onClick={() => setIsOpen(true)}
-          className="relative cursor-pointer inline-block px-3 py-2 font-normal md:font-semibold text-white leading-tight"
+          className="inline-flex px-4 py-2 rounded-full bg-[#3badcd] text-white font-semibold hover:bg-[#3badcd]/80 transition-colors"
         >
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 bg-[#3badcd] opacity-80 rounded-full"
-          ></span>
-          <span className="relative text-white">UpdateStatus</span>
-        </span>
+          UpdateStatus
+        </button>
         <UpdateUserStatusModal
           isOpen={isOpen}
           user={user}

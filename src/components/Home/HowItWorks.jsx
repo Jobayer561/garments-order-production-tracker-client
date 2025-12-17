@@ -19,7 +19,7 @@ const HowItWorks = () => {
       id: 2,
       title: "Place Your Order",
       description:
-        "Select quantity, confirm payment option (COD or PayFirst), and submit your order easily.",
+        "Select quantity, confirm payment option (COD or Stripe), and submit your order easily.",
       icon: <ClipboardList size={40} />,
     },
     {

@@ -25,6 +25,7 @@ import ManageProducts from "@/pages/Dashboard/Manager/ManageProducts";
 import AllProduct from "@/pages/Dashboard/Admin/AllProduct";
 import ManageAllOrders from "@/pages/Dashboard/Admin/ManageAllOrders";
 import OrderDetails from "@/pages/Dashboard/Admin/OrderDetails";
+import TrackingTimelinePage from "@/pages/Dashboard/Common/TrackingTimelinePage";
 
 export const router = createBrowserRouter([
   {
@@ -53,7 +54,7 @@ export const router = createBrowserRouter([
         path: "/order/:id",
         element: <OrderPage />,
       },
-    
+
       {
         path: "/dashboard",
         element: (
@@ -145,6 +146,10 @@ export const router = createBrowserRouter([
       {
         path: "orders/:id",
         element: <OrderDetails />,
+      },
+      {
+        path: "tracking/:trackingId",
+        element: <TrackingTimelinePage />,
       },
     ],
   },

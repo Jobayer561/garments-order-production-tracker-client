@@ -1,4 +1,5 @@
 import OrdersDataRow from "@/components/Dashboard/TableRows/OrdersDataRow";
+import LoadingSpinner from "@/components/Shared/LoadingSpinner";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
@@ -24,123 +25,156 @@ const ManageAllOrders = () => {
     keepPreviousData: true,
   });
   return (
-    <div>
-      <div className="container mx-auto px-4 sm:px-8">
-        <div className="">
-          <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-            <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
-              <h1 className="text-3xl font-bold text-center text-[#3badcd]">All Orders</h1>
-              <div className="flex flex-col md:flex-row items-center justify-between gap-6 px-6 py-4">
-                <div className="w-full md:w-1/4">
-                  <p className="mb-2 font-semibold">Search User</p>
-                  <label className="input input-info flex items-center gap-2 w-full">
-                    <svg
-                      className="h-4 w-4 opacity-50"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                    >
-                      <g
-                        strokeLinejoin="round"
-                        strokeLinecap="round"
-                        strokeWidth="2.5"
-                        fill="none"
-                        stroke="currentColor"
-                      >
-                        <circle cx="11" cy="11" r="8" />
-                        <path d="m21 21-4.3-4.3" />
-                      </g>
-                    </svg>
-                    <input
-                      type="search"
-                      placeholder="Search by name or email"
-                      className="grow"
-                      onChange={(e) => setSearchText(e.target.value)}
-                    />
-                  </label>
-                </div>
-
-                <div className="w-full md:w-1/4">
-                  <p className="mb-2 font-semibold">Filter By Role</p>
-                  <select
-                    className="select select-info w-full"
-                    value={status}
-                    onChange={(e) => setStatus(e.target.value)}
-                  >
-                    <option value="">All Orders</option>
-                    <option value="pending">pending</option>
-                    <option value="approve">approve</option>
-                    <option value="rejected">rejected</option>
-                  </select>
-                </div>
-              </div>
-              <table className="min-w-full leading-normal">
-                <thead>
-                  <tr>
-                    <th
-                      scope="col"
-                      className="px-5 py-3   border-b border-gray-200   text-left text-sm uppercase font-normal"
-                    >
-                      Order Id
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-5 py-3   border-b border-gray-200   text-left text-sm uppercase font-normal"
-                    >
-                      User
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-5 py-3   border-b border-gray-200   text-left text-sm uppercase font-normal"
-                    >
-                      Email
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-5 py-3   border-b border-gray-200   text-left text-sm uppercase font-normal"
-                    >
-                      Product
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-5 py-3   border-b border-gray-200   text-left text-sm uppercase font-normal"
-                    >
-                      Quantity
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-5 py-3   border-b border-gray-200   text-left text-sm uppercase font-normal"
-                    >
-                      Status
-                    </th>
-
-                    <th
-                      scope="col"
-                      className="px-5 py-3   border-b border-gray-200   text-left text-sm uppercase font-normal"
-                    >
-                      Actions
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {orders.length === 0 ? (
-                    <tr>
-                      <td colSpan="5" className="text-center py-6">
-                        No Orders found
-                      </td>
-                    </tr>
-                  ) : (
-                    orders.map((order) => (
-                      <OrdersDataRow
-                        key={order._id}
-                        order={order}
-                        refetch={refetch}
-                      />
-                    ))
-                  )}
-                </tbody>
-              </table>
+    <div className="p-4 sm:p-8">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="mb-8">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h1 className="text-3xl sm:text-2xl font-bold mb-2 text-center text-[#3badcd]">
+                All Orders
+              </h1>
+              <p className="font-semibold">
+                Total Orders:{" "}
+                <span className="font-bold text-[#3badcd]">
+                  {orders.length}
+                </span>
+              </p>
             </div>
           </div>
+
+          {/* Search & Filter */}
+          <div className="rounded-2xl shadow-sm border border-slate-100 p-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-sm font-semibold mb-3">
+                  Search Orders
+                </label>
+                <div className="relative">
+                  <svg
+                    className="absolute left-4 top-3.5 h-5 w-5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.3-4.3" />
+                  </svg>
+                  <input
+                    type="search"
+                    placeholder="Search by user or email..."
+                    onChange={(e) => setSearchText(e.target.value)}
+                    className="w-full pl-12 pr-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#3badcd] focus:border-transparent transition"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold mb-3">
+                  Filter By Status
+                </label>
+                <select
+                  value={status}
+                  onChange={(e) => setStatus(e.target.value)}
+                  className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#3badcd] focus:border-transparent transition"
+                >
+                  <option className="text-[#3badcd] font-semibold" value="">
+                    All Orders
+                  </option>
+                  <option className="text-[#3badcd] font-semibold" value="pending">
+                    Pending
+                  </option>
+                  <option className="text-[#3badcd] font-semibold" value="approved">
+                    Approved
+                  </option>
+                  <option className="text-[#3badcd] font-semibold" value="rejected">
+                    Rejected
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Table */}
+        <div className="rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+          {isLoading ? (
+            <div className="flex justify-center items-center min-h-[400px]">
+              <LoadingSpinner />
+            </div>
+          ) : (
+            <>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead className=" backdrop-blur border-b border-slate-200">
+                    <tr>
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                        Order Id
+                      </th>
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                        User
+                      </th>
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                        Email
+                      </th>
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                        Product
+                      </th>
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                        Quantity
+                      </th>
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                        Status
+                      </th>
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                        Actions
+                      </th>
+                    </tr>
+                  </thead>
+
+                  <tbody className="divide-y divide-slate-200/20 [&>tr]:transition [&>tr]:bg-white/5 [&>tr:hover]:bg-white/10">
+                    {orders.length === 0 ? (
+                      <tr>
+                        <td colSpan={7} className="px-6 py-12 text-center">
+                          <div className="flex flex-col items-center gap-2">
+                            <svg
+                              className="h-12 w-12"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={1.5}
+                                d="M17 20h5v-2a3 3 0 00-5.856-1.487M15 6h-6M9 20h6m0 0h5v-2a3 3 0 00-5.856-1.487M9 6a3 3 0 11-6 0 3 3 0 016 0z"
+                              />
+                            </svg>
+                            <p className="font-medium">No orders found</p>
+                          </div>
+                        </td>
+                      </tr>
+                    ) : (
+                      orders.map((order) => (
+                        <OrdersDataRow
+                          key={order._id}
+                          order={order}
+                          refetch={refetch}
+                        />
+                      ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
+
+              {isFetching && (
+                <div className="flex justify-center py-6 border-t border-slate-200">
+                  <LoadingSpinner />
+                </div>
+              )}
+            </>
+          )}
         </div>
       </div>
     </div>

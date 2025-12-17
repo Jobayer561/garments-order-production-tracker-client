@@ -9,7 +9,7 @@ const PendingOrdersDataRow = ({ order, refetch }) => {
   const axiosSecure = useAxiosSecure();
   const handleUpdateStatus = (status) => {
     axiosSecure
-      .get(`/orders-pending/${order._id}`, { status })
+      .patch(`/orders-pending/${order._id}`, { status })
       .then(() => {
         toast.success(`Order ${status} successfully`);
         refetch();
@@ -20,62 +20,48 @@ const PendingOrdersDataRow = ({ order, refetch }) => {
   };
   return (
     <tr>
-      <td className="px-5 py-5 border-b border-gray-300  text-sm">
-        <p className="font-semibold">{order?._id}</p>
+      <td className="px-6 py-4 text-sm  border-b border-gray-300 font-semibold align-middle ">
+        {order?._id}
       </td>
-      <td className="px-5 py-5 border-b border-gray-300  text-sm">
-        <p className=" font-semibold">{order?.buyer?.name}</p>
+      <td className="px-6 py-4 text-sm  border-b border-gray-300 font-semibold align-middle ">
+        {order?.buyer?.name}
       </td>
-      <td className="px-5 py-5 border-b border-gray-300  text-sm">
-        <p className=" font-semibold">{order?.buyer?.email}</p>
+      <td className="px-6 py-4 text-sm  border-b border-gray-300 font-semibold align-middle ">
+        {order?.buyer?.email}
       </td>
-      <td className="px-5 py-5 border-b border-gray-300  text-sm">
-        <p className=" font-semibold">{order?.product.name}</p>
+      <td className="px-6 py-4 text-sm  border-b border-gray-300 font-semibold align-middle ">
+        {order?.product.name}
       </td>
-      <td className="px-5 py-5 border-b border-gray-300  text-sm">
-        <p className=" font-semibold">{order?.quantity}</p>
+      <td className="px-6 py-4 text-sm  border-b border-gray-300 font-semibold align-middle ">
+        {order?.quantity}
       </td>
-      <td className="px-5 py-5 border-b border-gray-300  text-sm">
-        <p className=" font-semibold">{order?.createdAt}</p>
+      <td className="px-6 py-4 text-sm  border-b border-gray-300 font-semibold align-middle whitespace-nowrap ">
+        {order?.createdAt}
       </td>
 
-      <td className="px-5 py-5 border-b border-gray-300 text-sm">
-        <span className="relative cursor-pointer inline-block px-3 py-1 mr-2 mb-2  font-normal md:font-semibold  leading-tight">
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 bg-[#3badcd] opacity-80 rounded-full"
-          ></span>
+      <td className="px-6 py-4 text-sm  border-b border-gray-300 align-middle whitespace-nowrap">
+        <div className="flex items-center gap-2">
           <Link
             to={`/dashboard/orders/${order._id}`}
-            className="relative whitespace-nowrap text-white"
+            className="inline-flex items-center rounded-full bg-[#3badcd] px-4 py-2 text-xs font-semibold text-white shadow-sm transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#3badcd]"
           >
             View
           </Link>
-        </span>
-
-        <button
-          onClick={() => handleUpdateStatus("approved")}
-          disabled={order.status !== "pending"}
-          className="relative inline-block px-3 py-1 mr-2 mb-2 font-semibold leading-tight disabled:opacity-50"
-        >
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 bg-green-400 rounded-full"
-          ></span>
-          <span className="relative text-white">Approve</span>
-        </button>
-
-        <button
-          onClick={() => handleUpdateStatus("rejected")}
-          disabled={order.status !== "pending"}
-          className="relative inline-block px-3 py-1 font-semibold leading-tight disabled:opacity-50"
-        >
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 bg-red-400 rounded-full"
-          ></span>
-          <span className="relative text-white">Reject</span>
-        </button>
+          <button
+            onClick={() => handleUpdateStatus("approved")}
+            disabled={order.status !== "pending"}
+            className="inline-flex items-center rounded-full bg-green-500 px-4 py-2 text-xs font-semibold text-white shadow-sm transition hover:opacity-90 disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-green-500"
+          >
+            Approve
+          </button>
+          <button
+            onClick={() => handleUpdateStatus("rejected")}
+            disabled={order.status !== "pending"}
+            className="inline-flex items-center rounded-full bg-red-500 px-4 py-2 text-xs font-semibold text-white shadow-sm transition hover:opacity-90 disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-red-500"
+          >
+            Reject
+          </button>
+        </div>
       </td>
     </tr>
   );

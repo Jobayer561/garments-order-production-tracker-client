@@ -1,5 +1,6 @@
 import AllProductsDataRow from "@/components/Dashboard/TableRows/AllProductsDataRow";
 import PlantDataRow from "@/components/Dashboard/TableRows/ProductDataRow";
+import LoadingSpinner from "@/components/Shared/LoadingSpinner";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
@@ -8,6 +9,7 @@ const AllProduct = () => {
   const {
     data: products = [],
     isLoading,
+    isFetching,
     refetch,
   } = useQuery({
     queryKey: ["products"],
@@ -15,76 +17,85 @@ const AllProduct = () => {
       const result = await axios(`${import.meta.env.VITE_API_URL}/allProducts`);
       return result.data;
     },
+    keepPreviousData: true,
   });
   return (
-    <div>
-      <div className="container mx-auto px-4 sm:px-8">
-        <div className="py-8">
-          <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-            <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
-              <h1 className="text-[#3badcd] text-3xl text-center font-bold mb-8">
-                All Product
+    <div className="p-4 sm:p-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-8">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h1 className="text-3xl sm:text-2xl font-bold mb-2 text-[#3badcd]">
+                All Products
               </h1>
-              <table className="min-w-full leading-normal">
-                <thead>
-                  <tr>
-                    <th
-                      scope="col"
-                      className="px-5 py-3   border-b border-gray-200   text-left text-sm uppercase font-normal"
-                    >
-                      Image
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-5 py-3   border-b border-gray-200   text-left text-sm uppercase font-normal"
-                    >
-                      Product Name
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-5 py-3   border-b border-gray-200   text-left text-sm uppercase font-normal"
-                    >
-                      Price
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-5 py-3   border-b border-gray-200   text-left text-sm uppercase font-normal"
-                    >
-                      Category
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-5 py-3   border-b border-gray-200   text-left text-sm uppercase font-normal"
-                    >
-                      Created By
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-5 py-3   border-b border-gray-200   text-left text-sm uppercase font-normal"
-                    >
-                      Show On Home
-                    </th>
-
-                    <th
-                      scope="col"
-                      className="px-5 py-3   border-b border-gray-200   text-left text-sm uppercase font-normal"
-                    >
-                      Actions
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {products.map((product) => (
-                    <AllProductsDataRow
-                      key={product._id}
-                      product={product}
-                      refetch={refetch}
-                    />
-                  ))}
-                </tbody>
-              </table>
+              <p className="font-semibold">Total Products: {products.length}</p>
             </div>
           </div>
+        </div>
+
+        <div className="rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+          {isLoading ? (
+            <div className="flex justify-center items-center min-h-[400px]">
+              <LoadingSpinner />
+            </div>
+          ) : (
+            <>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead className="backdrop-blur border-b border-slate-200">
+                    <tr>
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                        Image
+                      </th>
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                        Product Name
+                      </th>
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                        Price
+                      </th>
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                        Category
+                      </th>
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                        Created By
+                      </th>
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                        Show On Home
+                      </th>
+
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                        Actions
+                      </th>
+                    </tr>
+                  </thead>
+
+                  <tbody className="divide-y divide-slate-200/20 [&>tr]:transition [&>tr]:bg-white/5 [&>tr:hover]:bg-white/10">
+                    {products.length === 0 ? (
+                      <tr>
+                        <td colSpan={7} className="px-6 py-12 text-center">
+                          No products found
+                        </td>
+                      </tr>
+                    ) : (
+                      products.map((product) => (
+                        <AllProductsDataRow
+                          key={product._id}
+                          product={product}
+                          refetch={refetch}
+                        />
+                      ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
+
+              {isFetching && (
+                <div className="flex justify-center py-6 border-t border-slate-200">
+                  <LoadingSpinner />
+                </div>
+              )}
+            </>
+          )}
         </div>
       </div>
     </div>

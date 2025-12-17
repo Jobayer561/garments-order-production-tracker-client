@@ -20,8 +20,8 @@ const ProductDataRow = ({ product, refetch }) => {
       ? images[0]
       : "https://via.placeholder.com/400x300?text=No+Image";
   return (
-    <tr>
-      <td className="px-5 py-5 border-b border-gray-200  text-sm">
+    <tr className="hover:bg-white/5 transition-colors">
+      <td className="px-5 py-5 border-b border-gray-300 text-sm">
         <div className="flex items-center">
           <div className="shrink-0">
             <div className="block relative">
@@ -34,31 +34,27 @@ const ProductDataRow = ({ product, refetch }) => {
           </div>
         </div>
       </td>
-      <td className="px-5 py-5 border-b border-gray-200  text-sm">
-        <p className=" ">{title}</p>
+      <td className="px-5 py-5 border-b border-gray-300 text-sm">
+        <p className=" font-semibold">{title}</p>
       </td>
-      <td className="px-5 py-5 border-b border-gray-200  text-sm">
-        <p className=" ">{category}</p>
-      </td>
-
-      <td className="px-5 py-5 border-b border-gray-200  text-sm">
-        <p className=" ">{price}</p>
-      </td>
-      <td className="px-5 py-5 border-b border-gray-200  text-sm">
-        <p className=" ">{paymentOption}</p>
+      <td className="px-5 py-5 border-b border-gray-300 text-sm">
+        <p className=" font-semibold">{category}</p>
       </td>
 
-      <td className="px-5 py-5 border-b border-gray-200  text-sm">
-        <span
+      <td className="px-5 py-5 border-b border-gray-300 text-sm">
+        <p className=" font-semibold">{price}</p>
+      </td>
+      <td className="px-5 py-5 border-b border-gray-300 text-sm">
+        <p className=" font-semibold">{paymentOption}</p>
+      </td>
+
+      <td className="px-5 py-5 border-b border-gray-300 text-sm">
+        <button
           onClick={openModal}
-          className="relative cursor-pointer inline-block px-3 py-1 font-semibold leading-tight mr-2"
+          className="inline-flex px-3 py-1.5 rounded-full bg-red-500 text-white font-semibold text-xs hover:bg-red-600 transition-colors mr-2"
         >
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 bg-red-400 rounded-full"
-          ></span>
-          <span className="relative text-white">Delete</span>
-        </span>
+          Delete
+        </button>
 
         <DeleteModal
           productId={_id}
@@ -67,16 +63,12 @@ const ProductDataRow = ({ product, refetch }) => {
           refetch={refetch}
         />
 
-        <span
+        <button
           onClick={() => setIsEditModalOpen(true)}
-          className="relative cursor-pointer inline-block px-3 py-1 font-semibold leading-tight"
+          className="inline-flex px-3 py-1.5 rounded-full bg-[#3badcd] text-white font-semibold text-xs hover:bg-[#3badcd]/80 transition-colors"
         >
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 bg-[#3badcd] rounded-full"
-          ></span>
-          <span className="relative text-white">Update</span>
-        </span>
+          Update
+        </button>
 
         <UpdateManagerProductModal
           refetch={refetch}

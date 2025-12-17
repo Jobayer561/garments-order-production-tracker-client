@@ -203,7 +203,7 @@ const AddProductForm = () => {
                   <option value="" disabled>
                     Select a Payment Method
                   </option>
-                  <option>PayFirst</option>
+                  <option>Stripe</option>
                   <option>Cash On Delivery</option>
                 </select>
                 {errors.payment && (

@@ -1,40 +1,43 @@
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import useAuth from "../../hooks/useAuth";
-import axios from "axios";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router";
 
 const CodModal = ({ closeModal, isOpen, product, totalPrice }) => {
   const { user } = useAuth();
-  const {
-    _id,
-    title,
-    category,
-    price,
-    description,
-    images = [],
-  } = product || {};
+  const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+
+  const { _id, title, category } = product || {};
 
   const handlePayment = async () => {
-    alert("hello");
-    // const paymentInfo = {
-    //   plantId: _id,
-    //   name,
-    //   category,
-    //   price,
-    //   description,
-    //   image,
-    //   quantity: 1,
-    //   seller,
-    //   customer: {
-    //     name: user?.displayName,
-    //     email: user?.email,
-    //     image: user?.photoURL,
-    //   },
-    // };
-    // const { data } = await axios.post(
-    //   `${import.meta.env.VITE_API_URL}/create-checkout-session`,
-    //   paymentInfo
-    // );
-    // window.location.href = data.url;
+    try {
+      setLoading(true);
+      const orderData = {
+        productId: _id,
+        quantity: 1,
+        buyer: {
+          name: user?.displayName,
+          email: user?.email,
+        },
+      };
+
+      const { data } = await axiosSecure.post("/create-cod-order", orderData);
+
+      if (data.success) {
+        toast.success("Order placed successfully!");
+        closeModal();
+        navigate(`/dashboard/orders/${data.orderId}`);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error(error?.response?.data?.message || "Failed to place order");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -75,14 +78,16 @@ const CodModal = ({ closeModal, isOpen, product, totalPrice }) => {
             <div className="flex mt-2 justify-around">
               <button
                 onClick={handlePayment}
+                disabled={loading}
                 type="button"
-                className="cursor-pointer inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text- hover:bg-g focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
+                className="cursor-pointer inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Cash On Delivery
+                {loading ? "Placing Order..." : "Cash On Delivery"}
               </button>
               <button
                 type="button"
-                className="cursor-pointer inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
+                disabled={loading}
+                className="cursor-pointer inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 onClick={closeModal}
               >
                 Cancel

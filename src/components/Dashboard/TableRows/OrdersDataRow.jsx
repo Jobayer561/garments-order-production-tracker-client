@@ -22,9 +22,9 @@ const OrdersDataRow = ({ refetch, order }) => {
       <td className="px-5 py-5 border-b border-gray-300  text-sm">
         <span
           className={`px-3 py-1 rounded-full text-sm font-semibold ${
-            order?.status === "approve"
+            order?.status === "approved"
               ? "bg-green-100 text-green-600"
-              : order?.status === "suspend"
+              : order?.status === "rejected"
               ? "bg-red-100 text-red-600"
               : order?.status === "pending"
               ? "bg-yellow-100 text-yellow-600"

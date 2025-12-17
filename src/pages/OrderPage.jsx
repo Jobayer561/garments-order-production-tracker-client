@@ -52,8 +52,8 @@ const OrderPage = () => {
       deliveryAddress: e.target.deliveryAddress.value,
       notes: e.target.notes.value,
     };
-    if (product.paymentOption === "PayFirst") {
-      setModalType("PayFirst");
+    if (product.paymentOption === "Stripe") {
+      setModalType("Stripe");
       setIsOpen(true);
     } else if (product.paymentOption === "Cash On Delivery") {
       setModalType("Cash On Delivery");
@@ -253,7 +253,7 @@ const OrderPage = () => {
             totalPrice={totalPrice}
             quantity={orderQuantity}
             closeModal={closeModal}
-            isOpen={isOpen && modalType === "PayFirst"}
+            isOpen={isOpen && modalType === "Stripe"}
           />
 
           <CodModal
