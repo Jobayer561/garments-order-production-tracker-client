@@ -36,17 +36,17 @@ const OrderDetails = () => {
   const { name: productName, category, image } = product || {};
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
+    <div className="min-h-screen  p-8">
       <h1 className="text-3xl font-bold text-[#3badcd] mb-6 text-center">
         Order Details
       </h1>
 
-      <div className="bg-white shadow-lg rounded-lg p-6 space-y-6">
+      <div className=" shadow-lg rounded-lg p-6 space-y-6">
         <section>
           <h2 className="text-xl font-semibold text-[#3badcd] mb-4">
             Order Information
           </h2>
-          <div className="grid grid-cols-2 gap-4 text-gray-700">
+          <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
             <p>
               <span className="font-medium">Order ID:</span> {_id}{" "}
             </p>
@@ -65,8 +65,7 @@ const OrderDetails = () => {
               {paymentMethod}
             </p>
             <p>
-              <span className="font-medium">Total Price:</span>
-             $ {totalPrice}
+              <span className="font-medium">Total Price:</span>$ {totalPrice}
             </p>
           </div>
         </section>
@@ -75,7 +74,7 @@ const OrderDetails = () => {
           <h2 className="text-xl font-semibold text-[#3badcd] mb-4">
             Buyer Information
           </h2>
-          <div className="grid grid-cols-1 gap-4 text-gray-700">
+          <div className="grid grid-cols-1 gap-4 ">
             <p>
               <span className="font-medium">Name:</span> {buyerName}
             </p>
@@ -95,7 +94,7 @@ const OrderDetails = () => {
               alt="Product"
               className="w-20 h-20 rounded-md border"
             />
-            <div className="text-gray-700">
+            <div className="track">
               <p>
                 <span className="font-medium">Product:</span> {productName}
               </p>
@@ -127,14 +126,14 @@ const OrderDetails = () => {
                 }) => (
                   <div
                     key={_id}
-                    className="border-l-4 border-[#3badcd] pl-3 py-2 bg-gray-50 rounded-md"
+                    className="border-l-4 border-[#3badcd] pl-3 py-2  rounded-md"
                   >
-                    <p className="font-semibold text-gray-800">
+                    <p className="font-semibold ">
                       Status: {trackingStatus}
                     </p>
                     {location && <p>Location: {location}</p>}
                     {note && <p>Note: {note}</p>}
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm ">
                       {new Date(createdAt).toLocaleString()}
                     </p>
                   </div>

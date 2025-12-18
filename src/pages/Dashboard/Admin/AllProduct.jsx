@@ -1,5 +1,4 @@
 import AllProductsDataRow from "@/components/Dashboard/TableRows/AllProductsDataRow";
-import PlantDataRow from "@/components/Dashboard/TableRows/ProductDataRow";
 import LoadingSpinner from "@/components/Shared/LoadingSpinner";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
@@ -9,7 +8,6 @@ const AllProduct = () => {
   const {
     data: products = [],
     isLoading,
-    isFetching,
     refetch,
   } = useQuery({
     queryKey: ["products"],
@@ -41,7 +39,7 @@ const AllProduct = () => {
           ) : (
             <>
               <div className="overflow-x-auto">
-                <table className="w-full text-sm">
+                <table className="min-w-full text-sm">
                   <thead className="backdrop-blur border-b border-slate-200">
                     <tr>
                       <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
@@ -88,12 +86,6 @@ const AllProduct = () => {
                   </tbody>
                 </table>
               </div>
-
-              {isFetching && (
-                <div className="flex justify-center py-6 border-t border-slate-200">
-                  <LoadingSpinner />
-                </div>
-              )}
             </>
           )}
         </div>

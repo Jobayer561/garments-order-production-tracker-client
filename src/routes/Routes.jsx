@@ -26,6 +26,8 @@ import AllProduct from "@/pages/Dashboard/Admin/AllProduct";
 import ManageAllOrders from "@/pages/Dashboard/Admin/ManageAllOrders";
 import OrderDetails from "@/pages/Dashboard/Admin/OrderDetails";
 import TrackingTimelinePage from "@/pages/Dashboard/Common/TrackingTimelinePage";
+import ManagerRoute from "./ManagerRoute";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -42,7 +44,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/allProducts/:id",
-        element: <ProductDetails />,
+        element: (
+          <PrivateRoute>
+            <ProductDetails />,
+          </PrivateRoute>
+        ),
       },
       { path: "/about-us", element: <AboutUs /> },
       { path: "/contact", element: <Contact /> },
@@ -52,7 +58,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/order/:id",
-        element: <OrderPage />,
+        element: (
+          <PrivateRoute>
+            <OrderPage />,
+          </PrivateRoute>
+        ),
       },
 
       {
@@ -86,7 +96,9 @@ export const router = createBrowserRouter([
         path: "add-product",
         element: (
           <PrivateRoute>
-            <AddProduct />
+            <ManagerRoute>
+              <AddProduct />
+            </ManagerRoute>
           </PrivateRoute>
         ),
       },
@@ -94,7 +106,9 @@ export const router = createBrowserRouter([
         path: "track-order",
         element: (
           <PrivateRoute>
-            <TrackOrder />
+            <ManagerRoute>
+              <TrackOrder />
+            </ManagerRoute>
           </PrivateRoute>
         ),
       },
@@ -102,7 +116,9 @@ export const router = createBrowserRouter([
         path: "manage-users",
         element: (
           <PrivateRoute>
-            <ManageUsers />
+            <AdminRoute>
+              <ManageUsers />
+            </AdminRoute>
           </PrivateRoute>
         ),
       },
@@ -122,34 +138,81 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      {
-        path: "manage-orders",
-        element: <ManageOrders />,
-      },
+
       {
         path: "pending-orders",
-        element: <PendingOrders />,
+        element: (
+          <PrivateRoute>
+            <ManagerRoute>
+              <PendingOrders />,
+            </ManagerRoute>
+          </PrivateRoute>
+        ),
       },
-      { path: "approve-orders", element: <ApproveOrders /> },
+      {
+        path: "approve-orders",
+        element: (
+          <PrivateRoute>
+            <ManagerRoute>
+              <ApproveOrders />
+            </ManagerRoute>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "track-info/:orderId",
+        element: (
+          <PrivateRoute>
+            <ManagerRoute>
+              <TrackingTimelinePage />,
+            </ManagerRoute>
+          </PrivateRoute>
+        ),
+      },
       {
         path: "manage-products",
-        element: <ManageProducts />,
+        element: (
+          <PrivateRoute>
+            <ManagerRoute>
+              <ManageProducts />,
+            </ManagerRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "all-products",
-        element: <AllProduct />,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <AllProduct />,
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "all-orders",
-        element: <ManageAllOrders />,
+
+        element: (
+          <PrivateRoute>
+              <ManageAllOrders />,
+          </PrivateRoute>
+        ),
       },
       {
         path: "orders/:id",
-        element: <OrderDetails />,
+        element: (
+          <PrivateRoute>
+            <OrderDetails />,
+          </PrivateRoute>
+        ),
       },
       {
-        path: "tracking/:trackingId",
-        element: <TrackingTimelinePage />,
+        path: "track-order/:orderId",
+        element: (
+          <PrivateRoute>
+            <TrackOrder />,
+          </PrivateRoute>
+        ),
       },
     ],
   },

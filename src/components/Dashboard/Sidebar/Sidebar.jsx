@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import useAuth from "../../../hooks/useAuth";
 import logo from "../../../assets/images/logo.png";
 import { GrLogout } from "react-icons/gr";
-import { FcSettings } from "react-icons/fc";
+import { IoSettingsOutline } from "react-icons/io5";
 import { AiOutlineBars } from "react-icons/ai";
 
 import MenuItem from "./Menu/MenuItem";
@@ -20,13 +20,13 @@ const Sidebar = () => {
   const handleToggle = () => {
     setActive(!isActive);
   };
-
+  console.log("role have", role);
   return (
     <div className="">
       {/* Small Screen Navbar, only visible till md breakpoint */}
-      <div className=" text-gray-800 flex justify-between md:hidden ">
+      <div className="  flex justify-between md:hidden ">
         <div>
-          <div className="block cursor-pointer md:p-4 p-2 sm:mt-0 mt-12 font-bold">
+          <div className="block cursor-pointer md:p-4 p-0  font-bold">
             <Link to="/">
               <img src={logo} alt="logo" width="100" height="100" />
             </Link>
@@ -35,22 +35,21 @@ const Sidebar = () => {
 
         <button
           onClick={handleToggle}
-          className="mobile-menu-button p-4 focus:outline-none focus:bg-gray-200"
+          className="mobile-menu-button p-4 focus:outline-none"
         >
           <AiOutlineBars className="h-5 w-5" />
         </button>
       </div>
 
-      {/* Sidebar */}
       <div
-        className={`z-10 md:sticky min-h-md md:min-h-screen absolute inset-y-0 left-0
+        className={`z-10 md:fixed min-h-screen absolute inset-y-0 left-0 
   w-64  flex flex-col
-  md:pt-0 pt-12 pb-4
-  transition duration-200 ease-in-out border-r border-gray-300 shadow-lg rounded-md
-  ${isActive && "-translate-x-full"}
+  md:pt-16 pt-12 pb-4
+  transition duration-200 ease-in-out   bg-emerald-50
+  ${isActive && "-translate-x-full "}
   md:translate-x-0`}
       >
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col md:h-full">
           {/* Top Content */}
           <div>
             {/* Logo */}
@@ -68,28 +67,27 @@ const Sidebar = () => {
               {/* Common Menu */}
 
               {/* Role-Based Menu */}
-              {<BuyerMenu />}
-              {<ManagerMenu />}
-
-              {<AdminMenu />}
+              {role === "Buyer" && <BuyerMenu />}
+              {role === "Manager" && <ManagerMenu />}
+              {role === "Admin" && <AdminMenu />}
             </nav>
           </div>
 
           {/* Bottom Content */}
           <div>
-
             <MenuItem
-              icon={FcSettings}
+              className="text-cyan-950 hover:text-white"
+              icon={IoSettingsOutline}
               label="Profile"
               address="/dashboard/profile"
             />
             <button
               onClick={logOut}
-              className="flex cursor-pointer w-full items-center px-4 py-2 mt-5  hover:bg-[#3badcd]   hover:text-white transition-colors duration-300 transform"
+              className="flex cursor-pointer w-[90%] items-center px-4 py-2 mx-4 rounded-md my-5 text-cyan-950  hover:bg-[#3badcd]   hover:text-white transition-colors duration-300 transform"
             >
               <GrLogout className="w-5 h-5" />
 
-              <span className="mx-4 font-medium">Logout</span>
+              <span className="mx-4 font-medium ">Logout</span>
             </button>
           </div>
         </div>

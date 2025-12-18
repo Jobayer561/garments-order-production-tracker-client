@@ -51,7 +51,7 @@ const ProductDataRow = ({ product, refetch }) => {
       <td className="px-5 py-5 border-b border-gray-300 text-sm">
         <button
           onClick={openModal}
-          className="inline-flex px-3 py-1.5 rounded-full bg-red-500 text-white font-semibold text-xs hover:bg-red-600 transition-colors mr-2"
+          className="inline-flex px-3 py-1.5 rounded-full bg-red-500 text-white font-semibold text-xs hover:bg-red-600 transition-colors mr-2 mb-2"
         >
           Delete
         </button>

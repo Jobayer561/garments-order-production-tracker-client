@@ -23,7 +23,7 @@ const DeleteModal = ({ isOpen, closeModal, productId, refetch }) => {
       className="relative z-10 focus:outline-none"
       onClose={closeModal}
     >
-      <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+      <div className="fixed inset-0 z-10 w-screen overflow-y-auto opacity-100 bg-black/50 transition-transform" >
         <div className="flex min-h-full items-center justify-center p-4">
           <DialogPanel className="w-full max-w-md bg-white p-6 shadow-xl rounded-2xl">
             <DialogTitle className="text-lg font-medium text-gray-900">

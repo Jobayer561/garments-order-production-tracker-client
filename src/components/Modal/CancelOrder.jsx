@@ -11,9 +11,8 @@ const CancelOrder = ({ isOpen, closeModal, order, refetch }) => {
       if (response.status === 200) {
         toast.success("Order cancelled successfully");
         closeModal();
-        if (refetch) {
-          refetch();
-        }
+
+        refetch();
       }
     } catch (error) {
       console.error("Cancel error:", error);

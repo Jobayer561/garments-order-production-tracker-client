@@ -16,11 +16,11 @@ const TrackingOrderForm = ({ order, refetchTimeline }) => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    if (!order?.trackingId) return;
+    if (!order?._id) return;
 
     setLoading(true);
     try {
-      await axiosSecure.patch(`/tracking/${order.trackingId}/timeline`, {
+      await axiosSecure.patch(`/track-order/${order._id}`, {
         status: data.status,
         note: data.note || undefined,
         location: data.location || undefined,

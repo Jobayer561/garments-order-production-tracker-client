@@ -11,6 +11,7 @@ import {
 } from "firebase/auth";
 import { app } from "../firebase/firebase.config";
 import { AuthContext } from "./AuthContext";
+import axios from "axios";
 
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
@@ -44,14 +45,44 @@ const AuthProvider = ({ children }) => {
       displayName: name,
       photoURL: photo,
     });
-    setUser({ ...auth.currentUser });
+    // Preserve Firebase user instance to keep prototype methods
+    setUser(auth.currentUser);
   };
 
-  // onAuthStateChange
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
-      console.log("CurrentUser-->", currentUser?.email);
-      setUser(currentUser);
+      console.log("CurrentUser-->", currentUser?.email, currentUser?.photoURL);
+
+      if (currentUser) {
+        try {
+          const token = await currentUser.getIdToken();
+          console.log("Fetching profile from API...");
+
+          const response = await axios.get(
+            `${import.meta.env.VITE_API_URL}/profile`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          const userProfile = response.data;
+          console.log("User profile from DB:", userProfile);
+          console.log("Image from DB:", userProfile?.image);
+
+          setUser(currentUser);
+        } catch (error) {
+          console.error("Error fetching user profile:", error);
+          console.error(
+            "Error details:",
+            error.response?.data || error.message
+          );
+          setUser(currentUser);
+        }
+      } else {
+        setUser(null);
+      }
+
       setLoading(false);
     });
     return () => {

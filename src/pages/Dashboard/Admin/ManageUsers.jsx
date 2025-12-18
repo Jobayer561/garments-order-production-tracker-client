@@ -12,7 +12,6 @@ const ManageUsers = () => {
   const {
     data: users = [],
     isLoading,
-    isFetching,
     refetch,
   } = useQuery({
     queryKey: ["users", searchText, role],
@@ -170,11 +169,7 @@ const ManageUsers = () => {
                 </table>
               </div>
 
-              {isFetching && (
-                <div className="flex justify-center py-6 border-t border-slate-200">
-                  <LoadingSpinner />
-                </div>
-              )}
+           
             </>
           )}
         </div>

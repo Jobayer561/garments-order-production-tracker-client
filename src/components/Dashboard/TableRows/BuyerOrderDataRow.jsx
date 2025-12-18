@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CancelOrder from "@/components/Modal/CancelOrder";
 import { Link } from "react-router";
+import LoadingSpinner from "@/components/Shared/LoadingSpinner";
 
 const BuyerOrderDataRow = ({ order, refetch }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,8 +9,8 @@ const BuyerOrderDataRow = ({ order, refetch }) => {
 
   return (
     <tr className=" transition-colors duration-150">
-      <td className="px-5 py-4 border-b border-slate-200  text-sm font-medium  ">
-        <span className="font-medium text-xs">{order._id}</span>
+      <td className="px-5 py-4 border-b border-slate-200  text-sm font-medium  truncate max-w-[150px]">
+        <span className="font-medium text-xs ">{order._id}</span>
       </td>
 
       <td className="px-5 py-4 border-b border-slate-200  text-sm">
@@ -43,9 +44,12 @@ const BuyerOrderDataRow = ({ order, refetch }) => {
       <td className="px-5 py-4 border-b border-slate-200 font-semibold  text-sm">
         <p className="">{order?.paymentMethod}</p>
       </td>
+      <td className="px-5 py-4 border-b border-slate-200 font-semibold  text-sm">
+        <p className="">{order?.payment_status}</p>
+      </td>
 
       <td className="px-5 py-4 border-b border-slate-200  text-sm">
-        <span className="relative cursor-pointer inline-block px-3 py-1 font-normal md:font-semibold  leading-tight mr-2">
+        <span className="relative cursor-pointer inline-block px-3 py-1 font-normal md:font-semibold  leading-tight mr-2 mb-2">
           <span
             aria-hidden="true"
             className="absolute inset-0 bg-[#3badcd] opacity-80  rounded-full"
@@ -54,12 +58,12 @@ const BuyerOrderDataRow = ({ order, refetch }) => {
             to={`/dashboard/orders/${order._id}`}
             className="relative whitespace-nowrap text-white"
           >
-            View Details
+            Details
           </Link>
         </span>
         <button
           onClick={() => setIsOpen(true)}
-          className="inline-flex items-center gap-2 px-3 py-1 font-semibold text-white bg-red-500 hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 rounded-full transition-all duration-200 transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="inline-flex items-center gap-2 px-3 py-1 font-semibold text-white bg-red-500 hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 rounded-full transition-all duration-200 transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed mr-2 mb-2"
         >
           <span>Cancel</span>
         </button>
@@ -70,6 +74,18 @@ const BuyerOrderDataRow = ({ order, refetch }) => {
           order={order}
           refetch={refetch}
         />
+        <span className="relative cursor-pointer inline-block px-3 py-1 font-normal md:font-semibold  leading-tight ">
+          <span
+            aria-hidden="true"
+            className="absolute inset-0 bg-[#3badcd] opacity-80  rounded-full"
+          ></span>
+          <Link
+            to={`/dashboard/track-order/${order._id}`}
+            className="relative whitespace-nowrap text-white"
+          >
+            TrackOrder
+          </Link>
+        </span>
       </td>
     </tr>
   );

@@ -1,8 +1,9 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
+import LoadingSpinner from "../Shared/LoadingSpinner";
 
-const ViewTrackingTimeline = ({ trackingId }) => {
+const ViewTrackingTimeline = ({ orderId }) => {
   const axiosSecure = useAxiosSecure();
 
   const {
@@ -12,22 +13,24 @@ const ViewTrackingTimeline = ({ trackingId }) => {
     error,
     refetch,
   } = useQuery({
-    queryKey: ["tracking-timeline", trackingId],
-    enabled: !!trackingId,
+    queryKey: ["tracking-timeline", orderId],
+    enabled: !!orderId,
     initialData: [],
     queryFn: async ({ queryKey }) => {
       const [, id] = queryKey;
-      const res = await axiosSecure.get(`/tracking/${id}/timeline`);
+      console.log("Fetching tracking for orderId:", id);
+      const res = await axiosSecure.get(`/track-order/${id}`);
+      console.log("Tracking response:", res.data);
       return res.data.trackOrder || [];
     },
   });
 
-  if (!trackingId) {
+  if (!orderId) {
     return <p className="text-sm text-slate-500">No tracking ID provided.</p>;
   }
 
   if (isLoading) {
-    return <p className="text-sm text-slate-500">Loading timeline…</p>;
+    return <LoadingSpinner/>
   }
 
   if (isError) {
@@ -50,11 +53,11 @@ const ViewTrackingTimeline = ({ trackingId }) => {
 
   return (
     <div className="space-y-4">
-      {trackOrder.map((item, idx) => {
+      {trackOrder.map((track, idx) => {
         const isLatest = idx === trackOrder.length - 1;
         return (
           <div
-            key={`${item.status}-${idx}`}
+            key={`${track.status}-${idx}`}
             className={`border rounded-lg p-4 shadow-sm transition-colors ${
               isLatest
                 ? "bg-[#3badcd]/10 border-[#3badcd]"
@@ -69,33 +72,27 @@ const ViewTrackingTimeline = ({ trackingId }) => {
                   }`}
                 />
                 <h3 className="text-base font-semibold text-slate-900">
-                  {item.status}
+                  {track.status}
                 </h3>
               </div>
               <span className="text-xs text-slate-500">
-                {item.dateTime ? new Date(item.dateTime).toLocaleString() : ""}
+                {track.dateTime
+                  ? new Date(track.dateTime).toLocaleString()
+                  : ""}
               </span>
             </div>
 
             <div className="mt-2 text-sm text-slate-700 space-y-1">
-              {item.location && (
+              {track.location && (
                 <p>
-                  <span className="font-medium">Location:</span> {item.location}
+                  <span className="font-medium">Location:</span>{" "}
+                  {track.location}
                 </p>
               )}
-              {item.note && (
+              {track.note && (
                 <p>
-                  <span className="font-medium">Note:</span> {item.note}
+                  <span className="font-medium">Note:</span> {track.note}
                 </p>
-              )}
-              {item.image && (
-                <div className="mt-2">
-                  <img
-                    src={item.image}
-                    alt="Tracking"
-                    className="rounded-md border border-slate-200 max-h-48 object-cover"
-                  />
-                </div>
               )}
             </div>
 

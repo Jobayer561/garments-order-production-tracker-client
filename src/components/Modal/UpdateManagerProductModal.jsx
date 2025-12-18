@@ -16,7 +16,7 @@ const UpdateManagerProductModal = ({
       onClose={() => setIsEditModalOpen(false)}
     >
       <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-        <div className="flex min-h-full items-center justify-center p-4">
+        <div className="flex min-h-full items-center justify-center px-4 py-20 opacity-100 bg-black/50">
           <DialogPanel
             transition
             className="w-full max-w-3xl mx-auto bg-white p-6 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0 shadow-xl rounded-2xl"

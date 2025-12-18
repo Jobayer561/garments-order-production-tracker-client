@@ -4,9 +4,11 @@ import { useMutation } from "@tanstack/react-query";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import useAuth from "@/hooks/useAuth";
+import useStatus from "@/hooks/useStatus";
 
 const AddProductForm = () => {
   const { user } = useAuth();
+  const [status] = useStatus()
   const axiosSecure = useAxiosSecure();
   const [imagePreviews, setImagePreviews] = useState([]);
 
@@ -269,7 +271,14 @@ const AddProductForm = () => {
 
             <button
               type="submit"
-              className="block text-white font-semibold bg-[#3badcd] hover:scale-105 hover:opacity-80 py-3 w-full rounded-full transition-transform my-4"
+              disabled={status !== "approve" || isLoading} 
+              className={`block text-white font-semibold bg-[#3badcd] 
+    ${
+      status !== "approve"
+        ? "opacity-50 cursor-not-allowed"
+        : "hover:scale-105 hover:opacity-80"
+    } 
+    py-3 w-full rounded-full transition-transform my-4`}
             >
               {isLoading ? "Saving..." : "Submit Order"}
             </button>

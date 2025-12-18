@@ -1,15 +1,17 @@
 import BuyerOrderDataRow from "@/components/Dashboard/TableRows/BuyerOrderDataRow";
+import LoadingSpinner from "@/components/Shared/LoadingSpinner";
 import useAuth from "@/hooks/useAuth";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
+import useStatus from "@/hooks/useStatus";
 import { useQuery } from "@tanstack/react-query";
 
 const MyOrders = () => {
   const { user } = useAuth();
+  const [status] = useStatus();
   const axiosSecure = useAxiosSecure();
   const {
     data: orders = [],
     isLoading,
-    isFetching,
     refetch,
   } = useQuery({
     queryKey: ["orders"],
@@ -19,12 +21,18 @@ const MyOrders = () => {
       return res.data;
     },
   });
+  console.log("from my order", user);
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  console.log("from status", status);
   return (
     <div className="min-h-screen  ">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-8 sm:py-12">
           <div className="mb-8">
-            <h1 className="text-3xl font-bold  ">My Orders</h1>
+            <h1 className="text-3xl font-bold  text-[#3badcd]">My Orders</h1>
             <p className="mt-2 ">Track and manage your orders</p>
           </div>
 
@@ -61,6 +69,12 @@ const MyOrders = () => {
                     className="px-5 py-4 text-left text-xs font-semibold border-b border-gray-300   uppercase tracking-wider"
                   >
                     Payment
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-5 py-4 text-left text-xs font-semibold border-b border-gray-300   uppercase tracking-wider"
+                  >
+                    Payment Status
                   </th>
                   <th
                     scope="col"
@@ -104,6 +118,7 @@ const MyOrders = () => {
                 ) : (
                   orders.map((order) => (
                     <BuyerOrderDataRow
+                      isLoading={isLoading}
                       refetch={refetch}
                       key={order._id}
                       order={order}

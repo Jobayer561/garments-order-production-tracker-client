@@ -11,7 +11,7 @@ const PendingOrders = () => {
     isFetching,
     refetch,
   } = useQuery({
-    queryKey: ["orders"],
+    queryKey: ["orders", "pending"],
     queryFn: async () => {
       const result = await axios(
         `${import.meta.env.VITE_API_URL}/orders-pending`
@@ -108,11 +108,7 @@ const PendingOrders = () => {
                 </table>
               </div>
 
-              {isFetching && (
-                <div className="flex justify-center py-6 border-t border-slate-200">
-                  <LoadingSpinner />
-                </div>
-              )}
+         
             </>
           )}
         </div>

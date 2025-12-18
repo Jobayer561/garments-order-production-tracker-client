@@ -63,9 +63,19 @@ const Navbar = () => {
 
               <div className="w-10 h-10 rounded-full overflow-hidden border border-gray-300">
                 <img
-                  src={user?.photoURL}
+                  src={
+                    user?.photoURL ||
+                    "https://i.ibb.co/hKwVRrB/default-avatar.png"
+                  }
                   alt="User"
                   className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                  crossOrigin="anonymous"
+                  onError={(e) => {
+                    console.log("Image failed to load:", user?.photoURL);
+                    e.target.src =
+                      "https://i.ibb.co/hKwVRrB/default-avatar.png";
+                  }}
                 />
               </div>
 

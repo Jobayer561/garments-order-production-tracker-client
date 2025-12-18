@@ -7,10 +7,12 @@ import Heading from "@/components/Shared/Heading";
 import ProductImages from "./ProductImage";
 import UseRole from "@/hooks/UseRole";
 import { useNavigate } from "react-router";
+import useStatus from "@/hooks/useStatus";
 
 const ProductDetails = () => {
   const { id } = useParams();
   const [role] = UseRole();
+  const [status] = useStatus();
   const navigate = useNavigate();
 
   const { data: product = {}, isLoading } = useQuery({
@@ -23,6 +25,8 @@ const ProductDetails = () => {
     },
   });
 
+  console.log("product details", status);
+  console.log(role);
   if (isLoading) return <LoadingSpinner />;
 
   const {
@@ -94,11 +98,13 @@ const ProductDetails = () => {
 
             <button
               className={`w-full bg-[#3badcd] rounded-full py-3 text-white font-semibold hover:scale-105 transition-transform hover:opacity-80 mt-4 ${
-                role !== "Buyer" ? "opacity-70 cursor-not-allowed" : ""
+                role !== "Buyer" || status !== "approve"
+                  ? "opacity-70 cursor-not-allowed"
+                  : ""
               }`}
-              disabled={role !== "Buyer"}
+              disabled={role !== "Buyer" || status !== "approve"}
               onClick={() => {
-                if (role === "Buyer") {
+                if (role === "Buyer" && status === "approve") {
                   navigate(`/order/${_id}`, { state: { product } });
                 }
               }}

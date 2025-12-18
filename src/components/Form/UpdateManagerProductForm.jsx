@@ -79,7 +79,7 @@ const UpdateManagerProductForm = ({ product, closeModal, refetch }) => {
         <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label>Title</label>
+              <label className="text-gray-500">Title</label>
               <input
                 type="text"
                 placeholder="Enter your Product Title"
@@ -93,7 +93,7 @@ const UpdateManagerProductForm = ({ product, closeModal, refetch }) => {
               )}
             </div>
             <div>
-              <label>Category</label>
+              <label className="text-gray-500">Category</label>
               <select
                 className="select select-info w-full mt-2"
                 {...register("category", {
@@ -124,7 +124,7 @@ const UpdateManagerProductForm = ({ product, closeModal, refetch }) => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label>Price</label>
+              <label className="text-gray-500">Price</label>
               <input
                 type="number"
                 step="any"
@@ -142,7 +142,7 @@ const UpdateManagerProductForm = ({ product, closeModal, refetch }) => {
               )}
             </div>
             <div>
-              <label>Available Quantity</label>
+              <label className="text-gray-500">Available Quantity</label>
               <input
                 type="number"
                 placeholder="Enter available Quantity"
@@ -162,7 +162,7 @@ const UpdateManagerProductForm = ({ product, closeModal, refetch }) => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label>Minimum Order Quantity</label>
+              <label className="text-gray-500">Minimum Order Quantity</label>
               <input
                 type="number"
                 placeholder="Enter Minimum Order Quantity"
@@ -182,7 +182,7 @@ const UpdateManagerProductForm = ({ product, closeModal, refetch }) => {
               )}
             </div>
             <div>
-              <label>Demo Video (Optional)</label>
+              <label className="text-gray-500">Demo Video (Optional)</label>
               <input
                 type="text"
                 placeholder="Enter Demo Video (optional)"
@@ -194,7 +194,7 @@ const UpdateManagerProductForm = ({ product, closeModal, refetch }) => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label>Payment Options</label>
+              <label className="text-gray-500">Payment Options</label>
               <select
                 className="select select-info w-full mt-2"
                 {...register("payment", {
@@ -215,7 +215,7 @@ const UpdateManagerProductForm = ({ product, closeModal, refetch }) => {
               )}
             </div>
             <div>
-              <label>Show On HomePage</label>
+              <label className="text-gray-500">Show On HomePage</label>
               <input
                 type="text"
                 className="input input-info w-full mt-2"
@@ -226,7 +226,7 @@ const UpdateManagerProductForm = ({ product, closeModal, refetch }) => {
             </div>
           </div>
 
-          <label>Product Images</label>
+          <label className="text-gray-500">Product Images</label>
           <input
             type="text"
             placeholder="Image URLs (In multiple URL comma separated)"
@@ -253,7 +253,7 @@ const UpdateManagerProductForm = ({ product, closeModal, refetch }) => {
             </div>
           )}
 
-          <label>Description</label>
+          <label className="text-gray-500">Description</label>
           <textarea
             className="textarea textarea-info w-full my-2"
             placeholder="Enter Product Description"

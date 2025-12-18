@@ -89,7 +89,7 @@ const AllProductsDataRow = ({ product, refetch }) => {
       <td className="px-5 py-5 border-b border-gray-300 text-sm">
         <span
           onClick={openModal}
-          className="relative cursor-pointer inline-block px-3 py-1 font-semibold leading-tight mr-2"
+          className="relative cursor-pointer inline-block px-3 py-1 font-semibold leading-tight mr-2 mb-2"
         >
           <span
             aria-hidden="true"

@@ -15,11 +15,13 @@ const Profile = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gray-100 flex justify-center items-center p-4">
-      <div className="bg-white shadow-xl rounded-2xl md:w-4/5 lg:w-2/5 overflow-hidden">
+    <div className="min-h-screen  flex justify-center items-center p-4">
+      <div className=" shadow-xl rounded-2xl md:w-4/5 lg:w-2/5 overflow-hidden">
         <div className="h-40 bg-linear-to-r from-cyan-400 to-blue-500 relative">
           <img
-            src={profile?.image || user?.photoURL}
+            src={profile?.image }
+            referrerPolicy="no-referrer"
+            crossOrigin="anonymous"
             alt="profile"
             className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 border-4 border-white rounded-full h-24 w-24 object-cover"
           />
@@ -27,11 +29,11 @@ const Profile = () => {
 
         {/* Profile Content */}
         <div className="pt-16 pb-6 px-6 text-center">
-          <h2 className="text-2xl font-semibold text-gray-800">
-            {profile?.name || user?.displayName}
+          <h2 className="text-2xl font-semibold ">
+            {profile?.name}
           </h2>
-          <p className="text-md text-gray-500">{profile?.role || "Buyer"}</p>
-          <p className="mt-2 text-xs text-gray-400">User ID: {user?.uid}</p>
+          <p className="text-md text-gray-400 font-bold">{profile?.role}</p>
+          <p className="mt-2 text-xs ">User ID: {user?.uid}</p>
 
           {/* Buttons */}
           <div className="mt-4 flex justify-center gap-4 flex-wrap">
@@ -44,7 +46,7 @@ const Profile = () => {
           </div>
 
           {/* Email */}
-          <p className="mt-4 text-gray-600 text-sm">
+          <p className="mt-4 text-slate-400 text-sm">
             <span className="font-semibold">Email:</span>{" "}
             {profile?.email || user?.email}
           </p>

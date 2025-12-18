@@ -1,7 +1,7 @@
 import UpdateUserStatusModal from "@/components/Modal/UpdateUserStatusModal";
 import { Link } from "react-router";
 
-const OrdersDataRow = ({ refetch, order }) => {
+const OrdersDataRow = ({ order }) => {
   return (
     <tr>
       <td className="px-5 py-5 border-b border-gray-300  text-sm">
@@ -16,8 +16,10 @@ const OrdersDataRow = ({ refetch, order }) => {
       <td className="px-5 py-5 border-b border-gray-300  text-sm">
         <p className=" font-semibold">{order?.product.name}</p>
       </td>
-      <td className="px-5 py-5 border-b border-gray-300  text-sm">
-        <p className=" font-semibold">{order?.quantity}</p>
+      <td className="px-5 py-4 border-b border-slate-200  text-sm text-center">
+        <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-blue-100  text-blue-700 font-semibold">
+          {order?.quantity}
+        </span>
       </td>
       <td className="px-5 py-5 border-b border-gray-300  text-sm">
         <span
