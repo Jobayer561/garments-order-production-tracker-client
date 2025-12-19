@@ -30,12 +30,12 @@ This project includes role-based access for **Admin**, **Manager**, and **Buyer*
 ---
 
 ## Technologies Used
-- **Frontend:** React.js, Tailwind CSS, DaisyUI, Framer Motion
+- **Frontend:** React.js, Tailwind CSS, DaisyUI, Framer Motion, Headless UI
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB
 - **Authentication:** Firebase Authentication (JWT)
 - **Payment Integration:** Stripe
-- **Deployment:** Vercel (Frontend), Node Server hosted on Vercel/other)
+- **Deployment:** Netlify (Frontend), Node Server hosted on Vercel)
 - **Other Tools:** Axios, React Router, React Hook Form
 
 ---
@@ -47,7 +47,7 @@ This project includes role-based access for **Admin**, **Manager**, and **Buyer*
 - Smooth animations with Framer Motion.
 - Role-based authentication: Admin, Manager, Buyer.
 - Fully integrated with backend using MongoDB.
-- Toast/SweetAlert notifications for all actions.
+- Toast notifications for all actions.
 - Error handling and 404 page.
 
 ### Home Page
