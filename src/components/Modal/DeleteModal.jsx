@@ -34,7 +34,7 @@ const DeleteModal = ({ isOpen, closeModal, productId, refetch }) => {
               You cannot undo once it&apos;s done!
             </p>
 
-            <hr className="mt-6" />
+            <hr className="mt-6 text-gray-400 border border-dotted" />
 
             <div className="flex mt-4 justify-around">
               <button

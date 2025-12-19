@@ -1,63 +1,58 @@
-import Button from '../components/Shared/Button/Button'
-import { useNavigate } from 'react-router'
+import { useNavigate } from "react-router";
+import error from "../assets/images/error.png";
 
 const ErrorPage = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
-    <section className='bg-white '>
-      <div className='container flex items-center min-h-screen px-6 py-12 mx-auto'>
-        <div className='flex flex-col items-center max-w-sm mx-auto text-center'>
-          <p className='p-3 text-sm font-medium text-lime-500 rounded-full bg-blue-50 '>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              fill='none'
-              viewBox='0 0 24 24'
-              strokeWidth='2'
-              stroke='currentColor'
-              className='w-6 h-6'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                d='M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z'
-              />
-            </svg>
-          </p>
-          <h1 className='mt-3 text-2xl font-semibold text-gray-800  md:text-3xl'>
-            Something Went Wrong!
-          </h1>
-          <p className='mt-4 text-gray-500 '>Here are some helpful links:</p>
+    <section className="min-h-screen flex items-center justify-center bg-linear-to-br from-sky-50 to-white px-6">
+      <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-8 text-center">
+        <div className="flex justify-center mb-6">
+          <img src={error} alt="Error" className="w-40 h-auto" />
+        </div>
 
-          <div className='flex items-center w-full mt-6 gap-x-3 shrink-0 sm:w-auto'>
-            <button
-              onClick={() => navigate(-1)}
-              className='flex items-center justify-center w-1/2 px-5 py-1 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto   hover:bg-gray-100 '
-            >
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                fill='none'
-                viewBox='0 0 24 24'
-                strokeWidth='1.5'
-                stroke='currentColor'
-                className='w-5 h-5 rtl:rotate-180 text-lime-500'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  d='M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18'
-                />
-              </svg>
+        <h1 className="text-3xl font-bold text-gray-800">
+          Oops! Something went wrong
+        </h1>
 
-              <span>Go back</span>
-            </button>
+        <p className="mt-3 text-gray-500">
+          The page you’re trying to access doesn’t exist or an unexpected error
+          has occurred.
+        </p>
 
-            <Button label={'Take Me Home'} onClick={() => navigate('/')} />
-          </div>
+        <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+          <button
+            onClick={() => navigate(-1)}
+            className="
+              px-6 py-2.5
+              rounded-full
+              border border-gray-300
+              text-gray-700
+              hover:bg-gray-100
+              transition
+            "
+          >
+            ← Go Back
+          </button>
+
+          <button
+            onClick={() => navigate("/")}
+            className="
+              px-6 py-2.5
+              rounded-full
+              bg-[#3badcd]
+              text-white
+              font-medium
+              hover:bg-[#3badcd]/90
+              transition
+            "
+          >
+            Take Me Home
+          </button>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default ErrorPage
+export default ErrorPage;

@@ -14,7 +14,6 @@ const ManageProducts = () => {
   const {
     data: products = [],
     isLoading,
-    isFetching,
     refetch,
   } = useQuery({
     queryKey: ["products", searchText, category],

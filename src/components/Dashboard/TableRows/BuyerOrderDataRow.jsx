@@ -1,7 +1,6 @@
 import { useState } from "react";
 import CancelOrder from "@/components/Modal/CancelOrder";
 import { Link } from "react-router";
-import LoadingSpinner from "@/components/Shared/LoadingSpinner";
 
 const BuyerOrderDataRow = ({ order, refetch }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,7 +51,7 @@ const BuyerOrderDataRow = ({ order, refetch }) => {
         <span className="relative cursor-pointer inline-block px-3 py-1 font-normal md:font-semibold  leading-tight mr-2 mb-2">
           <span
             aria-hidden="true"
-            className="absolute inset-0 bg-[#3badcd] opacity-80  rounded-full"
+            className="absolute inset-0 bg-green-400 opacity-80  rounded-full"
           ></span>
           <Link
             to={`/dashboard/orders/${order._id}`}
@@ -61,12 +60,14 @@ const BuyerOrderDataRow = ({ order, refetch }) => {
             Details
           </Link>
         </span>
-        <button
-          onClick={() => setIsOpen(true)}
-          className="inline-flex items-center gap-2 px-3 py-1 font-semibold text-white bg-red-500 hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 rounded-full transition-all duration-200 transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed mr-2 mb-2"
-        >
-          <span>Cancel</span>
-        </button>
+        {order.status === "pending" && (
+          <button
+            onClick={() => setIsOpen(true)}
+            className="inline-flex items-center gap-2 px-3 py-1 font-semibold text-white bg-red-500 hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 rounded-full transition-all duration-200 transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed mr-2 mb-2"
+          >
+            <span>Cancel</span>
+          </button>
+        )}
 
         <CancelOrder
           isOpen={isOpen}
