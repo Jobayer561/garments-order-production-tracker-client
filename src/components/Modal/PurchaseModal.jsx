@@ -42,7 +42,7 @@ const PurchaseModal = ({
       className="relative z-10 focus:outline-none "
       onClose={closeModal}
     >
-      <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+      <div className="fixed inset-0 z-10 w-screen overflow-y-auto bg-black/50 opacity-100">
         <div className="flex min-h-full items-center justify-center p-4">
           <DialogPanel
             transition
@@ -67,7 +67,9 @@ const PurchaseModal = ({
             </div>
 
             <div className="mt-2">
-              <p className="text-sm text-gray-500">Price: $ {totalPrice}</p>
+              <p className="text-sm text-gray-500">
+                Price: $ {totalPrice.toFixed(2)}
+              </p>
             </div>
 
             <div className="flex mt-2 justify-around">

@@ -5,6 +5,7 @@ import {
   Truck,
   CheckCircle,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const HowItWorks = () => {
   const steps = [
@@ -45,26 +46,43 @@ const HowItWorks = () => {
     },
   ];
 
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.2, 
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
   return (
     <section className="max-w-[1440px] mx-auto px-4 py-20">
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-[#3BADCD]">
         How It Works
       </h2>
 
-      <div
-        className="
-          grid 
-          grid-cols-1
-          md:grid-cols-2
-          lg:grid-cols-3
-          gap-8
-        "
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
       >
         {steps.map((step) => (
-          <div
+          <motion.div
             key={step.id}
             className="bg-base-100 border border-gray-50/35 shadow-lg rounded-2xl p-8 text-center 
                        flex flex-col items-center hover:shadow-xl transition-all"
+            variants={cardVariants}
           >
             <div className="bg-[#3BADCD]/10 text-[#3BADCD] p-5 rounded-full mb-6">
               {step.icon}
@@ -77,9 +95,9 @@ const HowItWorks = () => {
             <span className="text-4xl font-bold text-[#3BADCD] mt-6 opacity-20">
               {step.id}
             </span>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };

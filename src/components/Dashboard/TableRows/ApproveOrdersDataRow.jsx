@@ -29,7 +29,7 @@ const ApproveOrdersDataRow = ({ order, refetch }) => {
         </span>
       </td>
 
-      <td className="px-6 py-4 text-sm border-b border-gray-300 whitespace-nowrap">
+      <td className="px-6 py-4 text-sm border-b border-gray-300 ">
         {order?.approvedAt}
       </td>
       <td className="px-6 py-4 text-sm border-b border-gray-300 whitespace-nowrap">
@@ -38,14 +38,14 @@ const ApproveOrdersDataRow = ({ order, refetch }) => {
             to={`/dashboard/track-info/${order?._id}`}
             className="inline-flex rounded-full bg-[#3badcd] px-4 py-2 text-xs font-semibold text-white hover:opacity-90"
           >
-            View Tracking
+            ViewTracking
           </Link>
 
           <button
             onClick={() => setIsTrackingOpen(true)}
             className="inline-flex rounded-full bg-green-500 px-4 py-2 text-xs font-semibold text-white"
           >
-            Add Tracking
+            AddTracking
           </button>
 
           <TrackingModal
