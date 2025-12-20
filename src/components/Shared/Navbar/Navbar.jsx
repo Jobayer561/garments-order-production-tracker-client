@@ -21,9 +21,9 @@ const Navbar = () => {
   const handleTheme = (checked) => {
     setIsDark(checked);
   };
-  console.log(user);
+
   return (
-    <nav className=" fixed top-0 left-0 right-0 border-b border-gray-50/35  shadow-md z-70 bg-base-100/95 ">
+    <nav className="fixed top-0 left-0 right-0 border-b border-gray-50/35 shadow-md z-70 bg-base-100/95">
       <div className="max-w-[1440px] mx-auto h-16 flex items-center justify-between">
         <Link to="/">
           <img src={logo} className="h-30 w-auto" alt="Logo" />
@@ -50,7 +50,6 @@ const Navbar = () => {
               <Link className="px-4 py-2 my-btn" to="/login">
                 Login
               </Link>
-
               <Link className="px-4 py-2 my-btn" to="/signup">
                 Register
               </Link>
@@ -71,11 +70,6 @@ const Navbar = () => {
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                   crossOrigin="anonymous"
-                  onError={(e) => {
-                    console.log("Image failed to load:", user?.photoURL);
-                    e.target.src =
-                      "https://i.ibb.co/hKwVRrB/default-avatar.png";
-                  }}
                 />
               </div>
 
@@ -89,7 +83,7 @@ const Navbar = () => {
         <div className="md:hidden px-8 flex items-center gap-4">
           <ThemeToggle checked={isDark} handleTheme={handleTheme} />
 
-          <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700">
+          <button onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? (
               <X color="#3BADCD" size={25} />
             ) : (
@@ -100,15 +94,29 @@ const Navbar = () => {
       </div>
 
       {isOpen && (
-        <div
-          className="md:hidden fixed top-16 left-0 right-0 z-70 bg-base-100/95 
-                     border-t border-base-300 p-4 text-md
-                     flex flex-col items-center space-y-4 text-center text-base-content"
-        >
-          <NavLink className=" hover:text-[#3BADCD]" to="/">
+        <div className="md:hidden fixed top-16 left-0 right-0 z-70 bg-base-100/95 border-t border-base-300 p-4 text-md flex flex-col items-center space-y-4 text-center">
+          {user && (
+            <div className="flex flex-col items-center gap-2 pb-4 border-b w-full">
+              <div className="w-16 h-16 rounded-full overflow-hidden border border-gray-300">
+                <img
+                  src={
+                    user?.photoURL ||
+                    "https://i.ibb.co/hKwVRrB/default-avatar.png"
+                  }
+                  alt="User"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <p className="text-sm font-medium">
+                {user?.displayName || "User"}
+              </p>
+            </div>
+          )}
+
+          <NavLink to="/" className="hover:text-[#3BADCD]">
             Home
           </NavLink>
-          <NavLink className=" hover:text-[#3BADCD]" to="/allProducts">
+          <NavLink to="/allProducts" className="hover:text-[#3BADCD]">
             All Products
           </NavLink>
           <NavLink to="/about-us">About Us</NavLink>
@@ -117,7 +125,6 @@ const Navbar = () => {
           {user ? (
             <>
               <NavLink to="/dashboard">Dashboard</NavLink>
-
               <button
                 onClick={logOut}
                 className="px-4 py-2 bg-[#3BADCD] text-white rounded-md"
@@ -126,20 +133,14 @@ const Navbar = () => {
               </button>
             </>
           ) : (
-            <>
-              <div className="flex items-center gap-3">
-                <Link className="px-4 py-2 my-btn" to="/login">
-                  Login
-                </Link>
-
-                <Link
-                  className="px-4 py-2 my-btn hover:scale-105 transition-transform"
-                  to="/signup"
-                >
-                  Register
-                </Link>
-              </div>
-            </>
+            <div className="flex gap-3">
+              <Link className="px-4 py-2 my-btn" to="/login">
+                Login
+              </Link>
+              <Link className="px-4 py-2 my-btn" to="/signup">
+                Register
+              </Link>
+            </div>
           )}
         </div>
       )}

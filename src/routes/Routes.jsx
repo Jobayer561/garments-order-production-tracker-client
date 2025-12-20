@@ -193,7 +193,9 @@ export const router = createBrowserRouter([
 
         element: (
           <PrivateRoute>
+            <AdminRoute>
               <ManageAllOrders />,
+            </AdminRoute>
           </PrivateRoute>
         ),
       },

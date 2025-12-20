@@ -108,6 +108,7 @@ const CustomerFeedback = () => {
       </h2>
       <Slider {...settings}>
         {feedbacks.map((item) => (
+          
           <div key={item.id}>
             <div className=" rounded-xl shadow-md border border-gray-50/35 mb-6 p-6 h-auto hover:scale-105 transition-all">
               <div className="flex items-center gap-4 mb-4">
