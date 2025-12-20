@@ -17,8 +17,9 @@ const UpdateUserStatusModal = ({ isOpen, closeModal, user, refetch }) => {
         reason: updatedStatus === "suspend" ? suspendReason : undefined,
         feedback: updatedStatus === "suspend" ? suspendFeedback : undefined,
       });
-      toast.success("Status Updated!!");
       refetch();
+      toast.success("Status Updated!!");
+      
     } catch (err) {
       console.log(err);
       toast.error(err?.response?.data?.message);

@@ -11,8 +11,8 @@ const PendingOrdersDataRow = ({ order, refetch }) => {
     axiosSecure
       .patch(`/orders-pending/${order._id}`, { status })
       .then(() => {
-        toast.success(`Order ${status} successfully`);
         refetch();
+        toast.success(`Order ${status} successfully`);
       })
       .catch(() => {
         toast.error("Failed to update order status");
@@ -51,7 +51,7 @@ const PendingOrdersDataRow = ({ order, refetch }) => {
           </Link>
           <button
             onClick={() => handleUpdateStatus("approved")}
-            disabled={status !== "approve"} 
+            disabled={status !== "approve"}
             className="inline-flex items-center rounded-full bg-green-500 px-4 py-2 text-xs font-semibold text-white shadow-sm transition hover:opacity-90 disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-green-500"
           >
             Approve
@@ -59,7 +59,7 @@ const PendingOrdersDataRow = ({ order, refetch }) => {
 
           <button
             onClick={() => handleUpdateStatus("rejected")}
-            disabled={status !== "approve"} 
+            disabled={status !== "approve"}
             className="inline-flex items-center rounded-full bg-red-500 px-4 py-2 text-xs font-semibold text-white shadow-sm transition hover:opacity-90 disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-red-500"
           >
             Reject

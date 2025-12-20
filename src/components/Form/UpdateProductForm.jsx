@@ -57,9 +57,9 @@ const UpdateProductForm = ({ product, closeModal, refetch }) => {
       .patch(`/products/${product._id}`, updatedProduct)
       .then((res) => {
         if (res.data.modifiedCount > 0) {
-          toast.success("Product updated successfully");
           refetch();
           closeModal();
+          toast.success("Product updated successfully");
         } else {
           toast.error("Something went wrong");
         }

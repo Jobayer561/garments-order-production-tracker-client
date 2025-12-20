@@ -8,7 +8,6 @@ import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import Profile from "../pages/Dashboard/Common/Profile";
 import Statistics from "../pages/Dashboard/Common/Statistics";
 import MainLayout from "../layouts/MainLayout";
-import ManageOrders from "../pages/Dashboard/Manager/ManageOrders";
 import MyOrders from "../pages/Dashboard/Buyer/MyOrders";
 import { createBrowserRouter } from "react-router";
 import AllProducts from "@/pages/AllProducts";

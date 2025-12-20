@@ -9,10 +9,9 @@ const CancelOrder = ({ isOpen, closeModal, order, refetch }) => {
     try {
       const response = await axiosSecure.delete(`/my-orders/${order._id}`);
       if (response.status === 200) {
-        toast.success("Order cancelled successfully");
         closeModal();
-
         refetch();
+        toast.success("Order cancelled successfully");
       }
     } catch (error) {
       console.error("Cancel error:", error);
@@ -38,7 +37,7 @@ const CancelOrder = ({ isOpen, closeModal, order, refetch }) => {
               You cannot undo once it&apos;s done!
             </p>
 
-            <hr  className="mt-6 text-gray-400 border border-dotted" />
+            <hr className="mt-6 text-gray-400 border border-dotted" />
 
             <div className="flex mt-4 justify-around">
               <button

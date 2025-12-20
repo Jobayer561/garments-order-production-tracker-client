@@ -108,10 +108,10 @@ const Navbar = () => {
           <NavLink className=" hover:text-[#3BADCD]" to="/">
             Home
           </NavLink>
-          <NavLink className=" hover:text-[#3BADCD]" to="/products">
+          <NavLink className=" hover:text-[#3BADCD]" to="/allProducts">
             All Products
           </NavLink>
-          <NavLink to="/about">About Us</NavLink>
+          <NavLink to="/about-us">About Us</NavLink>
           <NavLink to="/contact">Contact</NavLink>
 
           {user ? (
