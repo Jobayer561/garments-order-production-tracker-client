@@ -63,13 +63,12 @@ const UpdateUserStatusModal = ({ isOpen, closeModal, user, refetch }) => {
                     <option value="suspend">Suspend</option>
                   </select>
 
-                  {/* Show suspend reason & feedback only if suspended */}
                   {updatedStatus === "suspend" && (
                     <div className="flex flex-col gap-3 mt-2">
                       <select
                         value={suspendReason}
                         onChange={(e) => setSuspendReason(e.target.value)}
-                        className="w-full select select-warning"
+                        className="w-full select select-info"
                       >
                         <option value="">Select Suspend Reason</option>
                         <option value="spam">Spam</option>
@@ -82,7 +81,7 @@ const UpdateUserStatusModal = ({ isOpen, closeModal, user, refetch }) => {
                         placeholder="Enter feedback"
                         value={suspendFeedback}
                         onChange={(e) => setSuspendFeedback(e.target.value)}
-                        className="input input-bordered w-full"
+                        className="input input-info w-full"
                       />
                     </div>
                   )}

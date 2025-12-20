@@ -75,7 +75,7 @@ const UpdateProductForm = ({ product, closeModal, refetch }) => {
         <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label>Title</label>
+              <label className="text-gray-600">Title</label>
               <input
                 className="input input-info w-full mt-2"
                 {...register("title", { required: "Title is required" })}
@@ -88,7 +88,7 @@ const UpdateProductForm = ({ product, closeModal, refetch }) => {
             </div>
 
             <div>
-              <label>Category</label>
+              <label className="text-gray-600">Category</label>
               <select
                 className="select select-info w-full mt-2"
                 {...register("category", { required: "Category is required" })}
@@ -111,7 +111,7 @@ const UpdateProductForm = ({ product, closeModal, refetch }) => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label>Price</label>
+              <label className="text-gray-600">Price</label>
               <input
                 type="number"
                 step={"any"}
@@ -129,7 +129,7 @@ const UpdateProductForm = ({ product, closeModal, refetch }) => {
             </div>
 
             <div>
-              <label>Payment Option</label>
+              <labe className="text-gray-600">Payment Option</labe>
               <select
                 className="select select-info w-full mt-2"
                 {...register("payment", { required: true })}
@@ -143,7 +143,7 @@ const UpdateProductForm = ({ product, closeModal, refetch }) => {
 
           <div className="grid grid-cols-1 ">
             <div>
-              <label>Demo Video (Optional)</label>
+              <label className="text-gray-600">Demo Video (Optional)</label>
               <input
                 type="text"
                 placeholder="Demo video URL"
@@ -154,7 +154,7 @@ const UpdateProductForm = ({ product, closeModal, refetch }) => {
           </div>
 
           <div>
-            <label>Product Images</label>
+            <label className="text-gray-600">Product Images</label>
             <input
               className="input input-info w-full mt-2"
               {...register("images", { required: true })}
@@ -176,7 +176,7 @@ const UpdateProductForm = ({ product, closeModal, refetch }) => {
           )}
 
           <div>
-            <label>Description</label>
+            <label className="text-gray-600">Description</label>
             <textarea
               className="textarea textarea-info w-full mt-2"
               {...register("description", { required: true })}

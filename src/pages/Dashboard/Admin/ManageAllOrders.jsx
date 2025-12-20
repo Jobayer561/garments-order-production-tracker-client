@@ -132,7 +132,7 @@ const ManageAllOrders = () => {
                   <button
                     disabled={currentPage === 1}
                     onClick={() => setCurrentPage((p) => p - 1)}
-                    className="px-4 py-2 rounded bg-slate-200 disabled:opacity-50"
+                    className="px-4 py-2 rounded bg-slate-200 disabled:opacity-50 text-black"
                   >
                     Prev
                   </button>
@@ -144,7 +144,7 @@ const ManageAllOrders = () => {
                       className={`px-4 py-2 rounded ${
                         currentPage === page + 1
                           ? "bg-[#3badcd] text-white"
-                          : "bg-slate-100"
+                          : "bg-slate-100 text-black"
                       }`}
                     >
                       {page + 1}
@@ -154,7 +154,7 @@ const ManageAllOrders = () => {
                   <button
                     disabled={currentPage === totalPages}
                     onClick={() => setCurrentPage((p) => p + 1)}
-                    className="px-4 py-2 rounded bg-slate-200 disabled:opacity-50"
+                    className="px-4 py-2 rounded bg-slate-200 text-black disabled:opacity-50"
                   >
                     Next
                   </button>
