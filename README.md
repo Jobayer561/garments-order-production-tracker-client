@@ -1,110 +1,166 @@
 # Garments Order & Production Tracker System
 
+![Garments Order & Production Tracker Banner](./src/assets/images/DemoImage.png)
+
+---
 
 ## Table of Contents
-- [Project Overview](#project-overview)
-- [Live Demo](#live-demo)
-- [Technologies Used](#technologies-used)
-- [Features](#features)
-- [Dashboard Overview](#dashboard-overview)
-
+- Project Overview
+- Live Demo
+- Repositories
+- Technologies Used
+- Features
+- Dashboard Overview
+- Getting Started
+- Environment Variables
+- Why This Project?
 
 ---
 
 ## Project Overview
-The **Garments Order & Production Tracker System** is a web-based platform designed for small and medium-sized garment factories to efficiently manage their production workflow. This system simplifies the tracking of orders from buyers, monitors inventory, manages production stages (cutting, sewing, finishing), and ensures timely delivery.
+The **Garments Order & Production Tracker System** is a web-based platform designed for small and medium-sized garment factories to efficiently manage their production workflow.
 
-This project includes role-based access for **Admin**, **Manager**, and **Buyer** users, with secure authentication and real-time tracking of orders.
+The system helps track buyer orders, monitor inventory, manage production stages (cutting, sewing, finishing), and ensure timely delivery with real-time updates.
+
+It supports **role-based access** for **Admin**, **Manager**, and **Buyer**, ensuring secure and organized operations.
 
 ---
 
 ## Live Demo
-[Garments Order & Production Tracker System](https://garments-order-tracker.netlify.app)
+🔗 https://garments-order-tracker.netlify.app
 
-## Client Repository
-[GitHub - Client](https://github.com/Jobayer561/garments-order-production-tracker-client.git)
+---
 
-## Server Repository
-[GitHub - Server](https://github.com/Jobayer561/garments-order-production-tracker-server.git)
+## Repositories
+
+### Client Repository
+🔗 https://github.com/Jobayer561/garments-order-production-tracker-client.git
+
+### Server Repository
+🔗 https://github.com/Jobayer561/garments-order-production-tracker-server.git
 
 ---
 
 ## Technologies Used
-- **Frontend:** React.js, Tailwind CSS, DaisyUI, Framer Motion, Headless UI
-- **Backend:** Node.js, Express.js
-- **Database:** MongoDB
-- **Authentication:** Firebase Authentication (JWT)
-- **Payment Integration:** Stripe
-- **Deployment:** Netlify (Frontend), Node Server hosted on Vercel)
-- **Other Tools:** Axios, React Router, React Hook Form
+
+### Frontend
+- React.js
+- Tailwind CSS
+- DaisyUI
+- Framer Motion
+- Headless UI
+- React Router
+- React Hook Form
+- Axios
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+
+### Authentication & Payment
+- Firebase Authentication
+- JWT
+- Stripe Payment Gateway
+
+### Deployment
+- Netlify (Frontend)
+- Vercel (Backend)
 
 ---
 
 ## Features
 
-### General Features
-- Modern, responsive, and dynamic UI design.
-- Smooth animations with Framer Motion.
-- Role-based authentication: Admin, Manager, Buyer.
-- Fully integrated with backend using MongoDB.
-- Toast notifications for all actions.
-- Error handling and 404 page.
+### General
+- Fully responsive modern UI
+- Smooth animations using Framer Motion
+- Secure role-based authentication
+- MongoDB-powered backend
+- Toast notifications
+- Global error handling and 404 page
+- Dark / Light mode toggle
+
+---
 
 ### Home Page
-- Hero Banner with CTA buttons.
-- Featured Products section (6 cards from MongoDB).
-- How It Works section (Step-by-step process).
-- Customer Feedback carousel.
-- Extra 2 custom-designed sections.
+- Hero banner with CTA
+- Featured products (MongoDB data)
+- How it works section
+- Customer feedback carousel
+- Two additional custom sections
+
+---
 
 ### Authentication
-- **Login:** Email & password, Google Auth.
-- **Register:** Email & password, Name, Photo, Role selection (Buyer/Manager), Status (pending by default).
-- Password validation rules (uppercase, lowercase, min 6 characters).
+- Email & password login
+- Google authentication
+- Role selection (Buyer / Manager)
+- Pending approval system
+- Password validation rules
 
-### All Products Page
-- Product grid with image, name, category, price, quantity, and "View Details" button.
-- Search & filter functionality (optional).
+---
 
-### Product Details Page (Private Route)
-- Detailed product info including images/video, price, category, description, features.
-- Booking form with validations.
-- Conditional payment via Stripe or Cash on Delivery.
-- Booking saved in database.
+### Products
+- Product listing with image, price, category
+- Product details page (private route)
+- Order booking form with validation
+- Payment via Stripe or Cash on Delivery
+- Order saved in database
+
+---
 
 ### Admin Dashboard
-- Manage Users: Update roles, suspend users with reason.
-- Manage Products: Update, delete, show on homepage toggle.
-- All Orders: View details, filter by status.
-- Analytics dashboard (optional): Charts, statistics, reports.
+- Manage users (role update, suspend with reason)
+- Manage all products
+- View and filter all orders
+- Analytics-ready dashboard structure
+
+---
 
 ### Manager Dashboard
-- Add Product: Image preview, validations, save product info.
-- Manage Products: Update/delete products created by manager.
-- Pending Orders: Approve/Reject orders.
-- Approved Orders: Add tracking updates for production and shipping stages.
-- Profile: View personal info.
+- Add and manage products
+- Approve or reject orders
+- Update production & shipping status
+- Profile management
+
+---
 
 ### Buyer Dashboard
-- My Orders: View placed orders, cancel pending orders.
-- Track Order: Timeline of production & shipping.
-- Profile: View account info and any suspend feedback.
-
-### Additional Features
-- Loading spinners for API calls.
-- Responsive layout for mobile, tablet, and desktop.
-- Dynamic page titles.
-- Dark/Light theme toggle.
+- View personal orders
+- Cancel pending orders
+- Track order progress
+- Profile view with suspend feedback
 
 ---
 
 ## Dashboard Overview
 
-| Role    | Access Pages                                           |
-| ------- | ----------------------------------------------------- |
-| Admin   | Manage Users, All Products, All Orders               |
+| Role    | Access Pages |
+|--------|-------------|
+| Admin  | Manage Users, All Products, All Orders |
 | Manager | Add Products, Manage Products, Pending Orders, Profile |
-| Buyer   | My Orders, Track Order, Profile                       |
+| Buyer  | My Orders, Track Orders, Profile |
 
 ---
 
+## Getting Started
+
+Follow these steps to run the project locally.
+
+---
+
+### Prerequisites
+Make sure you have:
+- Node.js (v18+)
+- npm
+- MongoDB (Local or Atlas)
+
+---
+
+### Client Setup
+
+```bash
+git clone https://github.com/Jobayer561/garments-order-production-tracker-client.git
+cd garments-order-production-tracker-client
+npm install
+npm run dev
