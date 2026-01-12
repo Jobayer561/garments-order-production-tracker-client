@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
 
 const Profile = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
 
   const { data: profile } = useQuery({
     queryKey: ["profile", user?.email],
@@ -19,7 +21,7 @@ const Profile = () => {
       <div className=" shadow-xl rounded-2xl md:w-4/5 lg:w-2/5 overflow-hidden">
         <div className="h-40 bg-linear-to-r from-cyan-400 to-blue-500 relative">
           <img
-            src={profile?.image }
+            src={profile?.image}
             referrerPolicy="no-referrer"
             crossOrigin="anonymous"
             alt="profile"
@@ -27,31 +29,25 @@ const Profile = () => {
           />
         </div>
 
-        {/* Profile Content */}
         <div className="pt-16 pb-6 px-6 text-center">
-          <h2 className="text-2xl font-semibold ">
-            {profile?.name}
-          </h2>
+          <h2 className="text-2xl font-semibold ">{profile?.name}</h2>
           <p className="text-md text-gray-400 font-bold">{profile?.role}</p>
           <p className="mt-2 text-xs ">User ID: {user?.uid}</p>
 
-          {/* Buttons */}
-          <div className="mt-4 flex justify-center gap-4 flex-wrap">
-            <button className="bg-[#3badcd] text-white px-6 py-2  hover:bg-[#3badcd]/80 rounded-full transition">
+          <div className="mt-4 w-full flex justify-center">
+            <button
+              onClick={() => navigate("/dashboard/update-profile")}
+              className="bg-[#3badcd] text-white px-6 py-2 hover:bg-[#3badcd]/80 rounded-full transition"
+            >
               Update Profile
-            </button>
-            <button className="bg-[#3badcd] text-white px-6 py-2 rounded-full hover:bg-[#3badcd]/80 transition">
-              Change Password
             </button>
           </div>
 
-          {/* Email */}
           <p className="mt-4 text-slate-400 text-sm">
             <span className="font-semibold">Email:</span>{" "}
             {profile?.email || user?.email}
           </p>
 
-          {/* Reason & Feedback (conditionally) */}
           {profile?.status === "suspend" && (
             <div className="mt-4 bg-red-50 p-4 rounded-lg border border-red-200">
               <p className="font-semibold text-red-300">

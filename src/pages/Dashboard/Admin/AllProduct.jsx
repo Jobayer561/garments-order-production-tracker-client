@@ -13,7 +13,7 @@ const AllProduct = () => {
     queryKey: ["products"],
     queryFn: async () => {
       const result = await axios(`${import.meta.env.VITE_API_URL}/allProducts`);
-      return result.data;
+      return result.data.items;
     },
     keepPreviousData: true,
   });

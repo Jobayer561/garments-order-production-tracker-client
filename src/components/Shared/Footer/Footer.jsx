@@ -1,83 +1,185 @@
 import React from "react";
 import twitter from "../../../assets/images/twitter.png";
 import { Link } from "react-router";
+import { Mail, Phone, MapPin, Facebook, Youtube, Linkedin } from "lucide-react";
+
 const Footer = () => {
   return (
-    <footer className="bg-base-200 text-base-content px-10 py-12">
-      <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 text-center md:text-left">
-        <div className="flex flex-col items-center md:items-start gap-3">
-          <Link to="/" className="logo text-xl font-semibold flex items-center">
-            <h1 className="text-[#3BADCD]">GarmentsFLow</h1>
-          </Link>
-
-          <p className="text-gray-500 text-md max-w-xs">
-            GarmentsFlow is a modern web-based system that streamlines the
-            garment manufacturing process. From receiving Buyer orders to
-            tracking every production stage.
-          </p>
-        </div>
-
-        <div className="flex flex-col items-center md:items-start">
-          <h1 className="font-semibold text-lg mb-2">Quick Links</h1>
-          <nav className="flex flex-col gap-4 text-gray-500 text-lg">
-            <Link to={"/about-us"} className="link link-hover">
-              About us
-            </Link>
-            <Link to={"/contact"} className="link link-hover">
-              Contact
-            </Link>
-            <a className="link link-hover">Jobs</a>
-            <a className="link link-hover">Press kit</a>
-          </nav>
-        </div>
-        <div className="flex flex-col items-center md:items-start">
-          <h1 className="font-semibold text-lg mb-2">Services</h1>
-          <nav className="flex flex-col gap-4 text-gray-500 text-lg">
-            <a className="link link-hover">Branding</a>
-            <a className="link link-hover">Design</a>
-            <a className="link link-hover">Marketing</a>
-            <a className="link link-hover">Advertisement</a>
-          </nav>
-        </div>
-
-        <div className="flex flex-col items-center md:items-start gap-5">
-          <h1 className="font-semibold text-lg mb-2">Social Media</h1>
-
-          <div className="flex gap-5">
-            <img
-              className="w-7 h-7 cursor-pointer bg-white"
-              src={twitter}
-              alt=""
-            />
-
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              className="fill-current cursor-pointer"
-              viewBox="0 0 24 24"
-            >
-              <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
-            </svg>
-
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              className="fill-current cursor-pointer"
-              viewBox="0 0 24 24"
-            >
-              <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-            </svg>
-          </div>
-        </div>
+    <footer className="relative bg-gradient-to-b from-slate-900 via-slate-900 to-black text-slate-300 px-6 py-16 overflow-hidden">
+      {/* Decorative Elements */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-[#3BADCD] rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="mt-10 text-center">
-        <p className="text-sm text-gray-500">
-          Copyright © {new Date().getFullYear()} — All rights reserved by{" "}
-          <span className="font-semibold text-[#3BADCD]">GarmentsFlow</span>
-        </p>
+      <div className="relative max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          {/* Company Info */}
+          <div className="space-y-5">
+            <Link to="/" className="inline-block group">
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-[#3BADCD] via-cyan-400 to-[#3BADCD] bg-clip-text text-transparent hover:scale-105 transition-transform">
+                GarmentsFlow
+              </h1>
+            </Link>
+            <p className="text-slate-400 text-sm leading-relaxed">
+              A modern web-based system that streamlines the garment
+              manufacturing process. From receiving buyer orders to tracking
+              every production stage.
+            </p>
+            <div className="pt-3">
+              <p className="text-xs text-slate-500 uppercase tracking-wider mb-3 font-semibold">
+                Follow Us
+              </p>
+              <div className="flex gap-3">
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-2.5 bg-slate-800/50 backdrop-blur-sm hover:bg-gradient-to-br hover:from-[#3BADCD] hover:to-cyan-500 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-1"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                </a>
+                <a
+                  href="https://youtube.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-2.5 bg-slate-800/50 backdrop-blur-sm hover:bg-gradient-to-br hover:from-[#3BADCD] hover:to-cyan-500 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-1"
+                  aria-label="YouTube"
+                >
+                  <Youtube className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                </a>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-2.5 bg-slate-800/50 backdrop-blur-sm hover:bg-gradient-to-br hover:from-[#3BADCD] hover:to-cyan-500 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-1"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                </a>
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-2.5 bg-slate-800/50 backdrop-blur-sm hover:bg-gradient-to-br hover:from-[#3BADCD] hover:to-cyan-500 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-1"
+                  aria-label="Twitter"
+                >
+                  <img
+                    src={twitter}
+                    alt="Twitter"
+                    className="h-5 w-5 bg-white group-hover:scale-110 transition-transform"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div className="space-y-5">
+            <h2 className="text-lg font-bold text-white tracking-tight">
+              Quick Links
+            </h2>
+            <nav className="flex flex-col gap-3">
+              <Link
+                to="/"
+                className="text-slate-400 hover:text-cyan-400 transition-all duration-300 flex items-center gap-2 group hover:translate-x-1"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-slate-600 group-hover:bg-cyan-400 group-hover:shadow-lg group-hover:shadow-cyan-400/50 transition-all"></span>
+                Home
+              </Link>
+              <Link
+                to="/allProducts"
+                className="text-slate-400 hover:text-cyan-400 transition-all duration-300 flex items-center gap-2 group hover:translate-x-1"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-slate-600 group-hover:bg-cyan-400 group-hover:shadow-lg group-hover:shadow-cyan-400/50 transition-all"></span>
+                All Products
+              </Link>
+              <Link
+                to="/about-us"
+                className="text-slate-400 hover:text-cyan-400 transition-all duration-300 flex items-center gap-2 group hover:translate-x-1"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-slate-600 group-hover:bg-cyan-400 group-hover:shadow-lg group-hover:shadow-cyan-400/50 transition-all"></span>
+                About Us
+              </Link>
+              <Link
+                to="/contact"
+                className="text-slate-400 hover:text-cyan-400 transition-all duration-300 flex items-center gap-2 group hover:translate-x-1"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-slate-600 group-hover:bg-cyan-400 group-hover:shadow-lg group-hover:shadow-cyan-400/50 transition-all"></span>
+                Contact
+              </Link>
+              <Link
+                to="/dashboard"
+                className="text-slate-400 hover:text-cyan-400 transition-all duration-300 flex items-center gap-2 group hover:translate-x-1"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-slate-600 group-hover:bg-cyan-400 group-hover:shadow-lg group-hover:shadow-cyan-400/50 transition-all"></span>
+                Dashboard
+              </Link>
+            </nav>
+          </div>
+
+          {/* Contact Info */}
+          <div className="space-y-5">
+            <h2 className="text-lg font-bold text-white tracking-tight">
+              Contact Us
+            </h2>
+            <div className="flex flex-col gap-4">
+              <a
+                href="mailto:info@garmentsflow.com"
+                className="flex items-start gap-3 text-slate-400 hover:text-cyan-400 transition-all duration-300 group"
+              >
+                <div className="p-1.5 bg-slate-800/50 rounded-lg group-hover:bg-cyan-500/20 transition-all">
+                  <Mail className="h-4 w-4 shrink-0 group-hover:scale-110 transition-transform" />
+                </div>
+                <span className="text-sm">info@garmentsflow.com</span>
+              </a>
+              <a
+                href="tel:+8801234567890"
+                className="flex items-start gap-3 text-slate-400 hover:text-cyan-400 transition-all duration-300 group"
+              >
+                <div className="p-1.5 bg-slate-800/50 rounded-lg group-hover:bg-cyan-500/20 transition-all">
+                  <Phone className="h-4 w-4 shrink-0 group-hover:scale-110 transition-transform" />
+                </div>
+                <span className="text-sm">+880 1234-567890</span>
+              </a>
+              <div className="flex items-start gap-3 text-slate-400">
+                <div className="p-1.5 bg-slate-800/50 rounded-lg">
+                  <MapPin className="h-4 w-4 shrink-0" />
+                </div>
+                <span className="text-sm">
+                  123 Garment Street, Dhaka 1000, Bangladesh
+                </span>
+              </div>
+            </div>
+            <div className="pt-3 pl-1">
+              <p className="text-xs text-slate-500 space-y-1">
+                <span className="font-semibold text-slate-400 block mb-2">
+                  Business Hours
+                </span>
+                <span className="block">Mon - Fri: 9:00 AM - 6:00 PM</span>
+                <span className="block">Sat: 10:00 AM - 4:00 PM</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="mt-16 pt-8 border-t border-slate-800/50">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-slate-500 text-center md:text-left">
+              © {new Date().getFullYear()}{" "}
+              <span className="font-bold bg-gradient-to-r from-[#3BADCD] to-cyan-400 bg-clip-text text-transparent">
+                GarmentsFlow
+              </span>
+              . All rights reserved.
+            </p>
+            <p className="text-sm text-slate-500 flex items-center gap-2">
+              Made with <span className="text-red-500 animate-pulse">❤️</span>{" "}
+              for the Garment Industry
+            </p>
+          </div>
+        </div>
       </div>
     </footer>
   );

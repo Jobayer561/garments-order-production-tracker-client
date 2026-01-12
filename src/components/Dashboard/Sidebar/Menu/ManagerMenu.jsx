@@ -13,7 +13,7 @@ const ManagerMenu = () => {
       />
       <MenuItem
         icon={MdHomeWork}
-        label="Manage Products"
+        label="ManageProducts"
         address="manage-products"
       />
       <MenuItem

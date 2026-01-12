@@ -6,6 +6,7 @@ import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../layouts/DashboardLayout";
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import Profile from "../pages/Dashboard/Common/Profile";
+import UpdateProfile from "../pages/Dashboard/Common/UpdateProfile";
 import Statistics from "../pages/Dashboard/Common/Statistics";
 import MainLayout from "../layouts/MainLayout";
 import MyOrders from "../pages/Dashboard/Buyer/MyOrders";
@@ -43,11 +44,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/allProducts/:id",
-        element: (
-          <PrivateRoute>
-            <ProductDetails />,
-          </PrivateRoute>
-        ),
+        element: <ProductDetails />,
       },
       { path: "/about-us", element: <AboutUs /> },
       { path: "/contact", element: <Contact /> },
@@ -126,6 +123,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Profile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "update-profile",
+        element: (
+          <PrivateRoute>
+            <UpdateProfile />
           </PrivateRoute>
         ),
       },

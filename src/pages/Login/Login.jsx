@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { saveOrUpdateUser } from "../../utils";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { FaEye } from "react-icons/fa6";
 import { IoEyeOff } from "react-icons/io5";
 import { LuLoader } from "react-icons/lu";
@@ -22,8 +22,23 @@ const Login = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
+  const demoOptions = useMemo(
+    () => [
+      { label: "Select demo", email: "", password: "" },
+      { label: "Admin", email: "jobayer9561@gmail.com", password: "Abcdef" },
+      {
+        label: "Manager",
+        email: "jobayernayeem516@gmail.com",
+        password: "Abcdef",
+      },
+      { label: "Buyer", email: "jobayer3085@gmail.com", password: "Abcdef" },
+    ],
+    []
+  );
+  const [selectedDemo, setSelectedDemo] = useState(demoOptions[0]);
 
   if (loading) return <LoadingSpinner />;
   if (user) return <Navigate to={from} replace={true} />;
@@ -71,6 +86,56 @@ const Login = () => {
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <div>
+            <label className="block mb-2 text-sm text-gray-400">
+              Demo role
+            </label>
+            <select
+              className="w-full rounded-full border border-gray-300 bg-gray-100 px-4 py-3 text-sm focus:outline-none"
+              value={selectedDemo.label}
+              onChange={async (e) => {
+                const next =
+                  demoOptions.find((opt) => opt.label === e.target.value) ||
+                  demoOptions[0];
+                setSelectedDemo(next);
+                if (next.email) {
+                  setValue("email", next.email, {
+                    shouldValidate: true,
+                    shouldDirty: true,
+                  });
+                  setValue("password", next.password, {
+                    shouldValidate: true,
+                    shouldDirty: true,
+                  });
+
+                  try {
+                    await signIn(next.email, next.password);
+                    navigate(from, { replace: true });
+                    toast.success("Login Successful");
+                  } catch (err) {
+                    console.log(err);
+                    toast.error(err?.message);
+                  }
+                } else {
+                  setValue("email", "", {
+                    shouldValidate: true,
+                    shouldDirty: true,
+                  });
+                  setValue("password", "", {
+                    shouldValidate: true,
+                    shouldDirty: true,
+                  });
+                }
+              }}
+            >
+              {demoOptions.map((opt) => (
+                <option key={opt.label} value={opt.label}>
+                  {opt.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
           <div>
             <label htmlFor="email" className="block mb-2 text-sm text-gray-400">
               Email address
