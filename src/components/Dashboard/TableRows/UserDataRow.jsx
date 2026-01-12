@@ -7,13 +7,13 @@ const UserDataRow = ({ refetch, user }) => {
   return (
     <tr className="hover:bg-white/5 transition-colors">
       <td className="px-5 py-5 border-b border-gray-300 text-sm">
-        <p className="font-semibold">{user?.name}</p>
+        <p className="font-semibold text-gray-500">{user?.name}</p>
       </td>
       <td className="px-5 py-5 border-b border-gray-300 text-sm">
-        <p className="font-semibold ">{user?.email}</p>
+        <p className="font-semibold text-gray-500">{user?.email}</p>
       </td>
       <td className="px-5 py-5 border-b border-gray-300 text-sm">
-        <p className="font-semibold ">{user?.role}</p>
+        <p className="font-semibold text-gray-500">{user?.role}</p>
       </td>
       <td className="px-5 py-5 border-b border-gray-300 text-sm">
         <span

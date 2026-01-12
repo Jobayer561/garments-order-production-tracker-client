@@ -20,16 +20,16 @@ const PendingOrdersDataRow = ({ order, refetch }) => {
   };
   return (
     <tr>
-      <td className="px-6 py-4 text-sm  border-b border-gray-300 font-semibold align-middle truncate max-w-[150px]">
+      <td className="px-6 py-4 text-sm  border-b border-gray-300 font-semibold align-middle truncate max-w-[150px] text-gray-500">
         {order?._id}
       </td>
-      <td className="px-6 py-4 text-sm  border-b border-gray-300 font-semibold align-middle ">
+      <td className="px-6 py-4 text-sm  border-b border-gray-300 font-semibold align-middle text-gray-500">
         {order?.buyer?.name}
       </td>
-      <td className="px-6 py-4 text-sm  border-b border-gray-300 font-semibold align-middle ">
+      <td className="px-6 py-4 text-sm  border-b border-gray-300 font-semibold align-middle text-gray-500">
         {order?.buyer?.email}
       </td>
-      <td className="px-6 py-4 text-sm  border-b border-gray-300 font-semibold align-middle ">
+      <td className="px-6 py-4 text-sm  border-b border-gray-300 font-semibold align-middle text-gray-500">
         {order?.product.name}
       </td>
       <td className="px-5 py-4 border-b border-slate-200  text-sm text-center">
@@ -37,7 +37,7 @@ const PendingOrdersDataRow = ({ order, refetch }) => {
           {order?.quantity}
         </span>
       </td>
-      <td className="px-6 py-4 text-sm  border-b border-gray-300 font-semibold align-middle whitespace-nowrap ">
+      <td className="px-6 py-4 text-sm  border-b border-gray-300 font-semibold align-middle whitespace-nowrap text-gray-500">
         {order?.createdAt}
       </td>
 

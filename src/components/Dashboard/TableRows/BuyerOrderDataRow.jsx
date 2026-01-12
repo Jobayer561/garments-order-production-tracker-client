@@ -9,11 +9,11 @@ const BuyerOrderDataRow = ({ order, refetch }) => {
   return (
     <tr className=" transition-colors duration-150">
       <td className="px-5 py-4 border-b border-slate-200  text-sm font-medium  truncate max-w-[150px]">
-        <span className="font-medium text-xs ">{order._id}</span>
+        <span className="font-medium text-xs text-gray-500">{order._id}</span>
       </td>
 
       <td className="px-5 py-4 border-b border-slate-200  text-sm">
-        <p className="  font-medium truncate max-w-xs">
+        <p className="font-medium truncate max-w-xs text-gray-500">
           {order?.product?.name}
         </p>
       </td>
@@ -41,10 +41,10 @@ const BuyerOrderDataRow = ({ order, refetch }) => {
       </td>
 
       <td className="px-5 py-4 border-b border-slate-200 font-semibold  text-sm">
-        <p className="">{order?.paymentMethod}</p>
+        <p className="text-gray-500">{order?.paymentMethod}</p>
       </td>
       <td className="px-5 py-4 border-b border-slate-200 font-semibold  text-sm">
-        <p className="">{order?.payment_status}</p>
+        <p className="text-gray-500">{order?.payment_status}</p>
       </td>
 
       <td className="px-5 py-4 border-b border-slate-200  text-sm">

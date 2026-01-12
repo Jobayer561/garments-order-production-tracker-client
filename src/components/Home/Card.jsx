@@ -52,7 +52,7 @@ const Card = ({ product, index }) => {
           <h3 className="text-lg font-semibold text-gray-400 dark:text-white line-clamp-1">
             {title}
           </h3>
-          <p className="text-sm text-gray-500 dark:text-gray-300 line-clamp-3 leading-relaxed">
+          <p className="text-sm text-gray-500  line-clamp-3 leading-relaxed">
             {description}
           </p>
         </div>

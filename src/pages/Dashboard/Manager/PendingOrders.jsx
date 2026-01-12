@@ -28,7 +28,7 @@ const PendingOrders = () => {
               <h1 className="text-3xl sm:text-2xl font-bold mb-2 text-center text-[#3badcd]">
                 Pending Orders
               </h1>
-              <p className="font-semibold">
+              <p className="font-semibold text-gray-500">
                 Total Pending:{" "}
                 <span className="font-bold text-[#3badcd]">
                   {orders.length}
@@ -49,25 +49,25 @@ const PendingOrders = () => {
                 <table className="w-full text-sm">
                   <thead className="backdrop-blur border-b border-gray-200">
                     <tr>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs ">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-600 dark:text-gray-400">
                         Order Id
                       </th>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs ">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-600 dark:text-gray-400">
                         User
                       </th>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs ">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-600 dark:text-gray-400">
                         Email
                       </th>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs ">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-600 dark:text-gray-400">
                         Product
                       </th>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs ">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-600 dark:text-gray-400">
                         Quantity
                       </th>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs ">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-600 dark:text-gray-400">
                         Order Date
                       </th>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs ">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-600 dark:text-gray-400">
                         Actions
                       </th>
                     </tr>
@@ -79,7 +79,7 @@ const PendingOrders = () => {
                         <td colSpan={7} className="px-6 py-12 text-center">
                           <div className="flex flex-col items-center gap-2">
                             <svg
-                              className="h-12 w-12"
+                              className="h-12 w-12 text-gray-500"
                               fill="none"
                               stroke="currentColor"
                               viewBox="0 0 24 24"
@@ -91,7 +91,9 @@ const PendingOrders = () => {
                                 d="M17 20h5v-2a3 3 0 00-5.856-1.487M15 6h-6M9 20h6m0 0h5v-2a3 3 0 00-5.856-1.487M9 6a3 3 0 11-6 0 3 3 0 016 0z"
                               />
                             </svg>
-                            <p className="font-medium">No pending orders</p>
+                            <p className="font-medium text-gray-500">
+                              No pending orders
+                            </p>
                           </div>
                         </td>
                       </tr>
@@ -107,8 +109,6 @@ const PendingOrders = () => {
                   </tbody>
                 </table>
               </div>
-
-         
             </>
           )}
         </div>

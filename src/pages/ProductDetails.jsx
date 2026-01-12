@@ -72,11 +72,13 @@ const ProductDetails = () => {
                     {category}
                   </p>
                 </div>
-                <div className="rounded-2xl bg-[#3BADCD]/10 border border-[#3BADCD]/20 px-4 py-3 shadow-sm text-[#0f172a] dark:text-white">
-                  <p className="text-gray-600 dark:text-gray-200">
+                <div className="rounded-2xl bg-white/90 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-4 py-3 shadow-sm">
+                  <p className="text-gray-600 dark:text-gray-300">
                     Availability
                   </p>
-                  <p className="font-semibold">{qtyLabel}</p>
+                  <p className="font-semibold text-slate-900 dark:text-white">
+                    {qtyLabel}
+                  </p>
                 </div>
               </div>
             </motion.div>

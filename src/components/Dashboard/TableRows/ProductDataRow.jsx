@@ -35,17 +35,17 @@ const ProductDataRow = ({ product, refetch }) => {
         </div>
       </td>
       <td className="px-5 py-5 border-b border-gray-300 text-sm">
-        <p className=" font-semibold">{title}</p>
+        <p className="font-semibold text-gray-500">{title}</p>
       </td>
       <td className="px-5 py-5 border-b border-gray-300 text-sm">
-        <p className=" font-semibold">{category}</p>
+        <p className="font-semibold text-gray-500">{category}</p>
       </td>
 
       <td className="px-5 py-5 border-b border-gray-300 text-sm">
-        <p className=" font-semibold">{price}</p>
+        <p className="font-semibold text-gray-500">{price}</p>
       </td>
       <td className="px-5 py-5 border-b border-gray-300 text-sm">
-        <p className=" font-semibold">{paymentOption}</p>
+        <p className="font-semibold text-gray-500">{paymentOption}</p>
       </td>
 
       <td className="px-5 py-5 border-b border-gray-300 text-sm">

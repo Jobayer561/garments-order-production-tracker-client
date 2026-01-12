@@ -46,7 +46,7 @@ const ManageAllOrders = () => {
               <h1 className="text-2xl font-bold text-[#3badcd] mb-2">
                 All Orders
               </h1>
-              <p className="font-semibold">
+              <p className="font-semibold text-gray-500">
                 Total Orders:{" "}
                 <span className="text-[#3badcd] font-bold">{totalOrders}</span>
               </p>
@@ -56,25 +56,25 @@ const ManageAllOrders = () => {
           <div className="rounded-2xl shadow-sm border border-gray-300 p-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-semibold mb-2">
+                <label className="block text-sm font-semibold mb-2 text-gray-500">
                   Search Orders
                 </label>
                 <input
                   type="search"
                   placeholder="Search by user or email..."
                   onChange={(e) => setSearchText(e.target.value)}
-                  className="w-full px-4 py-3 rounded-lg input input-info  "
+                  className="w-full px-4 py-3 rounded-lg input input-info bg-white dark:bg-slate-800 dark:border-slate-700 text-gray-900 dark:text-gray-100"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-2">
+                <label className="block text-sm font-semibold mb-2 text-gray-500">
                   Filter By Status
                 </label>
                 <select
                   value={status}
                   onChange={(e) => setStatus(e.target.value)}
-                  className="w-full px-4 py-3 rounded-lg select select-info focus:ring-2 focus:ring-[#3badcd]"
+                  className="w-full px-4 py-3 rounded-lg select select-info bg-white dark:bg-slate-800 dark:border-slate-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-[#3badcd]"
                 >
                   <option value="">All Orders</option>
                   <option value="pending">Pending</option>
@@ -110,7 +110,10 @@ const ManageAllOrders = () => {
                   <tbody>
                     {orders.length === 0 ? (
                       <tr>
-                        <td colSpan={7} className="text-center py-10">
+                        <td
+                          colSpan={7}
+                          className="text-center py-10 text-gray-500"
+                        >
                           No orders found
                         </td>
                       </tr>

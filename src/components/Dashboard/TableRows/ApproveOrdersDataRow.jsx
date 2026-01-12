@@ -7,19 +7,19 @@ const ApproveOrdersDataRow = ({ order, refetch }) => {
 
   return (
     <tr>
-      <td className="px-6 py-4 text-sm border-b border-gray-300 font-semibold truncate max-w-[150px]">
+      <td className="px-6 py-4 text-sm border-b border-gray-300 font-semibold truncate max-w-[150px] text-gray-500">
         {order?._id}
       </td>
 
-      <td className="px-6 py-4 text-sm border-b border-gray-300 font-semibold">
+      <td className="px-6 py-4 text-sm border-b border-gray-300 font-semibold text-gray-500">
         {order?.buyer?.name}
       </td>
 
-      <td className="px-6 py-4 text-sm border-b border-gray-300 font-semibold">
+      <td className="px-6 py-4 text-sm border-b border-gray-300 font-semibold text-gray-500">
         {order?.buyer?.email}
       </td>
 
-      <td className="px-6 py-4 text-sm border-b border-gray-300 font-semibold">
+      <td className="px-6 py-4 text-sm border-b border-gray-300 font-semibold text-gray-500">
         {order?.product?.name}
       </td>
 
@@ -29,7 +29,7 @@ const ApproveOrdersDataRow = ({ order, refetch }) => {
         </span>
       </td>
 
-      <td className="px-6 py-4 text-sm border-b border-gray-300 ">
+      <td className="px-6 py-4 text-sm border-b border-gray-300 text-gray-500">
         {order?.approvedAt}
       </td>
       <td className="px-6 py-4 text-sm border-b border-gray-300 whitespace-nowrap">

@@ -26,7 +26,9 @@ const AllProduct = () => {
               <h1 className="text-3xl sm:text-2xl font-bold mb-2 text-[#3badcd]">
                 All Products
               </h1>
-              <p className="font-semibold">Total Products: {products.length}</p>
+              <p className="font-semibold text-gray-500">
+                Total Products: {products.length}
+              </p>
             </div>
           </div>
         </div>
@@ -42,26 +44,26 @@ const AllProduct = () => {
                 <table className="min-w-full text-sm">
                   <thead className="backdrop-blur border-b border-slate-200">
                     <tr>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-500">
                         Image
                       </th>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-500">
                         Product Name
                       </th>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-500">
                         Price
                       </th>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-500">
                         Category
                       </th>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-500">
                         Created By
                       </th>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-500">
                         Show On Home
                       </th>
 
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-500">
                         Actions
                       </th>
                     </tr>
@@ -70,7 +72,10 @@ const AllProduct = () => {
                   <tbody className="divide-y divide-slate-200/20 [&>tr]:transition [&>tr]:bg-white/5 [&>tr:hover]:bg-white/10">
                     {products.length === 0 ? (
                       <tr>
-                        <td colSpan={7} className="px-6 py-12 text-center">
+                        <td
+                          colSpan={7}
+                          className="px-6 py-12 text-center text-gray-500"
+                        >
                           No products found
                         </td>
                       </tr>

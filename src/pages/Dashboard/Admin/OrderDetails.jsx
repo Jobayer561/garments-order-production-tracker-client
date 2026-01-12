@@ -36,36 +36,52 @@ const OrderDetails = () => {
   const { name: productName, category, image } = product || {};
 
   return (
-    <div className="min-h-screen  p-8">
+    <div className="min-h-screen p-8">
       <h1 className="text-3xl font-bold text-[#3badcd] mb-6 text-center">
         Order Details
       </h1>
 
-      <div className=" shadow-lg rounded-lg p-6 space-y-6">
+      <div className="shadow-lg rounded-lg p-6 space-y-6 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
         <section>
           <h2 className="text-xl font-semibold text-[#3badcd] mb-4">
             Order Information
           </h2>
           <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
-            <p>
-              <span className="font-medium">Order ID:</span> {_id}{" "}
+            <p className="text-gray-700 dark:text-gray-200">
+              <span className="font-medium text-gray-900 dark:text-gray-100">
+                Order ID:
+              </span>{" "}
+              {_id}{" "}
             </p>
-            <p>
-              <span className="font-medium">Transaction ID:</span>{" "}
+            <p className="text-gray-700 dark:text-gray-200">
+              <span className="font-medium text-gray-900 dark:text-gray-100">
+                Transaction ID:
+              </span>{" "}
               {transactionId}
             </p>
-            <p>
-              <span className="font-medium">Status:</span> {status}
+            <p className="text-gray-700 dark:text-gray-200">
+              <span className="font-medium text-gray-900 dark:text-gray-100">
+                Status:
+              </span>{" "}
+              {status}
             </p>
-            <p>
-              <span className="font-medium">Created At:</span> {createdAt}
+            <p className="text-gray-700 dark:text-gray-200">
+              <span className="font-medium text-gray-900 dark:text-gray-100">
+                Created At:
+              </span>{" "}
+              {createdAt}
             </p>
-            <p>
-              <span className="font-medium">Payment Method:</span>{" "}
+            <p className="text-gray-700 dark:text-gray-200">
+              <span className="font-medium text-gray-900 dark:text-gray-100">
+                Payment Method:
+              </span>{" "}
               {paymentMethod}
             </p>
-            <p>
-              <span className="font-medium">Total Price:</span>$ {totalPrice}
+            <p className="text-gray-700 dark:text-gray-200">
+              <span className="font-medium text-gray-900 dark:text-gray-100">
+                Total Price:
+              </span>
+              $ {totalPrice}
             </p>
           </div>
         </section>
@@ -75,11 +91,17 @@ const OrderDetails = () => {
             Buyer Information
           </h2>
           <div className="grid grid-cols-1 gap-4 ">
-            <p>
-              <span className="font-medium">Name:</span> {buyerName}
+            <p className="text-gray-700 dark:text-gray-200">
+              <span className="font-medium text-gray-900 dark:text-gray-100">
+                Name:
+              </span>{" "}
+              {buyerName}
             </p>
-            <p>
-              <span className="font-medium">Email:</span> {buyerEmail}
+            <p className="text-gray-700 dark:text-gray-200">
+              <span className="font-medium text-gray-900 dark:text-gray-100">
+                Email:
+              </span>{" "}
+              {buyerEmail}
             </p>
           </div>
         </section>
@@ -95,15 +117,24 @@ const OrderDetails = () => {
               className="w-20 h-20 rounded-md border"
             />
             <div className="track">
-              <p>
-                <span className="font-medium">Product:</span> {productName}
+              <p className="text-gray-700 dark:text-gray-200">
+                <span className="font-medium text-gray-900 dark:text-gray-100">
+                  Product:
+                </span>{" "}
+                {productName}
               </p>
-              <p>
-                <span className="font-medium">Category:</span> {category}
+              <p className="text-gray-700 dark:text-gray-200">
+                <span className="font-medium text-gray-900 dark:text-gray-100">
+                  Category:
+                </span>{" "}
+                {category}
               </p>
 
-              <p>
-                <span className="font-medium">Quantity:</span> {quantity}
+              <p className="text-gray-700 dark:text-gray-200">
+                <span className="font-medium text-gray-900 dark:text-gray-100">
+                  Quantity:
+                </span>{" "}
+                {quantity}
               </p>
             </div>
           </div>
@@ -114,7 +145,9 @@ const OrderDetails = () => {
               Tracking History
             </h2>
             {trackingHistory.length === 0 ? (
-              <p className="text-gray-500">No tracking updates yet.</p>
+              <p className="text-gray-500 dark:text-gray-400">
+                No tracking updates yet.
+              </p>
             ) : (
               trackingHistory.map(
                 ({
@@ -128,12 +161,20 @@ const OrderDetails = () => {
                     key={_id}
                     className="border-l-4 border-[#3badcd] pl-3 py-2  rounded-md"
                   >
-                    <p className="font-semibold ">
+                    <p className="font-semibold text-gray-800 dark:text-gray-100">
                       Status: {trackingStatus}
                     </p>
-                    {location && <p>Location: {location}</p>}
-                    {note && <p>Note: {note}</p>}
-                    <p className="text-sm ">
+                    {location && (
+                      <p className="text-gray-700 dark:text-gray-200">
+                        Location: {location}
+                      </p>
+                    )}
+                    {note && (
+                      <p className="text-gray-700 dark:text-gray-200">
+                        Note: {note}
+                      </p>
+                    )}
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
                       {new Date(createdAt).toLocaleString()}
                     </p>
                   </div>

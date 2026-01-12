@@ -32,8 +32,8 @@ const MyOrders = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-8 sm:py-12">
           <div className="mb-8">
-            <h1 className="text-3xl font-bold  text-[#3badcd]">My Orders</h1>
-            <p className="mt-2 ">Track and manage your orders</p>
+            <h1 className="text-3xl font-bold text-[#3badcd]">My Orders</h1>
+            <p className="mt-2 text-gray-500">Track and manage your orders</p>
           </div>
 
           <div className="overflow-x-auto rounded-xl border border-slate-200  shadow-sm">
@@ -42,43 +42,43 @@ const MyOrders = () => {
                 <tr>
                   <th
                     scope="col"
-                    className="px-5 py-4 text-left text-xs font-semibold border-b border-gray-300   uppercase tracking-wider"
+                    className="px-5 py-4 text-left text-gray-500 text-xs font-semibold border-b border-gray-300 uppercase tracking-wider"
                   >
                     Order ID
                   </th>
                   <th
                     scope="col"
-                    className="px-5 py-4 text-left text-xs font-semibold border-b border-gray-300   uppercase tracking-wider"
+                    className="px-5 py-4 text-left text-gray-500 text-xs font-semibold border-b border-gray-300 uppercase tracking-wider"
                   >
                     Product
                   </th>
                   <th
                     scope="col"
-                    className="px-5 py-4 text-center text-xs font-semibold border-b border-gray-300   uppercase tracking-wider"
+                    className="px-5 py-4 text-center text-gray-500 text-xs font-semibold border-b border-gray-300 uppercase tracking-wider"
                   >
                     Quantity
                   </th>
                   <th
                     scope="col"
-                    className="px-5 py-4 text-left text-xs font-semibold border-b border-gray-300   uppercase tracking-wider"
+                    className="px-5 py-4 text-left text-gray-500 text-xs font-semibold border-b border-gray-300 uppercase tracking-wider"
                   >
                     Status
                   </th>
                   <th
                     scope="col"
-                    className="px-5 py-4 text-left text-xs font-semibold border-b border-gray-300   uppercase tracking-wider"
+                    className="px-5 py-4 text-left text-gray-500 text-xs font-semibold border-b border-gray-300 uppercase tracking-wider"
                   >
                     Payment
                   </th>
                   <th
                     scope="col"
-                    className="px-5 py-4 text-left text-xs font-semibold border-b border-gray-300   uppercase tracking-wider"
+                    className="px-5 py-4 text-left text-gray-500 text-xs font-semibold border-b border-gray-300 uppercase tracking-wider"
                   >
                     Payment Status
                   </th>
                   <th
                     scope="col"
-                    className="px-5 py-4 text-left text-xs font-semibold border-b border-gray-300  uppercase tracking-wider"
+                    className="px-5 py-4 text-left text-gray-500 text-xs font-semibold border-b border-gray-300 uppercase tracking-wider"
                   >
                     Action
                   </th>
@@ -89,9 +89,9 @@ const MyOrders = () => {
                   <tr>
                     <td colSpan={6} className="px-6 py-16 text-center">
                       <div className="flex flex-col items-center justify-center gap-4">
-                        <div className="p-4 rounded-full ">
+                        <div className="p-4 rounded-full">
                           <svg
-                            className="h-8 w-8 "
+                            className="h-8 w-8 text-gray-500"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -105,10 +105,10 @@ const MyOrders = () => {
                           </svg>
                         </div>
                         <div>
-                          <p className="text-lg font-semibold  ">
+                          <p className="text-lg font-semibold text-gray-500">
                             No Orders Found
                           </p>
-                          <p className="text-sm  mt-1">
+                          <p className="text-sm text-gray-500 mt-1">
                             You haven't placed any orders yet
                           </p>
                         </div>

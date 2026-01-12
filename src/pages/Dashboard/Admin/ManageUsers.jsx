@@ -34,7 +34,7 @@ const ManageUsers = () => {
               <h1 className="text-3xl sm:text-2xl font-bold mb-2 text-center text-[#3badcd]">
                 User Management
               </h1>
-              <p className="font-semibold">
+              <p className="font-semibold text-gray-600 dark:text-gray-400">
                 Total Users:{" "}
                 <span className="font-bold text-[#3badcd]">{users.length}</span>
               </p>
@@ -45,7 +45,7 @@ const ManageUsers = () => {
           <div className=" rounded-2xl shadow-sm border border-slate-100 p-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-semibold  mb-3">
+                <label className="block text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3">
                   Search User
                 </label>
                 <div className="relative">
@@ -63,19 +63,19 @@ const ManageUsers = () => {
                     type="search"
                     placeholder="Search by name or email..."
                     onChange={(e) => setSearchText(e.target.value)}
-                    className="w-full pl-12 pr-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#3badcd] focus:border-transparent transition"
+                    className="w-full pl-12 pr-4 py-3 rounded-lg border border-slate-200 bg-white dark:bg-slate-800 dark:border-slate-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-[#3badcd] focus:border-transparent transition"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-3">
+                <label className="block text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3">
                   Filter By Role
                 </label>
                 <select
                   value={role}
                   onChange={(e) => setRole(e.target.value.trim())}
-                  className="w-full px-4 py-3 rounded-lg border    border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#3badcd] focus:border-transparent transition "
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-[#3badcd] focus:border-transparent transition"
                 >
                   <option className="text-[#3badcd] font-semibold" value="">
                     All Roles
@@ -114,21 +114,21 @@ const ManageUsers = () => {
             <>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
-                  <thead className=" backdrop-blur border-b border-slate-200">
+                  <thead className="backdrop-blur border-b border-slate-200">
                     <tr>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-600 dark:text-gray-400">
                         Name
                       </th>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-600 dark:text-gray-400">
                         Email
                       </th>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-600 dark:text-gray-400">
                         Role
                       </th>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-600 dark:text-gray-400">
                         Status
                       </th>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-600 dark:text-gray-400">
                         Actions
                       </th>
                     </tr>
@@ -140,7 +140,7 @@ const ManageUsers = () => {
                         <td colSpan="5" className="px-6 py-12 text-center">
                           <div className="flex flex-col items-center gap-2">
                             <svg
-                              className="h-12 w-12"
+                              className="h-12 w-12 text-gray-400 dark:text-gray-600"
                               fill="none"
                               stroke="currentColor"
                               viewBox="0 0 24 24"
@@ -152,7 +152,9 @@ const ManageUsers = () => {
                                 d="M17 20h5v-2a3 3 0 00-5.856-1.487M15 6h-6M9 20h6m0 0h5v-2a3 3 0 00-5.856-1.487M9 6a3 3 0 11-6 0 3 3 0 016 0z"
                               />
                             </svg>
-                            <p className="font-medium">No users found</p>
+                            <p className="font-medium text-gray-600 dark:text-gray-400">
+                              No users found
+                            </p>
                           </div>
                         </td>
                       </tr>
@@ -168,8 +170,6 @@ const ManageUsers = () => {
                   </tbody>
                 </table>
               </div>
-
-           
             </>
           )}
         </div>

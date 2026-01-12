@@ -17,7 +17,7 @@ const Sidebar = ({ isOpen, onToggle }) => {
   const handleToggle = () => {
     if (onToggle) onToggle();
   };
-  
+
   console.log("role have", role);
   return (
     <>
@@ -36,7 +36,6 @@ const Sidebar = ({ isOpen, onToggle }) => {
         <div className="h-16 flex items-center justify-center border-b border-gray-200 px-4">
           <Link to="/" className="flex items-center space-x-2">
             <img src={logo} alt="Order Tracker" className="h-20 w-auto" />
-            
           </Link>
         </div>
 

@@ -80,13 +80,16 @@ const DashboardNavbar = () => {
             </button>
 
             {isProfileOpen && (
-              <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-gray-200 py-1 overflow-hidden">
+              <div className="absolute right-0 mt-2 w-56 bg-white dark:bg-slate-900 rounded-lg shadow-xl border border-gray-200 dark:border-slate-700 py-1 overflow-hidden">
                 <Link
                   to="/dashboard/profile"
                   onClick={() => setIsProfileOpen(false)}
-                  className="flex items-center space-x-3 px-4 py-3 hover:bg-gray-50 transition-colors text-gray-700"
+                  className="flex items-center space-x-3 px-4 py-3 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors text-gray-700 dark:text-gray-300"
                 >
-                  <User size={18} className="text-gray-500" />
+                  <User
+                    size={18}
+                    className="text-gray-500 dark:text-gray-400"
+                  />
                   <span className="text-sm font-medium">Profile</span>
                 </Link>
 

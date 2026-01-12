@@ -34,7 +34,7 @@ const ManageProducts = () => {
               <h1 className="text-3xl sm:text-2xl font-bold mb-2 text-center text-[#3badcd]">
                 Manager Products
               </h1>
-              <p className="font-semibold">
+              <p className="font-semibold text-gray-500">
                 Total Products:{" "}
                 <span className="font-bold text-[#3badcd]">
                   {products.length}
@@ -46,7 +46,7 @@ const ManageProducts = () => {
           <div className="rounded-2xl shadow-sm border border-slate-100 p-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-semibold mb-3">
+                <label className="block text-sm font-semibold mb-3 text-gray-500">
                   Search Products
                 </label>
                 <div className="relative">
@@ -65,48 +65,66 @@ const ManageProducts = () => {
                     placeholder="Search by name or email..."
                     value={searchText}
                     onChange={(e) => setSearchText(e.target.value)}
-                    className="w-full pl-12 pr-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#3badcd] focus:border-transparent transition"
+                    className="w-full pl-12 pr-4 py-3 rounded-lg border border-slate-200 bg-white dark:bg-slate-800 dark:border-slate-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-[#3badcd] focus:border-transparent transition"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-3">
+                <label className="block text-sm font-semibold mb-3 text-gray-500">
                   Filter By Category
                 </label>
                 <select
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#3badcd] focus:border-transparent transition"
+                  className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white dark:bg-slate-800 dark:border-slate-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-[#3badcd] focus:border-transparent transition"
                 >
                   <option value="" className="text-[#3badcd] font-semibold">
                     All categories
                   </option>
-                  <option value="Shirt" className="text-[#3badcd] font-semibold">
+                  <option
+                    value="Shirt"
+                    className="text-[#3badcd] font-semibold"
+                  >
                     Shirt
                   </option>
                   <option value="Pant" className="text-[#3badcd] font-semibold">
                     Pant
                   </option>
-                  <option value="Jacket" className="text-[#3badcd] font-semibold">
+                  <option
+                    value="Jacket"
+                    className="text-[#3badcd] font-semibold"
+                  >
                     Jacket
                   </option>
-                  <option value="Blazer" className="text-[#3badcd] font-semibold">
+                  <option
+                    value="Blazer"
+                    className="text-[#3badcd] font-semibold"
+                  >
                     Blazer
                   </option>
-                  <option value="Saree" className="text-[#3badcd] font-semibold">
+                  <option
+                    value="Saree"
+                    className="text-[#3badcd] font-semibold"
+                  >
                     Saree
                   </option>
                   <option value="Gown" className="text-[#3badcd] font-semibold">
                     Gown
                   </option>
-                  <option value="Palazoo" className="text-[#3badcd] font-semibold">
+                  <option
+                    value="Palazoo"
+                    className="text-[#3badcd] font-semibold"
+                  >
                     Palazoo
                   </option>
                   <option value="Belt" className="text-[#3badcd] font-semibold">
                     Belt
                   </option>
-                  <option value="Other" className="text-[#3badcd] font-semibold">
+                  <option
+                    value="Other"
+                    className="text-[#3badcd] font-semibold"
+                  >
                     Other
                   </option>
                 </select>
@@ -126,22 +144,22 @@ const ManageProducts = () => {
                 <table className="w-full text-sm">
                   <thead className="backdrop-blur border-b border-slate-200">
                     <tr>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-600 dark:text-gray-400">
                         Image
                       </th>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-600 dark:text-gray-400">
                         Name
                       </th>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-600 dark:text-gray-400">
                         Category
                       </th>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-600 dark:text-gray-400">
                         Price
                       </th>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-600 dark:text-gray-400">
                         Payment Mode
                       </th>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-600 dark:text-gray-400">
                         Actions
                       </th>
                     </tr>
@@ -153,7 +171,7 @@ const ManageProducts = () => {
                         <td colSpan={6} className="px-6 py-12 text-center">
                           <div className="flex flex-col items-center gap-2">
                             <svg
-                              className="h-12 w-12"
+                              className="h-12 w-12 text-gray-500"
                               fill="none"
                               stroke="currentColor"
                               viewBox="0 0 24 24"
@@ -165,7 +183,9 @@ const ManageProducts = () => {
                                 d="M17 20h5v-2a3 3 0 00-5.856-1.487M15 6h-6M9 20h6m0 0h5v-2a3 3 0 00-5.856-1.487M9 6a3 3 0 11-6 0 3 3 0 016 0z"
                               />
                             </svg>
-                            <p className="font-medium">No products found</p>
+                            <p className="font-medium text-gray-500">
+                              No products found
+                            </p>
                           </div>
                         </td>
                       </tr>
@@ -181,8 +201,6 @@ const ManageProducts = () => {
                   </tbody>
                 </table>
               </div>
-
-           
             </>
           )}
         </div>

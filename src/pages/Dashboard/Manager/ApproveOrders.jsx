@@ -29,7 +29,7 @@ const ApproveOrders = () => {
               <h1 className="text-3xl sm:text-2xl font-bold mb-2 text-center text-[#3badcd]">
                 Approved Orders
               </h1>
-              <p className="font-semibold">
+              <p className="font-semibold text-gray-500">
                 Total Approved:{" "}
                 <span className="font-bold text-[#3badcd]">
                   {orders.length}
@@ -50,25 +50,25 @@ const ApproveOrders = () => {
                 <table className="w-full text-sm">
                   <thead className="backdrop-blur border-b border-slate-200">
                     <tr>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs ">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-600 dark:text-gray-400">
                         Order Id
                       </th>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs ">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-600 dark:text-gray-400">
                         User
                       </th>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs ">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-600 dark:text-gray-400">
                         Email
                       </th>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs ">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-600 dark:text-gray-400">
                         Product
                       </th>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs ">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-600 dark:text-gray-400">
                         Quantity
                       </th>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs ">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-600 dark:text-gray-400">
                         Approved Date
                       </th>
-                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs ">
+                      <th className="px-6 py-4 text-left font-semibold tracking-wide uppercase text-xs text-gray-600 dark:text-gray-400">
                         Actions
                       </th>
                     </tr>
@@ -79,7 +79,7 @@ const ApproveOrders = () => {
                       <tr>
                         <td
                           colSpan={7}
-                          className="px-6 py-12 text-center text-slate-200"
+                          className="px-6 py-12 text-center text-gray-500"
                         >
                           No approved orders
                         </td>

@@ -61,28 +61,28 @@ const AllProductsDataRow = ({ product, refetch }) => {
         />
       </td>
 
-      <td className="px-5 py-5 border-b border-gray-300 text-sm font-semibold">
+      <td className="px-5 py-5 border-b border-gray-300 text-sm font-semibold text-gray-600 dark:text-gray-400">
         {title}
       </td>
 
-      <td className="px-5 py-5 border-b border-gray-300 text-sm font-semibold">
+      <td className="px-5 py-5 border-b border-gray-300 text-sm font-semibold text-gray-600 dark:text-gray-400">
         ${price}
       </td>
 
-      <td className="px-5 py-5 border-b border-gray-300 text-sm font-semibold">
+      <td className="px-5 py-5 border-b border-gray-300 text-sm font-semibold text-gray-600 dark:text-gray-400">
         {category}
       </td>
 
-      <td className="px-5 py-5 border-b border-gray-300 text-sm font-semibold">
+      <td className="px-5 py-5 border-b border-gray-300 text-sm font-semibold text-gray-600 dark:text-gray-400">
         {created_By}
       </td>
 
-      <td className="px-5 py-5 border-b border-gray-300 text-sm font-semibold">
+      <td className="px-5 py-5 border-b border-gray-300 text-sm font-semibold text-gray-600 dark:text-gray-400">
         <input
           type="checkbox"
           checked={showHome}
           onChange={handleToggle}
-          className="toggle toggle-sm"
+          className="toggle toggle-sm border border-gray-300 bg-gray-400"
         />
       </td>
 
