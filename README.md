@@ -161,6 +161,6 @@ Make sure you have:
 
 ```bash
 git clone https://github.com/Jobayer561/garments-order-production-tracker-client.git
-cd garments-order-production-tracker-client
+cd frontend
 npm install
 npm run dev
